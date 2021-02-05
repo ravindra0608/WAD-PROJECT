@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 80px;
+    position: relative;
+    left: 200px;
+    top: 10px;
+}
+
+.title1 {
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    position: absolute;
+    left: 300px;
+    top: 30px;
+}
+
+.title2 {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    position: absolute;
+    left: 290px;
+    top: 30px;
+    padding: 10px;
+}
+
+.page {
+    width: 100%;
+}
+
+.navbar {
+    position: relative;
+    top: 15px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-shadow: 1px 2px 3px black;
+    background: darkblue;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: large;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.navbar ul li:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    /* .5 seonds for changes to the width and background-color */
+    -webkit-transition: width .5s ease, background-color .5s ease;
+    /* Chrome and Safari */
+    -moz-transition: width .5s ease, background-color .5s ease;
+    /* FireFox */
+}
+
+
+/* Change the width and background on hover, aka sliding out */
+
+.navbar ul li:hover:after {
+    width: 100%;
+    background: black;
+}
+
+.logintitle {
+    margin-top: 40px;
+    position: relative;
+    top: 10px;
+    left: 42%;
+    font-weight: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.loginblock {
+    padding: 10px;
+    margin: 10px;
+    height: 450px;
+    background-color: #ffff;
+    border: 2px;
+    border-style: solid;
+    width: 400px;
+    box-shadow: 5px;
+    align-items: center;
+    position: relative;
+    left: 35%;
+}

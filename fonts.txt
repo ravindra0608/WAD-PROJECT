@@ -1,0 +1,38 @@
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+<style>
+body {
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+
+<h1 class="font-effect-fire">Sofia on Fire</h1>
+
+</body>
+
+font-family: Verdana,sans-serif;
+font-size: 15px;
+line-height: 1.5;
+box-sizing: inherit;
+
+
+
+
+
+
+       To Officer in charge,<br>________________ Police Station,<br>________________ District,<br>________________State.<br>Sub: Loss of the Mobile phone<br> Respected sir,<br> I am __________, w/o
+        <husband/father’s name>, currently residing at <address>. (Date), I lost my phone at the (Place) at <city>.
+        The mobile is a (model) with (specifications). The IMEI number of the phone is <IMEI number> and the serial number of the device is <serial number>. The mobile number of the SIM used in the lost phone is <phone number>. Approximate value of the new device of this model is Rs(   ).
+        You are requested to kindly register the complaint and give me an attested copy of this complaint so that I can submit this to the service provider to block the phone number and prevent potential abuse of my SIM.
+        I shall be obliged if you kindly take action to trace and recover the lost device.
+        Yours faithfully
+        (Name)
+        (signature)
+        (City)
+        (contact number)
+
+
+        Evidence if any: 
