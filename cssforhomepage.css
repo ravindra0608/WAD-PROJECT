@@ -46,9 +46,9 @@ nav{
 }
 
 .icon{
-    height: 60px;
+    height: 50px;
+    margin-top: 5px;
 }
-
 .nav-links{
     display: flex;
     justify-content: space-around;
