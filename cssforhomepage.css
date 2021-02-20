@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/* header */
+
 header{
     display: inline;
 }
@@ -34,15 +36,24 @@ header{
     padding: 10px;
 }
 
-.page {
-    width: 100%;
+/* page */
+.page{
+    position: relative;
 }
+
+/* navbar */
+
+
 nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
     background-color:darkblue;
+}
+
+.emblem{
+    display: none;
 }
 
 .icon{
@@ -79,6 +90,8 @@ nav{
     transition: 0.5s ease-in-out;
 }
 
+/* for responsiveness */
+
 @media screen and (max-width: 1100px){
     .nav-links{
         width: 80%;
@@ -94,7 +107,7 @@ nav{
         position: absolute;
         right: 0px;
         height: 92vh;
-        top: 12vh;
+        top: 8vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -104,11 +117,16 @@ nav{
         transition: transform 0.5s ease-in;
         padding-bottom: 30%;
         padding-top: 5%;
+        z-index: 1;
     }
 
     /* .nav-links li{
         opacity: 0;
     } */
+
+    .emblem{
+        display: block;
+    }
 
     .burger{
         display: block;
@@ -144,3 +162,64 @@ nav{
 
 }
 
+/* body */
+
+.main-heading{
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    font-size: 50px;
+    color:darkblue;
+}
+
+/* .announcements-button{
+    width: auto;
+    background-color: aqua;
+    
+} */
+
+.announcements-button{
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    font-size: 25px;
+    color:darkblue;
+    background-color:rgb(159, 159, 240);
+    padding: 7px;
+    border-radius: 20px;
+}
+.announcements-button a{
+
+    text-decoration: none;
+}
+
+
+.twitter-timeline{
+    
+}
+
+.background{
+    background-image: url("images/salutetopolice.jpg");
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    padding-top: 200px;
+}
+
+#announcements{
+    padding: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#announcements-box{
+    border: solid 1px;
+    height: 200px;
+    width: 200px;
+}
+
+
+.police-pic{
+    float: left;
+}
