@@ -158,6 +158,46 @@ nav{
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(238, 241, 253);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links li:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    /* .5 seonds for changes to the width and background-color */
+    -webkit-transition: width .5s ease, background-color .5s ease;
+    /* Chrome and Safari */
+    -moz-transition: width .5s ease, background-color .5s ease;
+    /* FireFox */
+}
+
+
+/* Change the width and background on hover, aka sliding out */
+
+.nav-links li:hover:after {
+    width: 100%;
+    background: white;
+}
+
 
 /* body */
 
