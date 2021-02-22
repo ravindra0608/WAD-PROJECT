@@ -211,15 +211,88 @@ nav{
     padding: 100px;
     display: flex;
     justify-content: space-around;
+    background-color:rgb(143, 143, 226);
+}
+
+#announce{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    background-color:rgb(143, 143, 226);
 }
 
 #announcements-box{
     border: solid 1px;
-    height: 200px;
-    width: 200px;
+    height: 600px;
+    width: 500px;
+    padding: 30px;
+    overflow: scroll;
+    background-color: aliceblue;
+}
+#announcements-box h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+#announcements-box ul{
+    text-align: center;
+    list-style: none;
+}
+
+#announcements-box ul li{
+    margin: 20px;
 }
 
 
+
+/* Message */
+
+.message{
+    width: 70%;
+    margin: 0 auto;
+    padding: 30px;
+}
 .police-pic{
     float: left;
+    height: 250px;
+    width: 200px;
+    margin-bottom: 20px;
+    margin-right: 2rem;
 }
+
+.rulestofollow{
+    
+}
+
+.message h1{
+    margin: 40px;
+    font-size: 40px;
+}
+
+footer{
+    clear: both;
+    background-color: darkblue;
+    color: antiquewhite;
+    padding: 30px;
+    text-align: center;
+}
+
+.socicons{
+    display: inline;
+}
+
+.socicons img{
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+
+.initial {
+    display: none;
+  }
+a:hover img[class="hidden"] {
+    display: none;
+  }
+a:hover img[class="initial"] {
+    display: inline;
+  }
