@@ -28,7 +28,7 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     min-height: 8vh;
     background-color: darkblue;
@@ -37,6 +37,8 @@ nav {
 .icon {
     height: 50px;
     margin-top: 5px;
+    position: relative;
+    right: 6em;
 }
 
 .nav-links {
