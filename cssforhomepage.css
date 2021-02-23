@@ -17,34 +17,16 @@ header {
 }
 
 
-.title1 {
-    font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 300px;
-    top: 30px;
-}
-
-.title2 {
-    font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 290px;
-    top: 30px;
-    padding: 10px;
-}
-
 /* page */
-.page{
+
+.page {
     position: relative;
 }
 
+
 /* navbar */
 
-
-nav{
+nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -90,8 +72,8 @@ nav{
 
 /* for responsiveness */
 
-@media screen and (max-width: 1100px){
-    .nav-links{
+@media screen and (max-width: 1100px) {
+    .nav-links {
         width: 80%;
     }
 }
@@ -119,13 +101,10 @@ nav{
     /* .nav-links li{
         opacity: 0;
     } */
-
-
-    .emblem{
+    .emblem {
         display: block;
     }
-
-    .burger{
+    .burger {
         display: block;
         cursor: pointer;
     }
@@ -201,13 +180,14 @@ nav{
 
 /* body */
 
-.main-heading{
+.main-heading {
     position: absolute;
     top: 5%;
     left: 25%;
     font-size: 50px;
-    color:darkblue;
+    color: darkblue;
 }
+
 
 /* .announcements-button{
     width: auto;
@@ -215,27 +195,24 @@ nav{
     
 } */
 
-.announcements-button{
+.announcements-button {
     position: absolute;
     top: 15%;
     left: 40%;
     font-size: 25px;
-    color:darkblue;
-    background-color:rgb(159, 159, 240);
+    color: darkblue;
+    background-color: rgb(159, 159, 240);
     padding: 7px;
     border-radius: 20px;
 }
-.announcements-button a{
 
+.announcements-button a {
     text-decoration: none;
 }
 
+.twitter-timeline {}
 
-.twitter-timeline{
-    
-}
-
-.background{
+.background {
     background-image: url("images/salutetopolice.jpg");
     height: 100vh;
     width: 100%;
@@ -244,21 +221,21 @@ nav{
     padding-top: 200px;
 }
 
-#announcements{
+#announcements {
     padding: 100px;
     display: flex;
     justify-content: space-around;
-    background-color:rgb(143, 143, 226);
+    background-color: rgb(143, 143, 226);
 }
 
-#announce{
+#announce {
     padding-top: 50px;
     text-align: center;
     font-size: 50px;
-    background-color:rgb(143, 143, 226);
+    background-color: rgb(143, 143, 226);
 }
 
-#announcements-box{
+#announcements-box {
     border: solid 1px;
     height: 600px;
     width: 500px;
@@ -266,29 +243,31 @@ nav{
     overflow: scroll;
     background-color: aliceblue;
 }
-#announcements-box h1{
+
+#announcements-box h1 {
     text-align: center;
     margin-bottom: 30px;
 }
-#announcements-box ul{
+
+#announcements-box ul {
     text-align: center;
     list-style: none;
 }
 
-#announcements-box ul li{
+#announcements-box ul li {
     margin: 20px;
 }
 
 
-
 /* Message */
 
-.message{
+.message {
     width: 70%;
     margin: 0 auto;
     padding: 30px;
 }
-.police-pic{
+
+.police-pic {
     float: left;
     height: 250px;
     width: 200px;
@@ -296,18 +275,17 @@ nav{
     margin-right: 2rem;
 }
 
-.rulestofollow{
-    
-}
+.rulestofollow {}
 
-.message h1{
+.message h1 {
     margin: 40px;
     font-size: 40px;
 }
 
+
 /* footer */
 
-footer{
+footer {
     clear: both;
     background-color: darkblue;
     color: antiquewhite;
@@ -315,23 +293,24 @@ footer{
     text-align: center;
 }
 
-.socicons{
+.socicons {
     display: inline;
 }
 
-.socicons img{
+.socicons img {
     height: 40px;
     width: 40px;
     margin: 30px;
 }
 
-
 .initial {
     display: none;
-  }
+}
+
 a:hover img[class="hidden"] {
     display: none;
-  }
+}
+
 a:hover img[class="initial"] {
     display: inline;
-  }
+}
