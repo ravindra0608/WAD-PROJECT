@@ -48,11 +48,3 @@ function resumeDiv() {
 }
 
 document.querySelector("body").onload(scrollDiv_init());
-
-function hover(element) {
-  element.setAttribute("src", "images/facebook.svg");
-}
-
-function unhover(element) {
-  element.setAttribute("src", "images/facebook black.svg");
-}
