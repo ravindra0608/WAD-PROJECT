@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    border: 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -13,12 +13,18 @@ header {
     position: relative;
     left: 42%;
     top: 5px;
-    margin: 5px;
+    margin: 20px;
 }
 
+
+/* page */
+
 .page {
-    width: 100%;
+    position: relative;
 }
+
+
+/* navbar */
 
 nav {
     display: flex;
@@ -31,6 +37,104 @@ nav {
 .icon {
     height: 50px;
     margin-top: 5px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(238, 241, 253);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.burger {
+    display: none;
+}
+
+.burger div {
+    height: 3px;
+    width: 25px;
+    background-color: rgb(238, 241, 253);
+    margin: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+
+/* for responsiveness */
+
+@media screen and (max-width: 1100px) {
+    .nav-links {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        overflow-x: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: darkblue;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        padding-bottom: 30%;
+        padding-top: 5%;
+        z-index: 1;
+    }
+    /* .nav-links li{
+        opacity: 0;
+    } */
+    .emblem {
+        display: block;
+    }
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 .nav-links {
@@ -73,76 +177,6 @@ nav {
     background: white;
 }
 
-.burger {
-    display: none;
-}
-
-.burger div {
-    height: 3px;
-    width: 25px;
-    background-color: rgb(238, 241, 253);
-    margin: 5px;
-    transition: 0.5s ease-in-out;
-}
-
-@media screen and (max-width: 1100px) {
-    .nav-links {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    body {
-        overflow-x: hidden;
-    }
-    .nav-links {
-        position: absolute;
-        right: 0px;
-        height: 92vh;
-        top: 12vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: darkblue;
-        width: 60%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        padding-bottom: 30%;
-        padding-top: 5%;
-    }
-    .burger {
-        display: block;
-        cursor: pointer;
-    }
-}
-
-.nav-active {
-    transform: translateX(0%);
-}
-
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-    opacity: 0;
-}
-
-.toggle .line3 {
-    transform: rotate(+45deg) translate(-5px, -6px);
-}
-
 .heading {
     text-align: center;
     font-size: 50px;
@@ -153,38 +187,440 @@ a {
     text-decoration: none;
 }
 
-h3 {
-    font-size: 25px;
-    color: black;
-}
-
-.cat-image {
-    width: 100%;
-    height: 100%;
-}
-
-.content {
-    padding: 0%;
-    display: block;
-    margin: 40px;
-    float: left;
-    border: 2px solid black;
-    height: 240px;
-    width: 220px;
-    text-align: center;
-    overflow: hidden;
-}
-
-.content:hover {
-    box-shadow: 5px 5px rgb(30, 36, 39);
-    background-color: rgb(255, 93, 73);
-}
-
 .allcategories {
-    margin-left: 10%;
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     align-content: center;
+    margin: 1em 10em 4em 12em;
+}
+
+.module1 {
+    background-image: url(./images/Accident.jpg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module1>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module1>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module1>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module1>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module2 {
+    background-image: url(./images/Against_women.jpg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module2>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module2>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module2>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module2>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module3 {
+    background-image: url(./images/kidnap.jpg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module3>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module3>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module3>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module3>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module4 {
+    background-image: url(./images/murder.jpg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module4>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module4>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module4>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module4>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module5 {
+    background-image: url(./images/land_possession.jpeg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module5>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module5>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module5>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module5>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module6 {
+    background-image: url(./images/robbery.jpg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module6>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module6>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module6>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module6>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module7 {
+    background-image: url(./images/threatening.jfif);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module7>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module7>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module7>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module7>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.module8 {
+    background-image: url(./images/others.jpeg);
+    background-attachment: fixed;
+    width: 15em;
+    height: 13em;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    background-size: 14em;
+    background-repeat: repeat;
+}
+
+.module8>header {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+}
+
+.module8>header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+}
+
+.module8>header>a {
+    text-decoration: none;
+    color: white;
+}
+
+.module8>header>a>h2 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*CSS for footer*/
+
+footer {
+    clear: both;
+    background-color: darkblue;
+    color: antiquewhite;
+    padding: 30px;
+    text-align: center;
+}
+
+.socicons {
+    display: inline;
+}
+
+.socicons img {
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+.initial {
+    display: none;
+}
+
+a:hover img[class="hidden"] {
+    display: none;
+}
+
+a:hover img[class="initial"] {
+    display: inline;
 }
