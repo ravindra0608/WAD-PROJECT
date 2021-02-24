@@ -11,40 +11,29 @@ const navSlide = function () {
 
 navSlide();
 
-ScrollRate = 100;
+let element = document.getElementById("announcements-box");
+let scrollerId;
+let paused = true;
 
-function scrollDiv_init() {
-  DivElmnt = document.getElementById("announcements-box");
-  ReachedMaxScroll = false;
+function startScroll() {
+  x = 1;
+  let id = setInterval(function () {
+    element.scrollBy(0, x);
+  }, 10);
 
-  DivElmnt.scrollTop = 0;
-  PreviousScrollTop = 0;
-
-  ScrollInterval = setInterval("scrollDiv()", ScrollRate);
+  return id;
 }
 
-function scrollDiv() {
-  if (!ReachedMaxScroll) {
-    DivElmnt.scrollTop = PreviousScrollTop;
-    PreviousScrollTop++;
+function stopScroll() {
+  clearInterval(scrollerId);
+}
 
-    ReachedMaxScroll =
-      DivElmnt.scrollTop >= DivElmnt.scrollHeight - DivElmnt.offsetHeight;
+element.addEventListener("mouseover", function (event) {
+  if (paused == true) {
+    scrollerId = startScroll();
+    paused = false;
   } else {
-    ReachedMaxScroll = DivElmnt.scrollTop == 0 ? false : true;
-
-    DivElmnt.scrollTop = PreviousScrollTop;
-    PreviousScrollTop--;
+    stopScroll();
+    paused = true;
   }
-}
-
-function pauseDiv() {
-  clearInterval(ScrollInterval);
-}
-
-function resumeDiv() {
-  PreviousScrollTop = DivElmnt.scrollTop;
-  ScrollInterval = setInterval("scrollDiv()", ScrollRate);
-}
-
-document.querySelector("body").onload(scrollDiv_init());
+});

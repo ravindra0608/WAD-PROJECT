@@ -110,6 +110,9 @@ nav {
         display: block;
         cursor: pointer;
     }
+    #announcements{
+        flex-direction: column;
+    }
 }
 
 .nav-active {
@@ -197,31 +200,55 @@ nav {
     
 } */
 
-.announcements-button {
-    position: absolute;
-    top: 15%;
-    left: 40%;
-    font-size: 25px;
-    color: darkblue;
-    background-color: rgb(159, 159, 240);
-    padding: 7px;
-    border-radius: 20px;
-}
-
-.announcements-button a {
-    text-decoration: none;
-}
-
 .twitter-timeline {}
 
 .background {
-    background-image: url("images/salutetopolice.jpg");
+    background-image: url("images/policeattention.jpg");
+    /* background-attachment: fixed; */
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
-    background-position-x: center;
+    background-position-x:right;
+    background-position-y:bottom;
     padding-top: 200px;
 }
+
+.sidenav{
+    background-color: darkblue;
+    display: block;
+    width: 18%;
+    height: 100vh;
+    position: absolute;
+    padding: 10px;
+}
+.sidenav ul{
+    list-style: none;
+}
+.sidenav li{
+    margin-top: 100px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+
+.sidenav a{
+    text-decoration: none;
+    color: antiquewhite;
+    /* line-height: 10rem; */
+    text-align: center;
+    font-size: 20px;
+}
+
+.sidenav li:hover{
+    background-color: rgb(84, 84, 148);
+    transition: ease-in 0.3s;
+}
+
+/* 1296px width */
+
+
 
 #announcements {
     padding: 100px;
@@ -261,29 +288,31 @@ nav {
 }
 
 
-/* Message */
+/* Message from the commisioner*/
 
 .message {
     width: 70%;
     margin: 0 auto;
-    padding: 30px;
 }
-
-.police-pic {
-    float: left;
-    height: 250px;
-    width: 200px;
-    margin-bottom: 20px;
-    margin-right: 2rem;
-}
-
-.rulestofollow {}
 
 .message h1 {
     margin: 40px;
     font-size: 40px;
 }
+.police-pic {
+    float: left;
+    height: 250px;
+    width: 200px;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+}
 
+.rulestofollow p{
+    margin-top: 4rem;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 1.2px;
+}
 
 /* footer */
 
