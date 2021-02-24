@@ -179,15 +179,53 @@ nav {
     background: white;
 }
 
+
+/*Mini navbar */
+
+.mininavbar {
+    position: absolute;
+    left: 11em;
+    top: 10em;
+    font-size: 1.2em;
+}
+
+
+/* Unvisited link*/
+
+.mininavbar>a:link {
+    color: red;
+    text-decoration: none;
+}
+
+
+/*Visited link*/
+
+.mininavbar>a:visited {
+    color: green;
+}
+
+
+/*Mouse over link*/
+
+.mininavbar>a:hover {
+    color: #121212;
+}
+
+
+/*Visited link*/
+
+.mininavbar>a:link {
+    color: red;
+}
+
 .heading {
     text-align: center;
     font-size: 50px;
     margin-top: 30px;
 }
 
-a {
-    text-decoration: none;
-}
+
+/*All the 8 categories are there inside "allcategories" class.*/
 
 .allcategories {
     display: inline-flex;
@@ -197,6 +235,12 @@ a {
     align-content: center;
     margin: 1em 10em 4em 12em;
 }
+
+
+/*Styling for each category added 8 different ones because one is not working for all categories.*/
+
+
+/* Module 1 code*/
 
 .module1 {
     background-image: url(./images/Accident.jpg);
@@ -247,6 +291,9 @@ a {
     text-align: center;
 }
 
+
+/* Module 2 code*/
+
 .module2 {
     background-image: url(./images/Against_women.jpg);
     background-attachment: fixed;
@@ -295,6 +342,9 @@ a {
     z-index: 1;
     text-align: center;
 }
+
+
+/* Module 3 code*/
 
 .module3 {
     background-image: url(./images/kidnap.jpg);
@@ -345,6 +395,9 @@ a {
     text-align: center;
 }
 
+
+/* Module 4 code*/
+
 .module4 {
     background-image: url(./images/murder.jpg);
     background-attachment: fixed;
@@ -393,6 +446,9 @@ a {
     z-index: 1;
     text-align: center;
 }
+
+
+/* Module 5 code*/
 
 .module5 {
     background-image: url(./images/land_possession.jpeg);
@@ -443,6 +499,9 @@ a {
     text-align: center;
 }
 
+
+/* Module 6 code*/
+
 .module6 {
     background-image: url(./images/robbery.jpg);
     background-attachment: fixed;
@@ -492,6 +551,9 @@ a {
     text-align: center;
 }
 
+
+/* Module 7 code*/
+
 .module7 {
     background-image: url(./images/threatening.jfif);
     background-attachment: fixed;
@@ -540,6 +602,9 @@ a {
     z-index: 1;
     text-align: center;
 }
+
+
+/* Module 8 code*/
 
 .module8 {
     background-image: url(./images/others.jpeg);
