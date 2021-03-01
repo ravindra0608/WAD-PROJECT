@@ -121,9 +121,6 @@ nav {
         display: block;
         cursor: pointer;
     }
-    #announcements{
-        flex-direction: column;
-    }
 }
 
 .nav-active {
@@ -276,6 +273,10 @@ nav {
 #announcements-pre{
     background-color: rgb(181, 181, 209);
     padding-top: 40px;
+    background-image: url('images/policeattention.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #announcements-pre h1{
@@ -292,13 +293,15 @@ nav {
 #announcements-box {
     border: solid 1px;
     height: 600px;
-    width: 500px;
+    width: 40%;
     padding: 30px;
     overflow: scroll;
     background-color: aliceblue;
     background-image: url('images/background.jpg');
     color: antiquewhite;
     scroll-behavior: auto;
+    margin: 10px auto;
+
 }
 
 #announcements-box h1 {
@@ -316,7 +319,65 @@ nav {
     font-size: 25px;
 }
 
-.twitter-timeline {}
+.howto{
+    background-size: cover;
+    color: antiquewhite;
+    padding: 30px;
+    height: 600px;
+    width: 50%;
+    background-color: white;
+    background-image: url('images/lights.jpg');
+    background-position: center;
+    margin: 10px auto;
+}
+
+.howto ul{
+    padding: 30px;
+}
+
+.howto li{
+    font-size: 33px;
+    line-height: 1.5;
+}
+
+.howto a{
+    text-decoration: none;
+    color: antiquewhite;
+    display: inline;
+}
+
+@media screen and (max-width: 1079px){
+    #announcements{
+        flex-direction: column;
+    }
+
+    #announcements-box,.howto{
+        width: 70%;
+    }
+    .howto{
+        width: 70%;
+        height: max-content;
+    }
+    
+}
+
+@media screen and (max-width:820px){
+    #announcements-box,.howto{
+        width: 90%;
+    }
+    .howto{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:640px){
+    #announcements-box,.howto{
+        width: 98%;
+    }
+    .howto{
+        width: 98%;
+    }
+}
 
 
 /* footer */
