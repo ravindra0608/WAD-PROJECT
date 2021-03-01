@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 header {
@@ -14,11 +15,11 @@ header {
 }
 
 .logo {
+    display: block;
     width: 200px;
-    position: relative;
-    left: 42%;
-    top: 5px;
-    margin: 20px;
+    text-align: center;
+    margin: auto;
+    padding:20px;
 }
 
 
@@ -197,36 +198,34 @@ nav {
 .opening{
     background-image: url('images/background.jpg');
     background-position-y: center;
+    color: white;
 }
 
 
 .intro{
-    height: 80vh;
+    height: 65vh;
     display: flex;
-    color: white;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .main-heading {
     margin: 0 auto;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
-    /* background-image: url('images/background.jpg'); */
-    /* background-position: center; */
     color: white;
     padding-top: 40px;
-    flex-wrap: unwrap;
 }
 
 .intro-img{
     height: 400px;
     width: 400px;
-    margin: 30px 0 0 250px;
+    margin: 30px auto;
 }
 
 .message{
     padding: 30px;
-    margin: 20px 0 0 50px;
-    
+    margin: 0 auto
 }
 
 .message h3{
@@ -235,27 +234,34 @@ nav {
 
 .message p{
     font-size: 20px;
-    margin-top: 30px;
-    width: 80%;
+    width: 90%;
     line-height: 1.5;
+    margin-top: 30px;
+}
+
+.contact-info{
+    height: 250px;
+    width: 250px;
+    margin: 40px auto;
 }
 
 /* 1296px width */
 
 /*Announcements section*/
-
-#announcements {
-    padding: 100px;
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(143, 143, 226);
+#announcements-pre{
+    background-color: rgb(181, 181, 209);
+    padding-top: 40px;
 }
 
-#announce {
-    padding-top: 50px;
-    text-align: center;
+#announcements-pre h1{
     font-size: 50px;
-    background-color: rgb(143, 143, 226);
+    text-align: center;
+}
+
+#announcements {
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 
 #announcements-box {
@@ -265,6 +271,9 @@ nav {
     padding: 30px;
     overflow: scroll;
     background-color: aliceblue;
+    background-image: url('images/background.jpg');
+    color: antiquewhite;
+    scroll-behavior: auto;
 }
 
 #announcements-box h1 {
@@ -274,11 +283,12 @@ nav {
 
 #announcements-box ul {
     text-align: center;
-    list-style: none;
+    list-style:square;
 }
 
 #announcements-box ul li {
     margin: 20px;
+    font-size: 25px;
 }
 
 .twitter-timeline {}

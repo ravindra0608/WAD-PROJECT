@@ -3,6 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+header {
+    background-image: url('images/policetraining.webp');
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: top;
+    opacity: 0.5;
+    width: 100%;
+}
+
+.logo {
+    width: 200px;
+    position: relative;
+    left: 42%;
+    top: 5px;
+    margin: 20px;
+}
 
 /* navbar */
 
@@ -243,15 +259,17 @@ body{
 /*Aside section*/
 #aside{
     width:25%;
-    height:200vh;
+    /*height:200vh;*/
 }
 #aside-image-container {
     display: flex;
     flex-flow: column nowrap;
-    position: fixed;
-    top: 10%;
+    position: sticky;
+    top: 16%;
     left:0%;
-    width: 25%;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    /*width: 25%;*/
     align-items: center;
 }
 #aside-image-container img{
@@ -260,3 +278,45 @@ body{
 #aside-image-container #comisioner-image{
     width: 50%;
 }
+
+
+
+
+/*Footer Section*/
+
+
+footer {
+    clear: both;
+    background-color: #2857a4;
+    color: antiquewhite;
+    padding: 30px;
+    text-align: center;
+}
+
+.socicons {
+    display: inline;
+}
+
+.socicons img {
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+.initial {
+    display: none;
+}
+
+a:hover img[class="hidden"] {
+    /*display: none;*/
+    box-shadow: 0 0  white ;
+}
+#footer-section{
+    font-family: sans-serif;
+    color: white;
+    background-color: white;
+}
+/*
+a:hover img[class="initial"] {
+    display: inline;
+}*/
