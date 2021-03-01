@@ -31,7 +31,10 @@ nav {
     justify-content: center;
     align-items: center;
     min-height: 8vh;
-    background-color: darkblue;
+    /*
+    background-color: rgb(2, 119, 94);
+    */
+    background-color: #2857a4;
 }
 
 .icon {
@@ -179,6 +182,10 @@ nav {
     background: white;
 }
 
+body {
+    background-color: #9e9b9b29;
+}
+
 
 /*Mini navbar */
 
@@ -191,11 +198,6 @@ nav {
 
 
 /* Unvisited link*/
-
-.mininavbar>a:link {
-    color: red;
-    text-decoration: none;
-}
 
 
 /*Visited link*/
@@ -228,435 +230,45 @@ nav {
 /*All the 8 categories are there inside "allcategories" class.*/
 
 .allcategories {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     align-content: center;
-    margin: 1em 10em 4em 12em;
+    margin: 1em 10em 4em 15em;
 }
 
 
 /*Styling for each category added 8 different ones because one is not working for all categories.*/
 
-
-/* Module 1 code*/
-
-.module1 {
-    background-image: url(./images/Accident.jpg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module1>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module1>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module1>header>a {
+a {
     text-decoration: none;
-    color: white;
 }
 
-.module1>header>a>h2 {
-    margin: 0;
-    color: white;
+.content {
+    display: flex;
+    flex-direction: row;
     position: relative;
-    z-index: 1;
     text-align: center;
+    margin: 2em;
 }
 
+.label {
+    position: relative;
+    bottom: 1em;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
 
-/* Module 2 code*/
-
-.module2 {
-    background-image: url(./images/Against_women.jpg);
-    background-attachment: fixed;
-    width: 15em;
+.images {
     height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
+    width: 13em;
 }
 
-.module2>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module2>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module2>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module2>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 3 code*/
-
-.module3 {
-    background-image: url(./images/kidnap.jpg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module3>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module3>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module3>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module3>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 4 code*/
-
-.module4 {
-    background-image: url(./images/murder.jpg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module4>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module4>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module4>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module4>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 5 code*/
-
-.module5 {
-    background-image: url(./images/land_possession.jpeg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module5>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module5>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module5>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module5>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 6 code*/
-
-.module6 {
-    background-image: url(./images/robbery.jpg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module6>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module6>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module6>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module6>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 7 code*/
-
-.module7 {
-    background-image: url(./images/threatening.jfif);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module7>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module7>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module7>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module7>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-
-/* Module 8 code*/
-
-.module8 {
-    background-image: url(./images/others.jpeg);
-    background-attachment: fixed;
-    width: 15em;
-    height: 13em;
-    position: relative;
-    overflow: hidden;
-    margin: 20px;
-    background-size: 14em;
-    background-repeat: repeat;
-}
-
-.module8>header {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10px;
-    background: inherit;
-    background-attachment: fixed;
-}
-
-.module8>header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    background-attachment: fixed;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    transform: scale(2) translateY(20px);
-}
-
-.module8>header>a {
-    text-decoration: none;
-    color: white;
-}
-
-.module8>header>a>h2 {
-    margin: 0;
-    color: white;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-* {
-    box-sizing: border-box;
+.content:hover {
+    opacity: 0.5;
 }
 
 
