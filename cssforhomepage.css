@@ -203,7 +203,7 @@ nav {
 
 
 .intro{
-    height: 65vh;
+    height: max-content;
     display: flex;
     width: 90%;
     margin: 0 auto;
@@ -230,6 +230,8 @@ nav {
     margin: 0 auto;
     overflow-y:inherit;
     /* position:relative; */
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
 .message h3{
@@ -249,6 +251,24 @@ nav {
     margin: 40px auto;
     /* position: relative; */
 }
+
+@media screen and (max-width: 1212px){
+    .message{
+        font-size: 5px;
+    }
+
+    .message p{
+        font-size: 17px;
+        /* line-height: normal; */
+    }
+}
+@media screen and (max-width: 1079px){
+    .intro{
+        flex-direction: column;
+    }
+}
+
+
 
 /* 1296px width */
 
