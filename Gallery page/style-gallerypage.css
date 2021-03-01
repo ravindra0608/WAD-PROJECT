@@ -198,7 +198,7 @@ body{
 /*Image para container setion*/
 .image-para{
     position: relative;
-    width: 30%;
+    /*width: 30%;*/
 }
 
 .image-para .overlay{
