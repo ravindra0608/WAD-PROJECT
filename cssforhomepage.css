@@ -4,65 +4,62 @@
     box-sizing: border-box;
 }
 
-header{
-    display: inline;
+header {
+    background-image: url('images/policetraining.webp');
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: top;
+    opacity: 0.5;
+    width: 100%;
 }
 
 .logo {
-    width: 80px;
+    width: 200px;
     position: relative;
-    left: 12%;
+    left: 42%;
     top: 5px;
+    margin: 20px;
 }
 
-.title1 {
-    font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 300px;
-    top: 30px;
-}
 
-.title2 {
-    font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 290px;
-    top: 30px;
-    padding: 10px;
-}
+/* page */
 
 .page {
-    width: 100%;
-}
-nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 8vh;
-    background-color:darkblue;
+    position: relative;
 }
 
-.icon{
+
+/* navbar */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 8vh;
+    background-color: darkblue;
+}
+
+.icon {
     height: 50px;
     margin-top: 5px;
+    position: relative;
+    right: 6em;
 }
-.nav-links{
+
+.nav-links {
     display: flex;
     justify-content: space-around;
     width: 70%;
 }
 
-.nav-links li{
+.nav-links li {
     list-style: none;
 }
 
-.nav-links a{
+.nav-links a {
     text-decoration: none;
     font-size: 20px;
-    color:rgb(238, 241, 253);
+    color: rgb(238, 241, 253);
     font-weight: bold;
     letter-spacing: 2px;
     font-family: sans-serif;
@@ -72,11 +69,11 @@ nav{
     transition: all 2s ease-in-out;
 }
 
-.burger{
+.burger {
     display: none;
 }
 
-.burger div{
+.burger div {
     height: 3px;
     width: 25px;
     background-color: rgb(238, 241, 253);
@@ -84,68 +81,262 @@ nav{
     transition: 0.5s ease-in-out;
 }
 
-@media screen and (max-width: 1100px){
-    .nav-links{
+
+/* for responsiveness */
+
+@media screen and (max-width: 1100px) {
+    .nav-links {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 900px){
-    body{
+@media screen and (max-width: 900px) {
+    body {
         overflow-x: hidden;
     }
-    
-    .nav-links{
+    .nav-links {
         position: absolute;
         right: 0px;
         height: 92vh;
-        top: 12vh;
+        top: 8vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color:darkblue ;
+        background-color: darkblue;
         width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
         padding-bottom: 30%;
         padding-top: 5%;
+        z-index: 1;
     }
-
     /* .nav-links li{
         opacity: 0;
     } */
-
-    .burger{
+    .emblem {
+        display: block;
+    }
+    .burger {
         display: block;
         cursor: pointer;
     }
-    
+    #announcements{
+        flex-direction: column;
+    }
 }
 
-.nav-active{
+.nav-active {
     transform: translateX(0%);
 }
 
-@keyframes navLinkFade{
-    from{
+@keyframes navLinkFade {
+    from {
         opacity: 0;
         transform: translateX(50px);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateX(0px);
     }
 }
 
-
-.toggle .line1{
-    transform: rotate(-45deg) translate(-5px,6px);
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
 }
-.toggle .line2{
+
+.toggle .line2 {
     opacity: 0;
 }
-.toggle .line3{
-    transform: rotate(+45deg) translate(-5px,-6px);
 
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(238, 241, 253);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links li:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    /* .5 seonds for changes to the width and background-color */
+    -webkit-transition: width .5s ease, background-color .5s ease;
+    /* Chrome and Safari */
+    -moz-transition: width .5s ease, background-color .5s ease;
+    /* FireFox */
+}
+
+
+/* Change the width and background on hover, aka sliding out */
+
+.nav-links li:hover:after {
+    width: 100%;
+    background: white;
+}
+
+
+/* body */
+.opening{
+    background-image: url('images/background.jpg');
+    background-position-y: center;
+}
+
+
+.intro{
+    height: 80vh;
+    display: flex;
+    color: white;
+}
+
+.main-heading {
+    margin: 0 auto;
+    font-size: 50px;
+    text-align: center;
+    /* background-image: url('images/background.jpg'); */
+    /* background-position: center; */
+    color: white;
+    padding-top: 40px;
+    flex-wrap: unwrap;
+}
+
+.intro-img{
+    height: 400px;
+    width: 400px;
+    margin: 30px 0 0 250px;
+}
+
+.message{
+    padding: 30px;
+    margin: 20px 0 0 50px;
+    
+}
+
+.message h3{
+    font-size: 25px;
+}
+
+.message p{
+    font-size: 20px;
+    margin-top: 30px;
+    width: 80%;
+    line-height: 1.5;
+}
+
+/* 1296px width */
+
+/*Announcements section*/
+
+#announcements {
+    padding: 100px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(143, 143, 226);
+}
+
+#announce {
+    padding-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    background-color: rgb(143, 143, 226);
+}
+
+#announcements-box {
+    border: solid 1px;
+    height: 600px;
+    width: 500px;
+    padding: 30px;
+    overflow: scroll;
+    background-color: aliceblue;
+}
+
+#announcements-box h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#announcements-box ul {
+    text-align: center;
+    list-style: none;
+}
+
+#announcements-box ul li {
+    margin: 20px;
+}
+
+.twitter-timeline {}
+
+/* Message from the commisioner*/
+
+/* .message {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.message h1 {
+    margin: 40px;
+    font-size: 40px;
+}
+.police-pic {
+    float: left;
+    height: 250px;
+    width: 200px;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+}
+
+.rulestofollow p{
+    margin-top: 4rem;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 1.2px;
+} */
+
+/* footer */
+
+footer {
+    clear: both;
+    background-color: darkblue;
+    color: antiquewhite;
+    padding: 30px;
+    text-align: center;
+}
+
+.socicons {
+    display: inline;
+}
+
+.socicons img {
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+.initial {
+    display: none;
+}
+
+a:hover img[class="hidden"] {
+    display: none;
+}
+
+a:hover img[class="initial"] {
+    display: inline;
+}
