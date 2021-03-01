@@ -203,10 +203,11 @@ nav {
 
 
 .intro{
-    height: 65vh;
+    height: max-content;
     display: flex;
     width: 90%;
     margin: 0 auto;
+    align-items:center;
 }
 
 .main-heading {
@@ -221,11 +222,16 @@ nav {
     height: 400px;
     width: 400px;
     margin: 30px auto;
+    /* position: relative; */
 }
 
 .message{
     padding: 30px;
-    margin: 0 auto
+    margin: 0 auto;
+    overflow-y:inherit;
+    /* position:relative; */
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
 .message h3{
@@ -243,7 +249,26 @@ nav {
     height: 250px;
     width: 250px;
     margin: 40px auto;
+    /* position: relative; */
 }
+
+@media screen and (max-width: 1212px){
+    .message{
+        font-size: 5px;
+    }
+
+    .message p{
+        font-size: 17px;
+        /* line-height: normal; */
+    }
+}
+@media screen and (max-width: 1079px){
+    .intro{
+        flex-direction: column;
+    }
+}
+
+
 
 /* 1296px width */
 
@@ -293,31 +318,6 @@ nav {
 
 .twitter-timeline {}
 
-/* Message from the commisioner*/
-
-/* .message {
-    width: 70%;
-    margin: 0 auto;
-}
-
-.message h1 {
-    margin: 40px;
-    font-size: 40px;
-}
-.police-pic {
-    float: left;
-    height: 250px;
-    width: 200px;
-    margin-bottom: 3rem;
-    margin-right: 2rem;
-}
-
-.rulestofollow p{
-    margin-top: 4rem;
-    font-size: 20px;
-    line-height: 1.4;
-    letter-spacing: 1.2px;
-} */
 
 /* footer */
 
