@@ -65,6 +65,11 @@ nav{
     color:rgb(238, 241, 253);
     font-weight: bold;
     letter-spacing: 2px;
+    font-family: sans-serif;
+}
+.nav-links a:hover{
+    border-bottom: 2px solid white;
+    transition: all 2s ease-in-out;
 }
 
 .burger{
