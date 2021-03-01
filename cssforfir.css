@@ -2,18 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 header {
-    display: inline;
+    background-image: url('images/header.jpeg');
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: top;
+    width: 100%;
 }
 
 .logo {
-    width: 200px;
-    position: relative;
-    left: 42%;
-    top: 5px;
-    margin: 20px;
+    display: block;
+    width: 270px;
+    margin: auto;
 }
 
 
@@ -21,6 +24,12 @@ header {
 
 .page {
     position: relative;
+}
+
+.opening {
+    background-image: url('images/background.jpg');
+    background-position-y: center;
+    color: white;
 }
 
 
@@ -31,15 +40,13 @@ nav {
     justify-content: center;
     align-items: center;
     min-height: 8vh;
-    /*
-    background-color: rgb(2, 119, 94);
-    */
     background-color: #2857a4;
+    background-color: darkblue;
 }
 
 .icon {
-    height: 50px;
-    margin-top: 5px;
+    height: 55px;
+    margin-top: 2px;
     position: relative;
     right: 6em;
 }
@@ -195,7 +202,7 @@ body {
 
 .mininavbar {
     position: absolute;
-    left: 11em;
+    left: 09em;
     top: 10em;
     font-size: 1.2em;
 }
@@ -214,20 +221,12 @@ body {
 /*Mouse over link*/
 
 .mininavbar>a:hover {
-    color: #121212;
-}
-
-
-/*Visited link*/
-
-.mininavbar>a:link {
-    color: red;
+    color: #ff0000;
 }
 
 .heading {
     text-align: center;
     font-size: 50px;
-    margin-top: 30px;
 }
 
 
@@ -240,7 +239,7 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    margin: 1em 10em 4em 15em;
+    margin: 1em 10em 0em 12em;
 }
 
 
