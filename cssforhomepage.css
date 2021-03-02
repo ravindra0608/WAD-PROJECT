@@ -4,9 +4,6 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-/* html{
-    overflow-x: hidden;
-} */
 
 header {
     background-image: url('images/policeattention.jpg');
@@ -31,6 +28,7 @@ header {
 
 .page {
     position: relative;
+    overflow-x: hidden;
 }
 
 
