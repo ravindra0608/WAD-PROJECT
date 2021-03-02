@@ -97,18 +97,18 @@ nav {
     .nav-links {
         position: absolute;
         right: 0px;
-        height: 92vh;
-        top: 8vh;
+        height: 100vh;
+        top: 10.9vh;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-evenly;
         background-color: darkblue;
         width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
-        padding-bottom: 30%;
-        padding-top: 5%;
-        z-index: 2;
+        padding: 25px;
+        z-index: 1;
     }
     /* .nav-links li{
         opacity: 0;
@@ -117,8 +117,12 @@ nav {
         display: block;
     }
     .burger {
+        float: right;
         display: block;
         cursor: pointer;
+        position: relative;
+        right: 0;
+        bottom: 8vh;
     }
 }
 
@@ -226,7 +230,7 @@ body {
 
 .heading {
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 
@@ -283,7 +287,6 @@ footer {
     clear: both;
     background-color: darkblue;
     color: antiquewhite;
-    padding: 30px;
     text-align: center;
 }
 
@@ -292,9 +295,9 @@ footer {
 }
 
 .socicons img {
-    height: 40px;
-    width: 40px;
-    margin: 30px;
+    height: 30px;
+    width: 30px;
+    margin: 15px;
 }
 
 .initial {
