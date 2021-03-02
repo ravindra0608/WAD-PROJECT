@@ -6,11 +6,11 @@
 }
 
 header {
-    background-image: url('images/policetraining.webp');
+    background-image: url('images/policeattention.jpg');
     background-attachment: fixed;
     background-position-x: center;
-    background-position-y: top;
-    opacity: 0.5;
+    background-position-y: 600px;
+    background-size: cover;
     width: 100%;
 }
 
@@ -20,6 +20,7 @@ header {
     text-align: center;
     margin: auto;
     padding:20px;
+    opacity: 1;
 }
 
 
@@ -273,7 +274,7 @@ nav {
 #announcements-pre{
     background-color: rgb(181, 181, 209);
     padding-top: 40px;
-    background-image: url('images/policeattention.jpg');
+    background-image: url('images/blubg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
