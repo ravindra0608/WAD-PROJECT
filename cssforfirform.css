@@ -97,6 +97,16 @@ input[type=submit]:hover {
     clear: both;
 }
 
+.backbutton {
+    text-decoration: none;
+    border: 2px;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 5px;
+    border-color: black;
+    color: black;
+}
+
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 
