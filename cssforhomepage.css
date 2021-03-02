@@ -271,6 +271,13 @@ nav {
     .intro-img{
         width: 100%;
     }
+    #announcements-box{
+        width: 100%;
+    }
+    .howto{
+        width: 100%;
+    }
+
 }
 
 
@@ -413,9 +420,9 @@ footer {
 }
 
 .socicons img {
-    height: 40px;
-    width: 40px;
-    margin: 30px;
+    height: 35px;
+    width: 35px;
+    margin: 15px;
 }
 
 .initial {
