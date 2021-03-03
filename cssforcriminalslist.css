@@ -189,3 +189,115 @@ nav {
     background: white;
 }
 
+.side-nav{
+    position:absolute;
+    width: 0;
+    height: 80vh;
+    background-color: black;
+    z-index: 1;
+    background-color: #111;
+    /* opacity: 0.9; */
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+.side-nav a{
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #ccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-burger {
+    display: fixed;
+    position: absolute;
+    cursor: pointer;
+    margin: 30px 0 0 30px;
+    border: solid 1px antiquewhite;
+    border-radius: 5px;
+}
+
+.side-burger div {
+    height: 3px;
+    width: 25px;
+    background-color:antiquewhite;
+    margin: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+#btn-close{
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    font-size: 36px;
+}
+
+/* @media screen and (max-width:1000px){
+    .side-burger{
+        display: block;
+        position: absolute;
+    }
+    .side-nav{
+        position: relative;
+    }
+    #btn-close{
+        display: block;
+        position: absolute;
+        top: 2px;
+        right: 20px;
+        font-size: 36px;
+    }
+
+} */
+
+.intro{
+    background-image: url('images/handcuffs.jpg');
+    height: 80vh;
+    background-size: cover;
+}
+
+.intro h1{
+    color: antiquewhite;
+    width: max-content;
+    margin: 0 auto;
+    padding-top: 100px;
+    font-size: 72px;
+}
+
+.criminals{
+    width: 80%;
+    margin: 0 auto;
+    padding:30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-flow: wrap nowrap;
+}
+
+h1{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 46px;
+}
+
+.criminal{
+    display: flex;
+    border: solid 1px black;
+    height: fit-content;
+    margin: 30px;
+    justify-content: center;
+}
+
+.pic{
+    margin: 20px;
+    height: 250px;
+}
+
+.details{
+    padding: 40px;
+    justify-content: center;
+    line-height: 1.5;
+    font-size: 18px;
+}
