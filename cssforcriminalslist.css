@@ -261,22 +261,22 @@ nav {
 
 .intro h1{
     color: antiquewhite;
-    width: max-content;
+    width: min-content;
+    text-align: center;
     margin: 0 auto;
     padding-top: 100px;
     font-size: 72px;
 }
 
 .criminals{
-    width: 80%;
+    display: flex;
     margin: 0 auto;
     padding:30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-flow: wrap nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-h1{
+#wanted,#arrested,#ontrial{
     text-align: center;
     margin-top: 40px;
     font-size: 46px;
@@ -288,6 +288,8 @@ h1{
     height: fit-content;
     margin: 30px;
     justify-content: center;
+    align-items: center;
+    flex-basis: 40%;
 }
 
 .pic{
@@ -300,4 +302,21 @@ h1{
     justify-content: center;
     line-height: 1.5;
     font-size: 18px;
+}
+
+@media screen and (max-width:1080px){
+    .criminals{
+        flex-direction: column;
+        width: 90%;
+    }
+    .criminal{
+        width: 100%;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width:650px){
+    .criminal{
+        flex-direction: column;
+    }
 }
