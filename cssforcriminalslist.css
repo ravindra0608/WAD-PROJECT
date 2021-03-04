@@ -235,28 +235,17 @@ nav {
     font-size: 36px;
 }
 
-/* @media screen and (max-width:1000px){
-    .side-burger{
-        display: block;
-        position: absolute;
-    }
-    .side-nav{
-        position: relative;
-    }
-    #btn-close{
-        display: block;
-        position: absolute;
-        top: 2px;
-        right: 20px;
-        font-size: 36px;
-    }
-
-} */
-
 .intro{
     background-image: url('images/handcuffs.jpg');
     height: 80vh;
     background-size: cover;
+}
+
+@media screen and (max-width:880px){
+    .intro{
+        background-position-x: center;
+        width: 100%;
+    }
 }
 
 .intro h1{
