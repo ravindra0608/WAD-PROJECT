@@ -313,7 +313,7 @@ nav {
     padding: 30px;
     overflow-y: scroll;
     background-color: #195190FF;
-    /* background-image: url('images/background.jpg'); */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/announce.jpg');
     color: antiquewhite;
     scroll-behavior: auto;
     margin: 10px auto;
@@ -340,7 +340,7 @@ nav {
     height: 600px;
     width: 40%;
     background-color: #195190FF;
-    /* background-image: url('images/background.jpg'); */
+    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/howtouse.jpg');
     /* background-position: center; */
     background-size: cover;
     margin: 10px auto;
@@ -379,6 +379,10 @@ nav {
         flex-direction: column;
     }
 
+    #announcements{
+        padding: 10px 0;
+    }
+
     #announcements-box,.howto{
         width: 70%;
         height: max-content;
@@ -401,8 +405,9 @@ nav {
 }
 
 @media screen and (max-width:640px){
+    
     #announcements-box,.howto{
-        width: 98%;
+        width: 100%;
     }
     .howto{
         /* font-size: 20px; */
