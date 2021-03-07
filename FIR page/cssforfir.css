@@ -40,7 +40,7 @@ nav {
     justify-content: center;
     align-items: center;
     min-height: 8vh;
-    background-color: #195190FF;
+    background-color: rgb(0, 32, 63);
 }
 
 .icon {
@@ -102,7 +102,7 @@ nav {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        background-color: #195190FF;
+        background-color: rgb(0, 32, 63);
         width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
