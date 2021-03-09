@@ -28,6 +28,7 @@ header {
 
 body {
     background-color: rgba(242, 245, 245, 0.8);
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -38,7 +39,7 @@ nav {
     justify-content: center;
     align-items: center;
     min-height: 8vh;
-    background-color: rgb(0, 32, 63);
+    background-color: #195190FF;
 }
 
 .icon {
@@ -100,7 +101,7 @@ nav {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        background-color: rgb(0, 32, 63);
+        background-color: #195190FF;
         width: 60%;
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
@@ -193,7 +194,7 @@ nav {
 .heading {
     text-align: center;
     font-size: 40px;
-    margin: 1em;
+    margin-top: 1em;
 }
 
 .content {
@@ -201,13 +202,56 @@ nav {
     width: 89%;
 }
 
-.categories {
-    float: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    background-color: antiquewhite;
+.side-nav {
+    position: absolute;
+    width: 0;
+    height: 80vh;
+    background-color: #737373;
+    z-index: 1;
+    background-color: #737373;
+    /* opacity: 0.9; */
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+.side-nav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #ccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover {
+    color: rgb(167, 164, 164);
+}
+
+.side-burger {
+    display: fixed;
+    position: absolute;
+    cursor: pointer;
+    margin: 30px 0 0 30px;
+    border: solid 1px black;
+    border-radius: 5px;
+    top: 180px;
+    left: -20px;
+}
+
+.side-burger div {
+    height: 3px;
+    width: 25px;
+    background-color: black;
+    margin: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+#btn-close {
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    font-size: 36px;
 }
 
 .cat {
