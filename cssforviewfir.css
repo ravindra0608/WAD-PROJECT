@@ -6,7 +6,7 @@
 }
 
 header {
-    background-image: url('../common images/header.jpeg');
+    background-image: url('common images/header.jpeg');
     background-attachment: fixed;
     background-position-x: center;
     background-position-y: top;
