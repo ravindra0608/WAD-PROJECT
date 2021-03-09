@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+header {
+    background-image: url('common images/header.jpeg');
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: top;
+    width: 100%;
+}
+
+.logo {
+    display: block;
+    width: 270px;
+    margin: auto;
+}
+
+
+/* page */
+
+.page {
+    position: relative;
+}
+
+body {
+    background-color: rgba(242, 245, 245, 0.8);
+}
+
+
+/* navbar */
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(0, 32, 63);
+}
+
+.icon {
+    height: 55px;
+    margin-top: 2px;
+    position: relative;
+    right: 6em;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(238, 241, 253);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.burger {
+    display: none;
+}
+
+.burger div {
+    height: 3px;
+    width: 25px;
+    background-color: rgb(238, 241, 253);
+    margin: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+
+/* for responsiveness */
+
+@media screen and (max-width: 1100px) {
+    .nav-links {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        overflow-x: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 8vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: rgb(0, 32, 63);
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        padding: 25px;
+        z-index: 1;
+    }
+    /* .nav-links li{
+        opacity: 0;
+    } */
+    .emblem {
+        display: block;
+    }
+    .burger {
+        float: right;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        right: 8vw;
+        bottom: 8vh;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(238, 241, 253);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links li:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    /* .5 seonds for changes to the width and background-color */
+    -webkit-transition: width .5s ease, background-color .5s ease;
+    /* Chrome and Safari */
+    -moz-transition: width .5s ease, background-color .5s ease;
+    /* FireFox */
+}
+
+
+/* Change the width and background on hover, aka sliding out */
+
+.nav-links li:hover:after {
+    width: 100%;
+    background: white;
+}
+
+.heading {
+    text-align: center;
+    font-size: 40px;
+    margin: 1em;
+}
+
+.content {
+    float: right;
+    width: 89%;
+}
+
+.categories {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    background-color: antiquewhite;
+}
+
+.cat {
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px;
+    padding: 15px;
+}
+
+.cat:hover {
+    cursor: pointer;
+}
+
+button {
+    outline: none;
+}
+
+.button0 {
+    background-color: navy;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: navy;
+}
+
+.button0:hover {
+    color: black;
+    font-size: 20px;
+}
+
+.button1 {
+    background-color: navy;
+    border-radius: 5px;
+    border: hidden;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button1:hover {
+    background-color: red;
+    color: black;
+    font-size: 20px;
+}
+
+.button2 {
+    background-color: navy;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: yellowgreen;
+    color: black;
+    font-size: 20px;
+}
+
+.button3 {
+    background-color: navy;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button3:hover {
+    background-color: lime;
+    color: black;
+    font-size: 20px;
+}
+
+.eachform {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.default>.forms>a {
+    text-decoration: none;
+    color: black;
+}
+
+.default {
+    display: block;
+}
+
+.priority1>.forms>a {
+    text-decoration: none;
+    color: black;
+}
+
+.priority1 {
+    display: none;
+}
+
+.priority1>ul li {
+    color: red;
+}
+
+.priority1>ul li span {
+    color: black;
+}
+
+.priority2>.forms>a {
+    text-decoration: none;
+    color: black;
+}
+
+.priority2 {
+    display: none;
+}
+
+.priority2>ul li {
+    color: yellowgreen;
+}
+
+.priority2>ul li span {
+    color: black;
+}
+
+.priority3>.forms>a {
+    text-decoration: none;
+    color: black;
+}
+
+.priority3 {
+    display: none;
+}
+
+.priority3>ul li {
+    color: lime;
+}
+
+.priority3>ul li span {
+    color: black;
+}
+
+.indicators {
+    clear: both;
+    background-color: #00203FFF;
+    color: antiquewhite;
+}
+
+.indicators>p {
+    margin: 10px;
+    padding: 5px;
+}
+
+.box {
+    border: 1px solid black;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellowgreen {
+    background-color: yellowgreen;
+}
+
+.lime {
+    background-color: lime;
+}
