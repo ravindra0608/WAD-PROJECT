@@ -81,13 +81,13 @@ input[type=submit]:hover {
 }
 
 .date {
-    margin-top: 6px;
+    margin-top: 15px;
     float: left;
 }
 
 .col-85 {
     float: left;
-    width: 85%;
+    width: 100%;
     margin-top: 6px;
     margin-bottom: 8px;
 }

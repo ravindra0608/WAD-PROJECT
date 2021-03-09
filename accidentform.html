@@ -18,13 +18,12 @@
         <a class="backbutton" href="firpage.html"><b>Back</b></a>
         <br><br>
         <form action="#">
-            <span>From :</span>
+            <div class="col-sub">
+                <label for="fullname">From :</label>
+            </div><br><br><br>
             <div class="row">
                 <div class="fromdetails">
                     <input type="text" id="fullname" name="fullname" placeholder="Applicant's Name" required>
-                </div>
-                <div class="col-25">
-                    <label for="fullname">,</label>
                 </div>
             </div>
             <div class="row">
@@ -32,7 +31,7 @@
                     <input type="text" id="fatherorhusbandname" name="fatherorhusbandname" placeholder="Father's/Husband's Name" required>
                 </div>
                 <div class="col-25">
-                    <label for="fatherorhusbandname">,</label>
+                    <label for="fatherorhusbandname"></label>
                 </div>
             </div>
             <div class="row">
@@ -40,7 +39,7 @@
                     <input type="text" id="contactaddress" name="contactaddress" placeholder="Applicant’s contact address" required>
                 </div>
                 <div class="col-25">
-                    <label for="contactaddress">,</label>
+                    <label for="contactaddress"></label>
                 </div>
             </div>
             <div class="row">
@@ -48,7 +47,7 @@
                     <input type="text" id="contactnumber" name="contactnumber" placeholder="Applicant’s contact number/phone number" required>
                 </div>
                 <div class="col-25">
-                    <label for="contactnumber">,</label>
+                    <label for="contactnumber"></label>
                 </div>
             </div>
             <div class="row">
@@ -56,16 +55,15 @@
                     <input type="text" id="emailid" name="emailid" placeholder="Applicant’s e-mail id (if any)" required>
                 </div>
                 <div class="col-25">
-                    <label for="emailid">.</label>
+                    <label for="emailid"></label>
                 </div>
             </div><br>
-            <span>Date :</span>
             <div class="row">
+                <div class="col-sub">
+                    <label for="date">Date :</label>
+                </div>
                 <div class="date">
                     <input type="date" id="date" name="date" placeholder="Current Date" required>
-                </div>
-                <div class="col-25">
-                    <label for="date"></label>
                 </div>
             </div><br>
             <span>Time between :</span><br><br>
@@ -88,6 +86,9 @@
             </div>
             <p>To Officer in charge,</p>
             <div class="row">
+                <div class="col-sub">
+                    <label for="stationname">Police Station :</label>
+                </div>
                 <div class="stationdetails">
                     <select id="stationname" name="stationname">
                       <option value="">Select Police Station</option>
@@ -96,30 +97,27 @@
                       <option value="Satyavedu">Satyavedu Police Station</option>
                     </select>
                 </div>
-                <div class="col-25">
-                    <label for="stationname">Police Station,</label>
-                </div>
             </div>
             <div class="row">
+                <div class="col-sub">
+                    <label for="district">District :</label>
+                </div>
                 <div class="stationdetails">
                     <select id="district" name="district">
                       <option value="">Select District</option>
                       <option value="Chittoor">Chittoor</option>
                     </select>
                 </div>
-                <div class="col-25">
-                    <label for="district">District,</label>
-                </div>
             </div>
             <div class="row">
-                <div class="stationdetails">
+                <div class="col-sub">
+                    <label for="stationname">State :</label>
+                </div>
+                <div class="stationdetails ">
                     <select id="state" name="state">
                       <option value="">Select State</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                     </select>
-                </div>
-                <div class="col-25">
-                    <label for="stationname">State.</label>
                 </div>
             </div>
             <br><br>
