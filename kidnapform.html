@@ -110,7 +110,7 @@
                     <label for="subject">Subject</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="subject" name="subject" placeholder="Ex: Loss of the Mobile phone" required>
+                    <input type="text" id="subject" name="subject" placeholder="Ex: Complaint aganist a missing person" required>
                 </div>
             </div>
             <p><br><br>Respected sir/madam ,</p>
@@ -119,20 +119,36 @@
                     <label for="complaint"></label>
                 </div>
                 <div class="col-85">
-                    <textarea id="complaint" name="complaint" placeholder="I am __________, s/o <father’s name>, currently residing at <address>. On (Date), I lost my phone at the (Place) at <city>.
-The mobile is a (model) with (specifications). The IMEI number of the phone is <IMEI number> and the serial number of the device is <serial number>. The mobile number of the SIM used in the lost phone is <phone number>. Approximate value of the new device of this model is Rs(   ).
-You are requested to kindly register the complaint and give me an attested copy of this complaint so that I can submit this to the service provider to block the phone number and prevent potential abuse of my SIM.
-
+                    <textarea id="complaint" name="complaint" placeholder="I  <your name>, s/o  father's name , currently residing at <your address>.                    
+Since <date of missing>, <my relation>, <Full Name> and <description of victim(see instructions below)> from last seen <place or place of missing>.
+We have also checked at relative places as well as other possible places but were unable to trace him/her.
                     
-                    I shall be obliged if you kindly take action to trace and recover the lost device.
+I would request you to kindly register the complaint and take necessary action to found him/her As soon as possible.                                                    
+                                      
+                        
+                                    Thanking You,
                     
-       
-Yours faithfully
-(Name)
-(signature)
-(City)
-(contact number)
-            " style="height:300px" required></textarea>
+Yours faithfully,
+                    
+Name
+Fathers Name                    
+Contact Number" style="height:300px" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="motive">Motive of Kidnapping:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="motive" name="motive" placeholder="Ex: To demand money and property" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="photo">Photo of a missing person:</label>
+                </div>
+                <div class="col-85">
+                    <input type="file" id="photo" name="photo">
                 </div>
             </div>
             <div class="row">
@@ -142,6 +158,10 @@ Yours faithfully
                 <div class="col-85">
                     <input type="file" id="evidence" name="evidence">
                 </div>
+            </div>
+            <div class="instructions">
+                <strong>Instructions:</strong>
+                <p>* Describe pyshical appearance, name ,age and sex of the victim while filling the above form.</p>
             </div>
             <div class="row">
                 <input type="submit" value="Submit">
