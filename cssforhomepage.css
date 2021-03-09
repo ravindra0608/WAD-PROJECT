@@ -5,6 +5,10 @@
     scroll-behavior: smooth;
 }
 
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
 header {
     background-image: url('images/policeattention.jpg');
     background-attachment: fixed;
@@ -47,7 +51,6 @@ nav {
 .icon {
     height: 50px;
     margin-top: 5px;
-    position: relative;
     right: 6em;
 }
 
@@ -287,12 +290,14 @@ nav {
 
 /*Announcements section*/
 #announcements-pre{
-    background-color: #A2A2A1FF;
+    /* background-color: #A2A2A1FF; */
+    background-color: antiquewhite;
     padding: 40px;
     /* background-image: url('images/blubg.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 #announcements-pre h1{
@@ -312,7 +317,6 @@ nav {
     width: 40%;
     padding: 30px;
     overflow-y: scroll;
-    background-color: #195190FF;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/announce.jpg');
     color: antiquewhite;
     scroll-behavior: auto;
@@ -340,7 +344,7 @@ nav {
     height: 600px;
     width: 40%;
     background-color: #195190FF;
-    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/howtouse.jpg');
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/howtouse.jpg');
     /* background-position: center; */
     background-size: cover;
     margin: 10px auto;
@@ -359,7 +363,7 @@ nav {
 }
 
 .howto li{
-    font-size: 33px;
+    font-size: 30px;
     line-height: 1.5;
 }
 
@@ -371,9 +375,27 @@ nav {
 }
 
 .howto a:hover{
-    color: #A2A2A1FF;
+    color: rgb(219, 200, 174);
 }
 
+@media screen and (max-width: 1300px){
+    #announcements{
+        flex-direction: column;
+    }
+    #announcements{
+        padding: 10px 0;
+    }
+
+    #announcements-box{
+        width: 70%;
+        height: max-content;
+        overflow: auto;
+    }
+    .howto{
+        width: 70%;
+        height: 500px;
+    }
+}
 @media screen and (max-width: 1079px){
     #announcements{
         flex-direction: column;
@@ -401,6 +423,7 @@ nav {
     }
     .howto{
         width: 90%;
+        background-position: center;
     }
 }
 
