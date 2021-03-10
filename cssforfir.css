@@ -115,14 +115,6 @@ nav {
     .emblem {
         display: block;
     }
-    .burger {
-        float: right;
-        display: block;
-        cursor: pointer;
-        position: relative;
-        right: 8vw;
-        bottom: 8vh;
-    }
 }
 
 .nav-active {
@@ -190,6 +182,70 @@ nav {
 .nav-links li:hover:after {
     width: 100%;
     background: white;
+}
+
+.side-nav {
+    position: absolute;
+    width: 0;
+    height: 80vh;
+    background-color: #195190FF;
+    z-index: 1;
+    background-color: #195190FF;
+    /* opacity: 0.9; */
+    overflow-x: hidden;
+    padding-top: 60px;
+    top: 100px;
+    right: 0;
+}
+
+.side-nav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #ccc;
+    display: block;
+    transition: 0.3s;
+    margin: 20px;
+}
+
+.side-nav a:hover {
+    color: rgb(167, 164, 164);
+}
+
+.side-burger {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    margin: 30px 0 0 30px;
+    border: solid 1px antiquewhite;
+    border-radius: 5px;
+    top: 11%;
+    right: 60px;
+}
+
+.side-burger div {
+    height: 3px;
+    width: 25px;
+    background-color: antiquewhite;
+    margin: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+#btn-close {
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    font-size: 36px;
+    margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .side-burger {
+        display: block;
+        position: absolute;
+        top: 12.8%;
+    }
 }
 
 body {
