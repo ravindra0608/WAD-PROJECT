@@ -17,20 +17,24 @@ const closebtn = document.getElementsByClassName("closebtn");
 const newAnnouncement = document.getElementById("announcement-box").innerHTML;
 
 add.addEventListener("click", function () {
-  let newElement = document.createElement("li");
-  list.appendChild(newElement);
-  newElement.innerHTML =
-    '<div class="licontent">' +
-    newAnnouncement +
-    '</div><button class="closebtn">&times;</button>';
-  newElement.classList.add("element");
-  console.log(list.childElementCount);
+  if (list.childElementCount < 10) {
+    let newElement = document.createElement("li");
+    list.appendChild(newElement);
+    newElement.innerHTML =
+      '<div class="licontent">' +
+      newAnnouncement +
+      '</div><div class="closebtn">&times;</div>';
+    newElement.classList.add("element");
+    console.log(list.childElementCount);
+  } else {
+    alert("Max 10 elements can be added");
+  }
 });
 
 list.addEventListener("click", function (element) {
   if (
     element.target &&
-    element.target.nodeName == "BUTTON" &&
+    element.target.nodeName == "DIV" &&
     list.childElementCount > 2
   ) {
     element.target.parentNode.remove();
