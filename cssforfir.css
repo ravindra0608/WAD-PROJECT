@@ -112,6 +112,14 @@ nav {
     /* .nav-links li{
         opacity: 0;
     } */
+    .burger {
+        float: right;
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 10vw;
+        top: 17vh;
+    }
     .emblem {
         display: block;
     }
