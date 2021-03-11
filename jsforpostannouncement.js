@@ -14,29 +14,55 @@ navSlide();
 const list = document.getElementById("list");
 const add = document.getElementById("add");
 const closebtn = document.getElementsByClassName("closebtn");
-const newAnnouncement = document.getElementById("announcement-box").innerHTML;
+var announcements = [];
 
-add.addEventListener("click", function () {
-  if (list.childElementCount < 10) {
-    let newElement = document.createElement("li");
-    list.appendChild(newElement);
-    newElement.innerHTML =
-      '<div class="licontent">' +
-      newAnnouncement +
-      '</div><div class="closebtn">&times;</div>';
-    newElement.classList.add("element");
-    console.log(list.childElementCount);
-  } else {
-    alert("Max 10 elements can be added");
-  }
-});
+addAnnouncement();
+removeAnnouncement();
+editAnnouncement();
 
-list.addEventListener("click", function (element) {
-  if (
-    element.target &&
-    element.target.nodeName == "DIV" &&
-    list.childElementCount > 2
-  ) {
-    element.target.parentNode.remove();
-  }
-});
+function addAnnouncement() {
+  add.addEventListener("click", function () {
+    if (list.childElementCount < 10) {
+      let newElement = document.createElement("li");
+      list.appendChild(newElement);
+      let newAnnouncement = document.getElementById("announcement-box").value;
+      newElement.innerHTML =
+        '<div class="licontent">' +
+        newAnnouncement +
+        '</div><div class="editbtn">Edit</div><div class="closebtn">&times;</div>';
+      announcements.push(newAnnouncement);
+      document.getElementById("announcement-box").value = "";
+      newElement.classList.add("element");
+    } else {
+      alert("Max 10 elements can be added");
+    }
+  });
+}
+
+function removeAnnouncement(params) {
+  list.addEventListener("click", function (element) {
+    if (
+      element.target &&
+      element.target.className == "closebtn" &&
+      list.childElementCount > 2
+    ) {
+      element.target.parentNode.remove();
+    }
+  });
+}
+
+function editAnnouncement() {
+  list.addEventListener("click", function (element) {
+    if (element.target && element.target.className == "editbtn") {
+      let content = element.target.parentNode.getElementsByClassName(
+        "licontent"
+      );
+      console.log(content[0].innerHTML);
+      document.getElementById(
+        "announcement-box"
+      ).value = content[0].innerHTML.trim();
+      element.target.parentNode.remove();
+      window.scrollTo(0, 20);
+    }
+  });
+}
