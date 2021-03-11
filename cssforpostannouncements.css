@@ -236,7 +236,8 @@ nav {
 }
 
 .current-announcements h1{
-    padding: 30px;
+    /* padding: 30px; */
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -262,10 +263,46 @@ nav {
     }
 }
 
+@media screen and (max-width:800px){
+    .element{
+        width: 90%;
+    }
+}
+@media screen and (max-width:650px){
+    .element{
+        width: 98%;
+    }
+}
+@media screen and (max-width:566px){
+    .element{
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .editbtn{
+        margin-left: 0 !important;
+        margin-top: 20px;
+    }
+    .closebtn{
+        margin-top: 20px;
+        margin-left: 0 !important;
+    }
+    #announcement-box{
+        width: 100%;
+    }
+    .current-announcements h1{
+        margin-left: auto;
+        width: 100%;
+    }
+}
+
+
+
 .editbtn{
-    height: 20px;
     min-width: fit-content;
     margin-left: 20px;
+    /* justify-content:space-between; */
     height: 30px;
     width: 20px;
     border: solid 1px black;
@@ -315,6 +352,7 @@ nav {
 #list li{
     padding: 30px;
 }
+
 
 
 /* footer */
