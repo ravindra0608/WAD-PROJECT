@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Display</title>
+    <style>
+        .firform {
+            align-content: center;
+            margin-left: 5em;
+            margin-top: 2em;
+            max-width: 1080px;
+            overflow: inherit;
+        }
+        
+        pre {
+            font-family: sans-serif;
+            max-width: 100%;
+            width: 100%;
+            overflow: clip;
+            white-space: pre-wrap;
+            /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;
+            /* Mozilla, since 1999 */
+            white-space: -pre-wrap;
+            /* Opera 4-6 */
+            white-space: -o-pre-wrap;
+            /* Opera 7 */
+            word-wrap: break-word;
+            /* Internet Explorer 5.5+ */
+        }
+        
+        p {
+            max-width: 100%;
+        }
+        
+        body {
+            max-width: 1080px;
+            float: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="WAD-PROJECT/images/Logo.png" alt="AP state police" style="position: relative; left: 10em;">
+    </header>
+    <h2 style="position: relative; left: 2em; font-size: 30px;">ANDHRA PRADESH STATE POLICE F.I.R FORM</h2>
+    <div class="firform">
+        <p>From,</p>
+        <p><span id="applicant_name"></span></p>
+        <p><span id="guardian_name"></span></p>
+        <p><span id="applicant_address"></span></p>
+        <p><span id="applicant_number"></span></p>
+        <p><span id="applicant_mailid"></span></p>
+        <br>
+        <p><span id="date"></span></p><br>
+        <p>To Officer in charge,</p>
+        <p><span id="policestation"></span></p>
+        <p><span id="district"></span></p>
+        <p><span id="state"></span></p><br>
+        <p>Subject : <span id="subject"></span></p><br><br>
+        <p>Respected Sir/Madam,</p><br>
+        <p><pre><span id="main_body"></span></pre></p>
+        <p>Evidence if any : <span id="evidence"></span></p>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        var x = getParameterByName('fullname');
+        document.getElementById("applicant_name").innerHTML = x;
+
+        var x = getParameterByName('fatherorhusbandname');
+        document.getElementById("guardian_name").innerHTML = x;
+
+        var x = getParameterByName('contactaddress');
+        document.getElementById("applicant_address").innerHTML = x;
+
+        var x = getParameterByName('contactnumber');
+        document.getElementById("applicant_number").innerHTML = x;
+
+        var x = getParameterByName('emailid');
+        document.getElementById("applicant_mailid").innerHTML = x;
+
+        var x = getParameterByName('date');
+        document.getElementById("date").innerHTML = x;
+
+        var x = getParameterByName('stationname');
+        document.getElementById("policestation").innerHTML = x;
+
+        var x = getParameterByName('district');
+        document.getElementById("district").innerHTML = x;
+
+        var x = getParameterByName('state');
+        document.getElementById("state").innerHTML = x;
+
+        var x = getParameterByName('subject');
+        document.getElementById("subject").innerHTML = x;
+
+        var x = getParameterByName('complaint');
+        document.getElementById("main_body").innerHTML = x;
+
+        var x = getParameterByName('evidence');
+        document.getElementById("evidence").innerHTML = x;
+        window.onload = function() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

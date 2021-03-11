@@ -87,7 +87,8 @@ input[type=submit]:hover {
 
 .col-85 {
     float: left;
-    width: 100%;
+    width: 80%;
+    max-width: 80%;
     margin-top: 6px;
     margin-bottom: 8px;
 }
@@ -114,6 +115,12 @@ input[type=submit]:hover {
 
 .time {
     display: inline-block;
+}
+
+textarea {
+    width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 
