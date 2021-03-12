@@ -39,15 +39,38 @@ function addAnnouncement() {
   });
 }
 
-function removeAnnouncement(params) {
+function removeAnnouncement() {
   list.addEventListener("click", function (element) {
     if (
       element.target &&
       element.target.className == "closebtn" &&
       list.childElementCount > 2
     ) {
-      element.target.parentNode.remove();
+      openpopup();
+
+      document.getElementById("yes").addEventListener("click", function () {
+        element.target.parentNode.remove();
+        closepopup();
+      });
+
+      document.getElementById("cancel").addEventListener("click", function () {
+        closepopup();
+      });
+
+      document.getElementById("close").addEventListener("click", function () {
+        closepopup();
+      });
+    } else {
+      document.getElementById("popup-content").innerHTML =
+        "<p>There should be atleast three announcments to delete one</p>";
+      openpopup();
+      document.getElementById("close").addEventListener("click", function () {
+        closepopup();
+        document.getElementById("popup-content").innerHTML =
+          '<div class="confirmation-text">Are you sure you want to delete?</div><div class="popup-buttons"><button id="cancel">Cancel</button><button id="yes">Yes</button></div>';
+      });
     }
+    // document.getElementById("cancel").addEventListener("click", closepopup());
   });
 }
 
@@ -65,4 +88,13 @@ function editAnnouncement() {
       window.scrollTo(0, 20);
     }
   });
+}
+function openpopup() {
+  document.getElementById("overlay").classList.add("active");
+  document.getElementsByClassName("popup")[0].classList.add("active");
+}
+
+function closepopup() {
+  document.getElementById("overlay").classList.remove("active");
+  document.getElementsByClassName("popup")[0].classList.remove("active");
 }
