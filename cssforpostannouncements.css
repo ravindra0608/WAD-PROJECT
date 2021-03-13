@@ -375,11 +375,11 @@ nav {
 .popup-header{
     background-color: red;
     width: 100%;
-    margin: 0;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border-radius: 10px 10px 0 0;
 }
 
 #close{
