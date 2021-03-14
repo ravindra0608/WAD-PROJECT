@@ -198,8 +198,8 @@ nav {
 }
 
 .content {
-    float: right;
-    width: 89%;
+    margin-left: 7%;
+    width: 90%;
 }
 
 .side-nav {
@@ -510,12 +510,15 @@ a:hover img[class="initial"] {
 /* Modal Content */
 
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
+    background-color: rgb(242, 245, 245);
     padding: 20px;
     border: 1px solid #888;
-    width: 100%;
-    height: 800px;
+    width: 90%;
+    height: 700px;
+    overflow-y: hidden;
+    position: fixed;
+    top: 10%;
+    left: 5%;
 }
 
 
@@ -533,4 +536,55 @@ a:hover img[class="initial"] {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.divide {
+    display: flex;
+    flex-direction: row;
+    margin-left: 7.5%;
+}
+
+.divide>h2 {
+    padding-left: 8.75%;
+    padding-right: 8.75%;
+    border: 1px solid;
+}
+
+.divide>h2:hover {
+    cursor: pointer;
+}
+
+.divide>#cat0 {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none;
+}
+
+.divide>#cat1 {
+    border-right: none;
+}
+
+.divide>#cat2 {
+    border-right: none;
+}
+
+.divide>#cat3 {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.divide>#cat0:hover {
+    background-color: #195190FF;
+}
+
+.divide>#cat1:hover {
+    background-color: red;
+}
+
+.divide>#cat2:hover {
+    background-color: yellowgreen;
+}
+
+.divide>#cat3:hover {
+    background-color: lime;
 }

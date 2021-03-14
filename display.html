@@ -65,7 +65,7 @@
         <p>Subject : <span id="subject"></span></p><br><br>
         <p>Respected Sir/Madam,</p><br>
         <p><pre><span id="main_body"></span></pre></p>
-        <p>Evidence if any : <span id="evidence"></span></p>
+        <p>Evidence if any : <span id="evidence"><a>Evidence</a></span></p>
     </div>
 
     <script>
@@ -113,7 +113,8 @@
         document.getElementById("main_body").innerHTML = x;
 
         var x = getParameterByName('evidence');
-        document.getElementById("evidence").innerHTML = x;
+        var abc = x;
+        document.getElementById('evidence').innerHTML = '<a href="' + abc + '">link</a>';
         window.onload = function() {
             window.print();
         }
