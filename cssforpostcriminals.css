@@ -246,8 +246,16 @@ nav {
     padding-top: 30px;
 }
 
+#criminal-details:hover{
+    box-shadow: rgba(0,0,0,0.2);
+}
+
 label{
     margin-right: 20px;
+}
+
+input{
+    padding: 5px;
 }
 
 #criminal-picture{
