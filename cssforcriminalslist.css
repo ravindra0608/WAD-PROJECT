@@ -290,12 +290,12 @@ nav {
 .criminal{
     display: flex;
     border: solid 1px black;
-    height: fit-content;
     margin: 30px;
     justify-content: center;
     align-items: center;
     flex-basis: 40%;
     border-radius: 20px;
+    flex: 1;
 }
 
 .red:hover{
@@ -328,6 +328,7 @@ nav {
 .details{
     padding: 40px;
     justify-content: center;
+    align-items: center;
     line-height: 1.5;
     font-size: 18px;
 }
