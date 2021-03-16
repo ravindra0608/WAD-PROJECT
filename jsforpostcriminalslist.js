@@ -27,4 +27,41 @@ function readURL(input) {
 
 function showPicture() {
   document.getElementById("criminal-picture").style.display = "block";
+  document.querySelector(".container").style.display = "block";
 }
+
+var criminals = document.querySelector(".added-criminals");
+console.log(criminals);
+
+document.querySelector(".submit-button").addEventListener("click", function () {
+  let name = document.getElementById("name").value;
+  let crimename = document.getElementById("crime-name").value;
+  let lastseen = document.getElementById("last-seen").value;
+  let fullPath = document.getElementById("criminal-pic").value;
+  let filename = "";
+  if (fullPath) {
+    var startIndex =
+      fullPath.indexOf("\\") >= 0
+        ? fullPath.lastIndexOf("\\")
+        : fullPath.lastIndexOf("/");
+    filename = fullPath.substring(startIndex);
+    if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
+      filename = filename.substring(1);
+    }
+  }
+  console.log(filename);
+
+  var newCriminal = document.createElement("div");
+  newCriminal.innerHTML =
+    '<img src="images/' +
+    filename +
+    '" alt="" class="pic"><div class="details"><h3>Name:' +
+    name +
+    "</h3><p>Crime committed:" +
+    crimename +
+    "</p><p>Last seen: " +
+    lastseen +
+    "</div>";
+  newCriminal.classList.add("criminal");
+  criminals.appendChild(newCriminal);
+});

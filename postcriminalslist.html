@@ -57,44 +57,61 @@
         Add the criminal to the list.
     </h1>
 
-    <div class="criminal-details">
-        <div class="detail">
-            <label for="name">Name of the criminal:</label>
-            <input name="name" type="text">
-        </div>
-
-        <div class="detail">
-            <label for="crimename">Crime commited:</label>
-            <input name="crimename" type="text">
-        </div>
-
-        <div class="detail">
-            <label for="crimename">Last seen:</label>
-            <input name="crimename" type="text">
-        </div>
-        
-        <div class="picture detail">
-            <label for="criminal-pic">Image of the criminal: </label>
-            <input name="criminal-pic" type="file" onchange="readURL(this)" onclick="showPicture()">
-            <div class="container">
-                <img id="criminal-picture" src="#" alt="criminal-picture">
-                <div class="overlay">
-                    <div class="text">Image Preview</div> 
+    <!-- <form action="" method="GET"> -->
+    
+        <div class="criminal-details">
+            <div class="detail">
+                <label for="name">Name of the criminal:</label>
+                <input name="name" type="text" id="name" autofocus required>
+            </div>
+    
+            <div class="detail">
+                <label for="crimename">Crime commited:</label>
+                <input name="crimename" type="text" id="crime-name" required>
+            </div>
+    
+            <div class="detail">
+                <label for="lastseen">Last seen:</label>
+                <input name="lastseen" type="text" id="last-seen" required>
+            </div>
+            
+            <div class="picture detail">
+                <label for="criminal-pic">Image of the criminal: </label>
+                <input name="criminal-pic" type="file" id="criminal-pic" onchange="readURL(this)" onclick="showPicture()">
+                <div class="container">
+                    <img id="criminal-picture" src="#" alt="criminal-picture">
+                    <div class="overlay">
+                        <div class="text">Image Preview</div> 
+                    </div>
                 </div>
             </div>
+    
+            <div class="detail">
+                <label for="danger-level">Dangerous scale of the criminal</label><br>
+                <input class="radio-button" type="radio" name="danger-level" value="red" id="red">Extremely Dangerous <br>
+                <input class="radio-button" type="radio" name="danger-level" value="orange" id="orange">Very Dangerous <br>
+                <input class="radio-button" type="radio" name="danger-level" value="yellow" id="yellow">Dangerous <br>
+            </div>
+                
+    
+            <button class="submit-button">Add</button>
+    
         </div>
+    <!-- </form> -->
 
-        <div class="detail">
-            <label for="danger-level">Dangerous scale of the criminal</label><br>
-            <input class="radio-button" type="radio" name="danger-level" value="red">Extremely Dangerous <br>
-            <input class="radio-button" type="radio" name="danger-level" value="orange">Very Dangerous <br>
-            <input class="radio-button" type="radio" name="danger-level" value="yellow">Dangerous <br>
-            
+
+    <div class="added-criminals">
+        <div class="criminal red">
+            <img src="images/walter-white.jpg" alt="" class="pic">
+            <div class="details">
+                <h3>Name: Walter white </h3>
+                <p>Crime committed: Sells crystal meth</p>
+                <p>Last seen: At his residence in New Mexico, Albequerqui</p>
+            </div>
         </div>
-
-        <button type="submit" class="submit-button">Submit</button>
-
     </div>
+
+
     <script src="jsforpostcriminalslist.js"></script>
 </body>
 </html>
