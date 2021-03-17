@@ -31,13 +31,15 @@ function showPicture() {
 }
 
 var criminals = document.querySelector(".added-criminals");
-console.log(criminals);
 
 document.querySelector(".submit-button").addEventListener("click", function () {
   let name = document.getElementById("name").value;
   let crimename = document.getElementById("crime-name").value;
   let lastseen = document.getElementById("last-seen").value;
   let fullPath = document.getElementById("criminal-pic").value;
+  let dangerScale = document.querySelector(
+    'input[name="danger-level"]:checked'
+  );
   let filename = "";
   if (fullPath) {
     var startIndex =
@@ -49,7 +51,6 @@ document.querySelector(".submit-button").addEventListener("click", function () {
       filename = filename.substring(1);
     }
   }
-  console.log(filename);
 
   var newCriminal = document.createElement("div");
   newCriminal.innerHTML =
@@ -63,5 +64,11 @@ document.querySelector(".submit-button").addEventListener("click", function () {
     lastseen +
     "</div>";
   newCriminal.classList.add("criminal");
+  newCriminal.classList.add(dangerScale.id);
+
   criminals.appendChild(newCriminal);
+
+  console.log(dangerScale.id);
 });
+
+//For the level of danger:

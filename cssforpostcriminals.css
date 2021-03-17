@@ -292,7 +292,7 @@ input{
     background-color:grey;
 }
   
-  .container:hover .overlay {
+.container:hover .overlay {
     opacity: 0.8;
 }
   
@@ -312,8 +312,8 @@ input{
     margin: 10px;
 }
 
-.added-criminals{
 
+.added-criminals{
     display: flex;
     margin: 0 auto;
     padding:30px;
@@ -325,29 +325,53 @@ input{
 .criminal{
     display: flex;
     border: solid 1px black;
-    height: fit-content;
     margin: 30px;
-    justify-content: center;
     align-items: center;
-    flex-basis: 40%;
+    flex: 1 1 0;
     border-radius: 20px;
 }
 
 .pic{
     margin: 20px;
     height: 250px;
+    width: 200px;
     border-radius: 20px;
 }
 
 .details{
     padding: 40px;
     justify-content: center;
+    align-items: center;
     line-height: 1.5;
     font-size: 18px;
 }
 
+
+.red:hover{
+    /* background-color: rgb(255, 96, 96); */
+    box-shadow: 0px 0px 10px 20px rgba(255, 0, 0, 0.2);
+    opacity: 0.8;
+    transition: ease-in 0.5s;
+}
+
+
+.yellow:hover{
+    /* background-color: rgb(252, 252, 96); */
+    box-shadow: 0px 0px 10px 20px rgba(255, 238, 0, 0.356);
+    opacity: 0.8;
+    transition: ease-in 0.2s;
+}
+
+.orange:hover{
+    /* background-color: rgb(255, 204, 109); */
+    box-shadow: 0px 0px 10px 20px rgba(255, 153, 0, 0.2);
+    opacity: 0.8;
+    transition: ease-in 0.2s;
+}
+
+
 @media screen and (max-width:1080px){
-    .criminals{
+    .added-criminals{
         flex-direction: column;
         width: 90%;
     }
