@@ -221,10 +221,41 @@ nav {
     text-align: center;
 }
 
+.main-heading{
+    text-align: center;
+    padding-top: 30px;
+}
 /* Filling the criminals list form */
+
+label{
+    margin-right: 20px;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 5px;
+    resize: vertical;
+}
+
+.col-25{
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75{
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
 .criminal-details{
     width: 60%;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 40px; */
     margin: 50px auto;
     border: solid 1px black;
     position: relative;
@@ -237,6 +268,26 @@ nav {
 
 .detail{
     margin: 30px 20px;
+    display: inline-block;
+}
+
+
+.picture{
+    
+}
+
+#criminal-picture{
+    display: none;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+
+/* For the hover on the image */
+.container {
+    position: relative;
+    width: 150px;
+    display: none;
 }
 
 .picture{
@@ -244,41 +295,6 @@ nav {
     align-items: center;
 }
 
-/* For the hover on the image */
-
-.main-heading{
-    text-align: center;
-    padding-top: 30px;
-}
-
-label{
-    margin-right: 20px;
-}
-
-input{
-    padding: 5px;
-}
-
-#criminal-picture{
-    display: none;
-    height: 150px;
-    width: 150px;
-}
-
-.submit-button{
-    position: absolute;
-    right: 60px;
-    bottom: 30px;
-    height: 40px;
-    width: 60px;
-}
-
-.container {
-    position: relative;
-    width: 150px;
-    display: none;
-}
-  
 .overlay {
     position: absolute;
     top: 0;
@@ -308,9 +324,46 @@ input{
     text-align: center;
 }
 
+
 .radio-button{
     margin: 10px;
 }
+
+.radio-select{
+    display: block;
+}
+
+.submit-button{
+    position: absolute;
+    right: 60px;
+    bottom: 30px;
+    height: 40px;
+    width: 60px;
+}
+
+@media screen and (max-width:800px){
+
+    .criminal-details{
+        width: 90%;
+    }
+
+    .col-25,.col-75{
+        width: 100%;
+        margin-top: 0;
+    }
+    .picture{
+        flex-direction: column;
+    }
+    #criminal-pic{
+        text-align: center;
+    }
+    .container{
+        margin-top: 10px;
+    }
+}
+
+
+/* The list of the criminals added later */
 
 
 .added-criminals{

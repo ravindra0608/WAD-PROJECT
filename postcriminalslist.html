@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="cssforpostcriminals.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Home - AP Police</title>
+    <title>Add to Criminals Lists</title>
 </head>
 
 <body>
@@ -61,37 +61,65 @@
     
         <div class="criminal-details">
             <div class="detail">
-                <label for="name">Name of the criminal:</label>
-                <input name="name" type="text" id="name" autofocus required>
+                <div class="col-25">
+                    <label for="name">Name of the criminal:</label>
+                </div>
+                <div class="col-75">
+                    <input name="name" type="text" id="name" autofocus required>
+                </div>
             </div>
+
+
     
             <div class="detail">
-                <label for="crimename">Crime commited:</label>
-                <input name="crimename" type="text" id="crime-name" required>
+                <div class="col-25">
+                    <label for="crimename">Crime commited:</label>
+                </div>
+                <div class="col-75">
+                    <input name="crimename" type="text" id="crime-name" required>
+                </div>
             </div>
+
+
     
             <div class="detail">
-                <label for="lastseen">Last seen:</label>
-                <input name="lastseen" type="text" id="last-seen" required>
+                <div class="col-25">
+                    <label for="lastseen">Last seen:</label>
+                </div>
+                <div class="col-75">
+                    <input name="lastseen" type="text" id="last-seen" required>
+                </div>
             </div>
+
+
             
-            <div class="picture detail">
-                <label for="criminal-pic">Image of the criminal: </label>
-                <input name="criminal-pic" type="file" id="criminal-pic" onchange="readURL(this)" onclick="showPicture()">
-                <div class="container">
-                    <img id="criminal-picture" src="#" alt="criminal-picture">
-                    <div class="overlay">
-                        <div class="text">Image Preview</div> 
+            <div class="detail">
+                <div class="col-25">
+                    <label for="criminal-pic">Image of the criminal: </label>
+                </div>
+                
+                <div class="col-75 picture">
+                    <input name="criminal-pic" type="file" id="criminal-pic" onchange="readURL(this); showPicture();">
+                    <div class="container">
+                        <img id="criminal-picture" src="#" alt="criminal-picture">
+                        <div class="overlay">
+                            <div class="text">Image Preview</div> 
+                        </div>
                     </div>
                 </div>
             </div>
     
-            <div class="detail">
-                <label for="danger-level">Dangerous scale of the criminal</label><br>
-                <input class="radio-button" type="radio" name="danger-level" value="red" id="red">Extremely Dangerous <br>
-                <input class="radio-button" type="radio" name="danger-level" value="orange" id="orange">Very Dangerous <br>
-                <input class="radio-button" type="radio" name="danger-level" value="yellow" id="yellow">Dangerous <br>
+            <div class="detail radio-select">
+                <div class="col-25">
+                    <label for="danger-level">Dangerous scale of the criminal</label><br>
+                </div>
+                <div class="col-75">
+                    <input class="radio-button" type="radio" name="danger-level" value="red" id="red">Extremely Dangerous <br>
+                    <input class="radio-button" type="radio" name="danger-level" value="orange" id="orange">Very Dangerous <br>
+                    <input class="radio-button" type="radio" name="danger-level" value="yellow" id="yellow">Dangerous <br>
+                </div>
             </div>
+
                 
     
             <button class="submit-button">Add</button>
@@ -101,14 +129,7 @@
 
 
     <div class="added-criminals">
-        <!-- <div class="criminal">
-            <img src="images/walter-white.jpg" alt="" class="pic">
-            <div class="details">
-                <h3>Name: Walter white </h3>
-                <p>Crime committed: Sells crystal meth</p>
-                <p>Last seen: At his residence in New Mexico, Albequerqui</p>
-            </div>
-        </div> -->
+        <!-- The added criminals will apear here -->
     </div>
 
 

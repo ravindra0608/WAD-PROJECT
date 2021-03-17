@@ -68,7 +68,16 @@ document.querySelector(".submit-button").addEventListener("click", function () {
 
   criminals.appendChild(newCriminal);
 
-  console.log(dangerScale.id);
+  clearInputs();
 });
 
-//For the level of danger:
+function clearInputs() {
+  var inputBoxes = document.getElementsByTagName("input");
+  for (let i = 0; i < inputBoxes.length; i++) {
+    inputBoxes[i].value = "";
+  }
+  document.getElementById("criminal-picture").style.display = "none";
+  document.querySelector(".container").style.display = "none";
+
+  document.querySelector('input[name="danger-level"]:checked').checked = false;
+}
