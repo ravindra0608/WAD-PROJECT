@@ -31,13 +31,23 @@
                 <li><a href="#">More</a></li>
             </ul>
         </nav>
-        <h1 class="heading">VIEW F.I.R FORMS</h1>
-        <div class="divide">
-            <h2 id="cat0">Inbox</h2>
-            <h2 id="cat1">Priority1</h2>
-            <h2 id="cat2">Priority2</h2>
-            <h2 id="cat3">Priority3</h2>
+
+        <div class="side-burger" id="side-bur">
+            <div class="class1"></div>
+            <div class="class2"></div>
+            <div class="class3"></div>
         </div>
+
+        <div id="side-menu" class="side-nav">
+            <a href="#" id="btn-close">&times;</a>
+            <a href="#div1" id="cat0">Inbox</a>
+            <a href="#div2" id="cat1">Priority1</a>
+            <a href="#div3" id="cat2">Priority2</a>
+            <a href="#div4" id="cat3">Priority3</a>
+        </div>
+        <script src="jsforcriminalslist.js"></script>
+        <h1 class="heading">VIEW F.I.R FORMS</h1>
+        <br>
         <script src="viewfirscript.js"></script>
         <div class="content">
             <div class="default" id="div1">
@@ -90,7 +100,7 @@
                 </ul>
             </div>
             <div class="priority1" id="div2">
-                <strong>These are Priority1 Forms.</strong>
+                <h2 style="position: relative; left: 31%;">Priority 1 Forms(Need urgent action highly life threat)</h2>
                 <ul class="forms">
                     <a href="#">
                         <li class="eachform"><span><strong>User01</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -127,7 +137,7 @@
                 </ul>
             </div>
             <div class="priority2" id="div3">
-                <strong>These are Priority 2 Forms.</strong>
+                <h2 style="position: relative; left: 31%;">Priority 2 Forms(Includes Life threat.)</h2>
                 <ul class="forms">
                     <a href="#">
                         <li class="eachform"><span><strong>User01</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -172,7 +182,7 @@
                 </ul>
             </div>
             <div class="priority3" id="div4">
-                <strong>These are Prioirity 3 Forms.</strong>
+                <h2 style="position: relative; left: 31%;">Priority 3 Forms(No life threat cases)</h2>
                 <ul class="forms">
                     <a href="#">
                         <li class="eachform"><span><strong>User01</strong> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -240,13 +250,31 @@
         <div id="myModal" class="modal">
 
             <!-- Modal content -->
-            <div class="modal-content">
+            <div class="modal-content" id="fir">
                 <span class="close">&times;</span>
-                <object width="100%" height="700px" data="form1.pdf">
+                <br>
+                <div class="formandevidence">
+                    <strong> F.I.R Form</strong>
+                    <strong id="evidence"> Evidence</strong>
+                </div>
+                <object width="100%" height="100%" data="form1.pdf">
                 <p>Oops! Your browser doesn't support PDFs!</p>
                 <p><a href="form1.pdf">Download Instead</a></p>
-            </object>
+                </object>
             </div>
+            <div class="modal-content" id="evid">
+                <span class="close">&times;</span>
+                <br>
+                <div class="formandevidence">
+                    <strong id="firform"> F.I.R Form</strong>
+                    <strong> Evidence</strong>
+                </div>
+                <object width="100%" height="100%" data="./accident_evidence.mp4">
+                <p>Oops! Your browser doesn't support this!</p>
+                <p><a href="./accident_evidence.mp4">Download Instead</a></p>
+                </object>
+            </div>
+
 
         </div>
         <script>
@@ -275,12 +303,23 @@
                     modal.style.display = "none";
                 }
             }
+            var x = document.getElementById('firform');
+            x.onclick = function() {
+                fir.style.display = 'block';
+                evid.style.display = 'none';
+            }
+            var y = document.getElementById('evidence');
+            y.onclick = function() {
+                fir.style.display = 'none';
+                evid.style.display = 'block';
+            }
         </script>
         <footer>
+            <br>
             <div class="indicators">
-                <p><strong>&nbsp &nbsp Priority1: &nbsp; &nbsp; Includes Sexual Violence,Murder and Kidnap<p class=" box red"></p></strong></p>
-                <p><strong>&nbsp &nbsp Priority2: &nbsp; &nbsp; Includes Accident,Threatening and Robbery<p class=" box yellowgreen"></p></strong></p>
-                <p><strong>&nbsp &nbsp Priority3: &nbsp; &nbsp; Includes Land Possession and Others.<p class=" box lime"></p></strong></p>
+                <p><strong><span class="red">Priority1:</span> &nbsp; &nbsp; Includes Sexual Violence , Murder and Kidnap</strong></p>
+                <p><strong><span class="yellowgreen">Priority2:</span> &nbsp; &nbsp; Includes Accident , Threatening and Robbery</strong></p>
+                <p><strong><span class="lime">Priority3:</span> &nbsp; &nbsp; Includes Land Possession and Others.</strong></p><br>
             </div>
             <h3>Follow us on Social Media!</h3>
             <div class="socicons">

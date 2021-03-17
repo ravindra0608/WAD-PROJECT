@@ -218,24 +218,24 @@ nav {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 22px;
-    color: #ccc;
+    color: black;
     display: block;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .side-nav a:hover {
-    color: rgb(167, 164, 164);
+    color: white;
 }
 
 .side-burger {
-    display: fixed;
     position: absolute;
     cursor: pointer;
     margin: 30px 0 0 30px;
     border: solid 1px black;
     border-radius: 5px;
-    top: 180px;
-    left: -20px;
+    top: 40px;
+    left: -25px;
 }
 
 .side-burger div {
@@ -441,24 +441,22 @@ footer {
     margin: 10px;
 }
 
-.box {
-    border: 1px solid black;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 25px;
-}
-
 .red {
-    background-color: red;
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .yellowgreen {
-    background-color: yellowgreen;
+    color: yellowgreen;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .lime {
-    background-color: lime;
+    color: lime;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .socicons {
@@ -498,7 +496,7 @@ a:hover img[class="initial"] {
     /* Full width */
     height: 100%;
     /* Full height */
-    overflow: auto;
+    overflow: none;
     /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
     /* Fallback color */
@@ -514,11 +512,32 @@ a:hover img[class="initial"] {
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
-    height: 700px;
+    height: 670px;
     overflow-y: hidden;
     position: fixed;
-    top: 10%;
+    top: 8%;
     left: 5%;
+}
+
+.formandevidence {
+    margin: 10px;
+}
+
+.formandevidence>strong {
+    margin-right: 10px;
+}
+
+.formandevidence>strong:hover {
+    cursor: pointer;
+    text-shadow: black;
+}
+
+#fir {
+    display: block;
+}
+
+#evid {
+    display: none;
 }
 
 
@@ -586,5 +605,9 @@ a:hover img[class="initial"] {
 }
 
 .divide>#cat3:hover {
+    background-color: lime;
+}
+
+divide>#cat3:hover {
     background-color: lime;
 }
