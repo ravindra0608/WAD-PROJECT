@@ -1,108 +1,178 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.logo {
-    width: 80px;
-    position: relative;
-    left: 200px;
-    top: 10px;
-}
-
-.title1 {
-    font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 300px;
-    top: 30px;
-}
-
-.title2 {
-    font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
-    text-decoration: none;
-    position: absolute;
-    left: 290px;
-    top: 30px;
-    padding: 10px;
-}
-
-.page {
-    width: 100%;
-}
-
 .navbar {
-    position: relative;
-    top: 15px;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-weight: bold;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-shadow: 1px 2px 3px black;
-    background: darkblue;
+  position: relative;
+  top: 15px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bold;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-shadow: 1px 2px 3px black;
+  background: darkblue;
 }
 
 .navbar ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 10px 20px;
-    position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 10px 20px;
+  position: relative;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .navbar ul li a {
-    text-decoration: none;
-    font-size: large;
-    color: #fff;
-    text-transform: uppercase;
+  text-decoration: none;
+  font-size: large;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .navbar ul li:after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 0;
-    background: transparent;
-    transition: width .5s ease, background-color .5s ease;
-    /* .5 seonds for changes to the width and background-color */
-    -webkit-transition: width .5s ease, background-color .5s ease;
-    /* Chrome and Safari */
-    -moz-transition: width .5s ease, background-color .5s ease;
-    /* FireFox */
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: white;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  /* .5 seonds for changes to the width and background-color */
+  -webkit-transition: width 0.5s ease, background-color 0.5s ease;
+  /* Chrome and Safari */
+  -moz-transition: width 0.5s ease, background-color 0.5s ease;
+  /* FireFox */
 }
-
 
 /* Change the width and background on hover, aka sliding out */
 
 .navbar ul li:hover:after {
-    width: 100%;
-    background: black;
+  width: 100%;
+  background: black;
 }
 
 .logintitle {
-    margin-top: 40px;
-    position: relative;
-    top: 10px;
-    left: 42%;
-    font-weight: 100%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 40px;
+  position: relative;
+  top: 10px;
+  left: 42%;
+  font-weight: 100%;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .loginblock {
-    padding: 10px;
-    margin: 10px;
-    height: 450px;
-    background-color: #ffff;
-    border: 2px;
-    border-style: solid;
-    width: 400px;
-    box-shadow: 5px;
-    align-items: center;
-    position: relative;
-    left: 35%;
+  padding: 10px;
+  margin: 10px;
+  height: 450px;
+  background-color: #ffff;
+  border: 2px;
+  border-style: solid;
+  width: 400px;
+  box-shadow: 5px;
+  align-items: center;
+  position: relative;
+  left: 35%;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: steelblue;
+  color: #fff;
+  width: 100%;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
+  border-radius: 5px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  align-self: center;
+}
+
+.container a {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 10%;
+  background: lightblue;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.form-control {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 1000px;
+  align-self: center;
+}
+
+.form-control input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+
+.form-control label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form-control label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
 }
