@@ -356,18 +356,17 @@ button {
     border-radius: 10px;
 }
 
-.default>.forms>a {
-    text-decoration: none;
-    color: black;
+.eachform:hover {
+    cursor: pointer;
+    box-shadow: 5px 10px black;
+}
+
+.forms>p {
+    cursor: pointer;
 }
 
 .default {
     display: block;
-}
-
-.priority1>.forms>a {
-    text-decoration: none;
-    color: black;
 }
 
 .priority1 {
@@ -382,11 +381,6 @@ button {
     color: black;
 }
 
-.priority2>.forms>a {
-    text-decoration: none;
-    color: black;
-}
-
 .priority2 {
     display: none;
 }
@@ -396,11 +390,6 @@ button {
 }
 
 .priority2>ul li span {
-    color: black;
-}
-
-.priority3>.forms>a {
-    text-decoration: none;
     color: black;
 }
 
@@ -430,7 +419,6 @@ footer {
     clear: both;
     background-color: #00203FFF;
     color: antiquewhite;
-    text-align: left;
 }
 
 .indicators>p {
@@ -508,14 +496,14 @@ a:hover img[class="initial"] {
 /* Modal Content */
 
 .modal-content {
-    background-color: rgb(242, 245, 245);
+    background-color: rgba(242, 245, 245, 0.95);
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
-    height: 670px;
+    height: 700px;
     overflow-y: hidden;
     position: fixed;
-    top: 8%;
+    top: 7%;
     left: 5%;
 }
 
@@ -608,6 +596,6 @@ a:hover img[class="initial"] {
     background-color: lime;
 }
 
-divide>#cat3:hover {
+.divide>#cat3:hover {
     background-color: lime;
 }
