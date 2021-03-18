@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 header {
-    background-image: url('images/policetraining.webp');
+    background-image: url('../images/policeattention.jpg');
     background-attachment: fixed;
     background-position-x: center;
-    background-position-y: top;
-    opacity: 0.5;
+    background-position-y: 600px;
+    background-size: cover;
     width: 100%;
 }
 
@@ -89,7 +89,7 @@ nav {
         position: absolute;
         right: 0px;
         height: 92vh;
-        top: 8vh;
+        top: 27.58vh;
         display: flex;
         flex-direction: column;
         align-items: center;
