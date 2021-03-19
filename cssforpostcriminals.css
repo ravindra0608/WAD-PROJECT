@@ -399,6 +399,21 @@ input[type=text]{
     font-size: 18px;
 }
 
+.closebtn{
+    margin: 20px;
+    border: solid 1px black;
+    text-align: center;
+    padding: 5px;
+    float: right;
+}
+
+.closebtn:hover{
+    cursor: pointer;
+    background-color: rgb(248, 135, 135);
+    transition: ease-in 0.3s;
+}
+
+
 
 .red:hover{
     /* background-color: rgb(255, 96, 96); */
@@ -439,3 +454,85 @@ input[type=text]{
         flex-direction: column;
     }
 }
+
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: solid 1px black;
+    /* padding: 30px 20px 20px 20px; */
+    background-color:white;
+    border-radius: 10px;
+    z-index: 10;
+    max-width: 80%;
+    width: 350px;
+}
+
+.popup.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.popup-header{
+    background-color: red;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px 10px 0 0;
+}
+
+#close{
+    position: absolute;
+    right: 10px;
+    font-size: 36px;
+
+}
+#close:hover{
+    cursor: pointer;
+}
+
+.confirmation-text{
+    text-align: center;
+    margin: 10px auto;
+    font-weight: bolder;
+}
+
+.popup-buttons{
+    margin: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+#popup-content{
+    padding: 30px;
+    text-align: center;
+}
+
+#yes,#cancel{
+    height: 25px;
+    width: 100px;
+}
+
+#overlay-pop{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    z-index: 5;
+    overflow: none;
+}
+
+#overlay-pop.active{
+    opacity: 1;
+    pointer-events:all !important;
+}
+
