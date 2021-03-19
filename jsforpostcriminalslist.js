@@ -62,7 +62,8 @@ document.querySelector(".submit-button").addEventListener("click", function () {
     crimename +
     "</p><p>Last seen: " +
     lastseen +
-    "</div>";
+    '</div><div class="closebtn">Remove</div>';
+
   newCriminal.classList.add("criminal");
   newCriminal.classList.add(dangerScale.id);
 
@@ -80,4 +81,47 @@ function clearInputs() {
   document.querySelector(".container").style.display = "none";
 
   document.querySelector('input[name="danger-level"]:checked').checked = false;
+}
+
+const yes = document.getElementById("yes");
+const cancel = document.getElementById("cancel");
+const close = document.getElementById("close");
+const popupContent = document.getElementById("popup-content");
+
+document
+  .querySelector(".added-criminals")
+  .addEventListener("click", function (element) {
+    if (element.target && element.target.className == "closebtn") {
+      openpopup();
+
+      yes.addEventListener("click", function () {
+        element.target.parentNode.remove();
+        closepopup();
+      });
+
+      cancel.addEventListener("click", function () {
+        closepopup();
+      });
+
+      close.addEventListener("click", function () {
+        closepopup();
+      });
+
+      overlay.addEventListener("click", function () {
+        const popups = document.querySelectorAll(".popup.active");
+        popups.forEach((popup) => {
+          closepopup();
+        });
+      });
+    }
+  });
+
+function openpopup() {
+  document.getElementById("overlay-pop").classList.add("active");
+  document.getElementsByClassName("popup")[0].classList.add("active");
+}
+
+function closepopup() {
+  document.getElementById("overlay-pop").classList.remove("active");
+  document.getElementsByClassName("popup")[0].classList.remove("active");
 }

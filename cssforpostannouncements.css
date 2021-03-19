@@ -425,6 +425,7 @@ nav {
     background-color: rgba(0,0,0,0.5);
     transition: 200ms ease-in-out;
     pointer-events: none;
+    z-index: 5;
 }
 
 #overlay.active{
