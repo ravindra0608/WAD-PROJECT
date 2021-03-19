@@ -198,8 +198,8 @@ nav {
 }
 
 .content {
-    float: right;
-    width: 89%;
+    margin-left: 7%;
+    width: 90%;
 }
 
 .side-nav {
@@ -218,24 +218,24 @@ nav {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 22px;
-    color: #ccc;
+    color: black;
     display: block;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .side-nav a:hover {
-    color: rgb(167, 164, 164);
+    color: white;
 }
 
 .side-burger {
-    display: fixed;
     position: absolute;
     cursor: pointer;
     margin: 30px 0 0 30px;
     border: solid 1px black;
     border-radius: 5px;
-    top: 180px;
-    left: -20px;
+    top: 40px;
+    left: -25px;
 }
 
 .side-burger div {
@@ -356,18 +356,17 @@ button {
     border-radius: 10px;
 }
 
-.default>.forms>a {
-    text-decoration: none;
-    color: black;
+.eachform:hover {
+    cursor: pointer;
+    box-shadow: 5px 10px black;
+}
+
+.forms>p {
+    cursor: pointer;
 }
 
 .default {
     display: block;
-}
-
-.priority1>.forms>a {
-    text-decoration: none;
-    color: black;
 }
 
 .priority1 {
@@ -379,11 +378,6 @@ button {
 }
 
 .priority1>ul li span {
-    color: black;
-}
-
-.priority2>.forms>a {
-    text-decoration: none;
     color: black;
 }
 
@@ -399,11 +393,6 @@ button {
     color: black;
 }
 
-.priority3>.forms>a {
-    text-decoration: none;
-    color: black;
-}
-
 .priority3 {
     display: none;
 }
@@ -416,6 +405,16 @@ button {
     color: black;
 }
 
+
+/*CSS for footer*/
+
+footer {
+    clear: both;
+    background-color: #00203FFF;
+    color: antiquewhite;
+    text-align: center;
+}
+
 .indicators {
     clear: both;
     background-color: #00203FFF;
@@ -423,22 +422,180 @@ button {
 }
 
 .indicators>p {
-    margin: 10px;
     padding: 5px;
 }
 
-.box {
-    border: 1px solid black;
+.indicators>span {
+    margin: 10px;
 }
 
 .red {
-    background-color: red;
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .yellowgreen {
-    background-color: yellowgreen;
+    color: yellowgreen;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .lime {
+    color: lime;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.socicons {
+    display: inline;
+}
+
+.socicons img {
+    height: 30px;
+    width: 30px;
+    margin: 15px;
+}
+
+.initial {
+    display: none;
+}
+
+a:hover img[class="hidden"] {
+    display: none;
+}
+
+a:hover img[class="initial"] {
+    display: inline;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: none;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: rgba(242, 245, 245, 0.95);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    height: 700px;
+    overflow-y: hidden;
+    position: fixed;
+    top: 7%;
+    left: 5%;
+}
+
+.formandevidence {
+    margin: 10px;
+}
+
+.formandevidence>strong {
+    margin-right: 10px;
+}
+
+.formandevidence>strong:hover {
+    cursor: pointer;
+    text-shadow: black;
+}
+
+#fir {
+    display: block;
+}
+
+#evid {
+    display: none;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.divide {
+    display: flex;
+    flex-direction: row;
+    margin-left: 7.5%;
+}
+
+.divide>h2 {
+    padding-left: 8.75%;
+    padding-right: 8.75%;
+    border: 1px solid;
+}
+
+.divide>h2:hover {
+    cursor: pointer;
+}
+
+.divide>#cat0 {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none;
+}
+
+.divide>#cat1 {
+    border-right: none;
+}
+
+.divide>#cat2 {
+    border-right: none;
+}
+
+.divide>#cat3 {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.divide>#cat0:hover {
+    background-color: #195190FF;
+}
+
+.divide>#cat1:hover {
+    background-color: red;
+}
+
+.divide>#cat2:hover {
+    background-color: yellowgreen;
+}
+
+.divide>#cat3:hover {
+    background-color: lime;
+}
+
+.divide>#cat3:hover {
     background-color: lime;
 }

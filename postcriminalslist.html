@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1 ">
+    <link rel="stylesheet" href="cssforpostcriminals.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Add to Criminals Lists</title>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="images/Logo.png" alt="Ap Police">
+    </header>
+
+    <!-- <section class="page"> -->
+        <nav>
+            <div class="emblem">
+                <a href="homepage.html">
+                    <img src="images/emblem-removebg-preview.png" alt="National-emblem" class="icon">
+                </a>
+
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="viewfir.html">View F.I.R</a></li>
+                <li><a href="postannouncements.html">Announcements</a></li>
+                <li><a href="#">Criminals List</a></li>
+                <li><a href="#">Media</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    <!-- </section> -->
+
+    <h1 class="main-heading">
+        Add the criminal to the list.
+    </h1>
+
+    <!-- <form action="" method=""> -->
+    
+        <div class="criminal-details">
+            <div class="detail">
+                <div class="col-25">
+                    <label for="name">Name of the criminal:</label>
+                </div>
+                <div class="col-75">
+                    <input name="name" type="text" id="name" autofocus required>
+                </div>
+            </div>
+
+
+    
+            <div class="detail">
+                <div class="col-25">
+                    <label for="crimename">Crime commited:</label>
+                </div>
+                <div class="col-75">
+                    <input name="crimename" type="text" id="crime-name" required>
+                </div>
+            </div>
+
+
+    
+            <div class="detail">
+                <div class="col-25">
+                    <label for="lastseen">Last seen:</label>
+                </div>
+                <div class="col-75">
+                    <input name="lastseen" type="text" id="last-seen" required>
+                </div>
+            </div>
+
+
+            
+            <div class="detail">
+                <div class="col-25">
+                    <label for="criminal-pic">Image of the criminal: </label>
+                </div>
+                
+                <div class="col-75 picture">
+                    <input name="criminal-pic" type="file" id="criminal-pic" onchange="readURL(this); showPicture();">
+                    <div class="container">
+                        <img id="criminal-picture" src="#" alt="criminal-picture">
+                        <div class="overlay">
+                            <div class="text">Image Preview</div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="detail radio-select">
+                <div class="col-25">
+                    <label for="danger-level">Dangerous scale of the criminal</label><br>
+                </div>
+                <div class="col-75">
+                    <input class="radio-button" type="radio" name="danger-level" value="red" id="red">Extremely Dangerous <br>
+                    <input class="radio-button" type="radio" name="danger-level" value="orange" id="orange">Very Dangerous <br>
+                    <input class="radio-button" type="radio" name="danger-level" value="yellow" id="yellow">Dangerous <br>
+                </div>
+            </div>
+
+                
+    
+            <button class="submit-button">Add</button>
+    
+        </div>
+    <!-- </form> -->
+
+
+    <div class="added-criminals">
+        <!-- The added criminals will apear here -->
+    </div>
+
+
+    <script src="jsforpostcriminalslist.js"></script>
+</body>
+</html>
