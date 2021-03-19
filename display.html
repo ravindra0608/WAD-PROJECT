@@ -46,7 +46,7 @@
 
 <body>
     <header>
-        <img src="WAD-PROJECT/images/Logo.png" alt="AP state police" style="position: relative; left: 10em;">
+        <img src="./images/Logo.png" alt="AP state police" style="position: relative; left: 10em;">
     </header>
     <h2 style="position: relative; left: 2em; font-size: 30px;">ANDHRA PRADESH STATE POLICE F.I.R FORM</h2>
     <div class="firform">
@@ -57,7 +57,8 @@
         <p><span id="applicant_number"></span></p>
         <p><span id="applicant_mailid"></span></p>
         <br>
-        <p><span id="date"></span></p><br>
+        <p>Time: between <span id="initialtime">xx</span> and <span id="endtime">xx</span></p>
+        <p>Date:<span id="date"></span></p><br>
         <p>To Officer in charge,</p>
         <p><span id="policestation"></span></p>
         <p><span id="district"></span></p>
@@ -65,7 +66,7 @@
         <p>Subject : <span id="subject"></span></p><br><br>
         <p>Respected Sir/Madam,</p><br>
         <p><pre><span id="main_body"></span></pre></p>
-        <p>Evidence if any : <span id="evidence"><a>Evidence</a></span></p>
+        <p>Evidence if any : <span id="evidence">Evidence</span></p>
     </div>
 
     <script>
@@ -96,6 +97,12 @@
 
         var x = getParameterByName('date');
         document.getElementById("date").innerHTML = x;
+
+        var x = getParameterByName('initialtime');
+        document.getElementById("initialtime").innerHTML = x;
+
+        var x = getParameterByName('endtime');
+        document.getElementById("endtime").innerHTML = x;
 
         var x = getParameterByName('stationname');
         document.getElementById("policestation").innerHTML = x;
