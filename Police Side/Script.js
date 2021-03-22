@@ -11,3 +11,22 @@ const navSlide = function () {
   
   navSlide();
 //   Home Page JS
+
+
+var swipeDown = document.querySelector('#swipe-down-button button');
+var downCont = document.getElementById('cont-3');
+
+
+swipeDown.addEventListener('click',function (event) {
+    event.preventDefault();
+    // console.log('clicked!');
+    var interval1 = setInterval(() => {
+        let dist = downCont.getBoundingClientRect().y;
+        // console.log(dist);
+        if (dist > 138 ) {
+            window.scrollBy(0,10);
+        } else {
+            clearInterval(interval1);
+        }
+    }, 5);
+});
