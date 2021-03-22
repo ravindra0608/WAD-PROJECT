@@ -235,8 +235,9 @@ nav {
     padding: 1rem;
     color: whitesmoke;
     font-family: sans-serif;
-    font-size:xx-large ;
+    /*font-size: 2rem ;*/
     font-weight: bold;
+    width:30% ;
 }
 
 #cont-3{
@@ -253,7 +254,7 @@ nav {
     /* margin: 1rem; */
     display: flex;
     flex-flow: column nowrap;
-    /* justify-content: center; */
+    justify-content: center;
     text-align: center;
     align-content: center;
     height: 50vh;
@@ -268,11 +269,12 @@ nav {
     position: relative;
 }
 #login div{
-    position: absolute;
+    /* position: absolute;
     top: 25%;
-    left: 40%;
+    left: 40%; */
     /* margin: 2rem; */
     /* margin-left: 14.5rem; */
+    align-self: center;
     width: 10rem;
     height: 10rem;
     background-color: orange;
@@ -280,7 +282,7 @@ nav {
     font-weight: bolder;
     color: white;
     font-size: 4.5rem;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     transition: all 1s ease-in-out;
 }
 

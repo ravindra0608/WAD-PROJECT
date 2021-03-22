@@ -10,4 +10,4 @@ const navSlide = function () {
   };
   
   navSlide();
-  
+//   Home Page JS
