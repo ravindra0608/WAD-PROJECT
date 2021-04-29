@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1.0">
+    <link rel="stylesheet" href="css/cssforpostannouncements.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Post Announcements</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="images/Logo.png" alt="Ap Police">
+    </header>
+
+    <div class="popup">
+        <div class="popup-header">
+            <h1>Warning</h1>
+            <div id="close">&times;</div>
+        </div>
+        <div id="popup-content">
+            <div class="confirmation-text">Are you sure you want to delete?</div>
+            <div class="popup-buttons">
+                <button id="cancel">Cancel</button>
+                <button id="yes">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
+
+    <!-- <section class="page"> -->
+
+        <nav>
+            <div class="emblem">
+                <a href="homepage.html">
+                    <img src="images/emblem-removebg-preview.png" alt="National-emblem" class="icon">
+                </a>
+    
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="viewfir.html">View F.I.R</a></li>
+                <li><a href="postannouncements.html">Announcements</a></li>
+                <li><a href="postcriminalslist.html">Criminals List</a></li>
+                <li><a href="#">Media</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+
+        <div class="post-announcement">
+            
+            <h1>
+                Post the new announcement here:
+            </h1>
+
+            <form action="/postannouncements" method="post">
+                <textarea name="newannouncement" id="announcement-box" cols="60" rows="10" placeholder="Type out the text here"></textarea>
+                <button id="add" type="submit">
+                    Add
+                </button>
+            </form>
+                
+
+            
+
+        </div>
+
+        <div class="current-announcements">
+
+            <h1>
+                The Current Announcements:
+            </h1>
+
+            <div>
+                <ul id="list">
+                    <% announcements.forEach(announcement=>{%>
+                        <form action="/delete" method="post" name="deleteForm">
+                            <li class="element">
+                                <div class="licontent">
+                                    <%= announcement.content %> 
+                                </div>
+                                <div class="editbtn">Edit</div>
+                                <input type="hidden" name="announcementtodelete" value="<%= announcement._id %>">
+                                <button class="closebtn" type="submit">&times;</button>
+                            </li>
+                        </form>
+                    <%}) %> 
+                </ul>
+            </div>
+        </div>
+
+        
+
+
+        
+    <!-- </section> -->
+
+    <footer id="social">
+        <h3>Follow us on Social Media!</h3>
+        <div class="socicons">
+            <a href="https://www.facebook.com/ANDHRAPRADESHSTATEPOLICE/" target="_blank">
+                <img src="images/facebook black.svg" alt="" class="initial">
+                <img src="images/facebook.svg" alt="" class="hidden">
+            </a>
+            <a href="https://twitter.com/APPOLICE100/" target="_blank">
+                <img src="images/twitter-sign.svg" alt="" class="initial">
+                <img src="images/twitter.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.instagram.com/appolice.100/?igshid=ocwaariy0bvd&hl=en" target="_blank">
+                <img src="images/instagram black.svg" alt="" class="initial">
+                <img src="images/instagram.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.youtube.com/channel/UC7Iu-yyZ0Yyi3-JJ4RfzOYw/featured" target="_blank">
+                <img src="images/youtube black.svg" alt="" class="initial">
+                <img src="images/youtube.svg" alt="" class="hidden">
+            </a>
+
+        </div>
+    </footer>
+    <!-- <script src="javascript/jsforpostannouncement.js"></script> -->
+</body>
+</html>
