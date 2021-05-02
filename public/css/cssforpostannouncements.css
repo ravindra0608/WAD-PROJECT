@@ -10,7 +10,7 @@ body{
 }
 
 header {
-    background-image: url('images/policeattention.jpg');
+    background-image: url('../images/policeattention.jpg');
     background-attachment: fixed;
     background-position-x: center;
     background-position-y: 600px;
