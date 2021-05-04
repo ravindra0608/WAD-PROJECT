@@ -119,9 +119,9 @@
                     <label for="dangerlevel">Dangerous scale of the criminal</label><br>
                 </div>
                 <div class="col-75">
-                    <input class="radio-button" type="radio" name="dangerlevel" value="Red" id="red">Extremely Dangerous <br>
-                    <input class="radio-button" type="radio" name="dangerlevel" value="Orange" id="orange">Very Dangerous <br>
-                    <input class="radio-button" type="radio" name="dangerlevel" value="Yellow" id="yellow">Dangerous <br>
+                    <input class="radio-button" type="radio" name="dangerlevel" value="red" id="red">Extremely Dangerous <br>
+                    <input class="radio-button" type="radio" name="dangerlevel" value="orange" id="orange">Very Dangerous <br>
+                    <input class="radio-button" type="radio" name="dangerlevel" value="yellow" id="yellow">Dangerous <br>
                 </div>
             </div>
             <div class="detail radio-select">
@@ -195,7 +195,6 @@
                             <td class="table-text"><%=criminal.dangerlevel%></td>
                             <td class="table-text"><%=criminal.status%></td>
                             <td class="table-text">
-                                <input type="hidden" name="filename" value="<%criminal.pic%>">
                                 <input type="hidden" name="criminalid" value="<%=criminal._id%>">
                                 <button class="closebtn" type="submit">Remove</button>
                             </td>

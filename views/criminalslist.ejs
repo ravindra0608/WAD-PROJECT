@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, min-scale=1.0">
-    <link rel="stylesheet" href="cssforcriminalslist.css">
+    <link rel="stylesheet" href="css/cssforcriminalslist.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <title>Criminals List</title>
@@ -65,11 +65,42 @@
     <div class="intro">
         <h1>Criminals List</h1>
     </div>
+    <% let wanted=[]; %> 
+    <% let arrested=[]; %> 
+    <% let ontrail=[]; %> 
 
+    <% criminalsList.forEach((criminal)=>{%>
+        <%if(criminal.status==="Wanted"){%>
+            <% wanted.push(criminal) %> 
+        <%}%>
+        <%if(criminal.status==="Arrested"){%>
+            <% arrested.push(criminal) %> 
+        <%}%>
+        <%if(criminal.status==="Ontrail"){%>
+            <% ontrail.push(criminal) %> 
+        <%}%>
+        <%= console.log(wanted) %> 
+    <% }); %>
 
     <div id="wanted"><img src="images/wanted.png" alt=""></div>
     <div class="criminals">
-        <div class="criminal red">
+        <% wanted.forEach((criminal)=>{%>
+             <div class="criminal <%=criminal.dangerlevel%> c1">
+                 <img src="data:image/<%=criminal.img.contentType%>;base64,
+                 <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
+                 <div class="details">
+                     <h3>Name: <%=criminal.name%></h3>
+                     <p>Crime committed: <%=criminal.crimename%> </p>
+                     <p>Last seen: <%=criminal.lastseen%></p>
+                 </div>
+             </div>
+        <% }); %> 
+
+
+
+
+
+        <!-- <div class="criminal red">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
                 <h3>Name:Walter White</h3>
@@ -93,7 +124,7 @@
                 <h3>Name:Walter White</h3>
                 <p>Crime committed: Sells crystal meth</p>
                 <p>Last seen: At his residence in Albuquerque, New Mexico</p>
-            </div>
+            </div> 
 
         </div>
         <div class="criminal orange">
@@ -104,7 +135,7 @@
                 <p>Last seen: At his residence in Albuquerque, New Mexico</p>
             </div>
 
-        </div>
+        </div>-->
 
     </div>
 
@@ -113,7 +144,21 @@
         <h1>Arrested</h1>
     </div>
     <div class="criminals">
-        <div class="criminal c1">
+
+        <% arrested.forEach((criminal)=>{%>
+            <div class="criminal <%=criminal.dangerlevel%> c1">
+                <img src="data:image/<%=criminal.img.contentType%>;base64,
+                <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
+                <div class="details">
+                    <h3>Name: <%=criminal.name%></h3>
+                    <p>Crime committed: <%=criminal.crimename%> </p>
+                    <p>Last seen: <%=criminal.lastseen%></p>
+                </div>
+            </div>
+       <% }); %> 
+
+
+        <!-- <div class="criminal c1">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
                 <h3>Name:Walter White</h3>
@@ -148,7 +193,7 @@
                 <p>Last seen: At his residence in Albuquerque, New Mexico</p>
             </div>
 
-        </div>
+        </div>-->
 
     </div>
 
@@ -157,6 +202,21 @@
         <h1>On Trail</h1>
     </div>
     <div class="criminals">
+
+
+
+        <% ontrail.forEach((criminal)=>{%>
+            <div class="criminal <%=criminal.dangerlevel%> c1">
+                <img src="data:image/<%=criminal.img.contentType%>;base64,
+                <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
+                <div class="details">
+                    <h3>Name: <%=criminal.name%></h3>
+                    <p>Crime committed: <%=criminal.crimename%> </p>
+                    <p>Last seen: <%=criminal.lastseen%></p>
+                </div>
+            </div>
+       <% }); %> 
+<!--        
         <div class="criminal c1">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
@@ -192,7 +252,7 @@
                 <p>Last seen: At his residence in Albuquerque, New Mexico</p>
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 
@@ -219,7 +279,7 @@
         </div>
     </footer>
 
-    <script src="jsforcriminalslist.js"></script>
+    <script src="javascript/jsforcriminalslist.js"></script>
 </body>
 
 </html>
