@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
-// const popup = require("node-popup");
-// require("dotenv/config");
 
 const app = express();
 app.use(express.json());
@@ -37,6 +35,17 @@ const criminalSchema = {
   },
 };
 
+const firSchema = {
+  fullname: String,
+  fatherorhusbandname: String,
+  address: String,
+  contactnumber: String,
+  email: String,
+  date: String,
+  stationame: String,
+  district: String,
+};
+
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads");
@@ -51,6 +60,8 @@ var upload = multer({ storage: storage });
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
 const Criminal = mongoose.model("Criminal", criminalSchema);
+
+const Fir = mongoose.model("Fir", firSchema);
 
 const announcement1 = new Announcement({
   content: "Robbery near the bridge",
@@ -116,9 +127,6 @@ app.post("/delete", function (req, res) {
 //Criminals list
 
 app.get("/criminalslist", function (req, res) {
-  let wanted = [];
-  let arrested = [];
-  let ontrail = [];
   Criminal.find({}, function (err, criminalsList) {
     res.render("criminalslist", { criminalsList: criminalsList });
   });
@@ -166,8 +174,45 @@ app.post("/deletecriminal", function (req, res) {
     }
   });
   res.redirect("/postcriminalslist");
+});
 
-  // console.log(req.file);
+app.get("/firpage", function (req, res) {
+  res.render("firpage");
+});
+
+app.get("/robberyform", function (req, res) {
+  res.render("robberyform");
+});
+
+app.get("/viewfir", function (req, res) {
+  res.render("viewfir");
+});
+
+app.post("/viewfir", function (req, res) {
+  const fullname = req.body.fullname;
+  const fatherorhusbandname = req.body.fatherorhusbandname;
+  const address = req.body.contactaddress;
+  const contactnumber = req.body.contactnumber;
+  const email = req.body.email;
+  const date = req.body.date;
+  const stationname = req.body.stationname;
+  const district = req.body.district;
+
+  const newFir = new Fir({
+    fullname: fullname,
+    fatherorhusbandname: fatherorhusbandname,
+    address: address,
+    contactnumber: contactnumber,
+    email: email,
+    date: date,
+    stationame: stationname,
+    district: district,
+  });
+
+  newFir.save();
+
+  console.log(newFir);
+  res.redirect("/firpage");
 });
 
 app.listen(3000, function () {
