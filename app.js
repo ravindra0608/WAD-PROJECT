@@ -80,6 +80,18 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/index.html", function (req, res) {
+  Announcement.find({}, function (err, existingAnnouncements) {
+    // Announcement.insertMany(announcements, function (err, results) {
+    //   if (!err) {
+    //     console.log(results);
+    //   } else {
+    //     console.log(err);
+    //   }
+    // });
+    res.render("index", { announcements: existingAnnouncements });
+  });
+});
 app.get("/postannouncements", function (req, res) {
   Announcement.find({}, function (err, existingAnnouncements) {
     // Announcement.insertMany(announcements, function (err, results) {
@@ -117,7 +129,6 @@ app.post("/delete", function (req, res) {
 });
 
 //Criminals list
-
 app.get("/criminalslist", function (req, res) {
   Criminal.find({}, function (err, criminalsList) {
     res.render("criminalslist", { criminalsList: criminalsList });
@@ -156,6 +167,7 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
 
 app.post("/deletecriminal", function (req, res) {
   const criminalId = req.body.criminalid;
+  console.log("Filename;" + req.body.filename);
 
   Criminal.findByIdAndRemove(criminalId, function (err) {
     if (!err) {
@@ -167,15 +179,15 @@ app.post("/deletecriminal", function (req, res) {
   res.redirect("/postcriminalslist");
 });
 
-app.get("/firpage", function (req, res) {
+app.get("/firpage.html", function (req, res) {
   res.render("firpage");
 });
 
-app.get("/robberyform", function (req, res) {
+app.get("/firform.html", function (req, res) {
   res.render("robberyform");
 });
 
-app.get("/viewfir", function (req, res) {
+app.get("/viewfir.html", function (req, res) {
   Fir.find({}, function (err, foundItems) {
     if (!err) {
       res.render("viewfir", { firs: foundItems });
@@ -185,7 +197,7 @@ app.get("/viewfir", function (req, res) {
   });
 });
 
-app.post("/viewfir", function (req, res) {
+app.post("/viewfir.html", function (req, res) {
   const newFir = new Fir({
     fullname: req.body.fullname,
     fatherorhusbandname: req.body.fatherorhusbandname,
@@ -200,7 +212,7 @@ app.post("/viewfir", function (req, res) {
   });
 
   newFir.save();
-  res.redirect("/firpage");
+  res.redirect("/firpage.html");
 });
 
 app.listen(3000, function () {
