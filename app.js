@@ -65,6 +65,14 @@ const Criminal = mongoose.model("Criminal", criminalSchema);
 
 const Fir = mongoose.model("Fir", firSchema);
 
+// gallery page
+app.get('/gallery', function (req, res) {
+    return res.render('Gallery');
+})
+
+
+
+
 // Post announcements
 
 app.get("/", function (req, res) {
