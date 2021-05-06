@@ -53,7 +53,11 @@
             <div class="content">
                 <div class="default" id="div1">
 
-                    <p id="myBtn" class="eachform"><strong>User01</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <% firs.forEach((fir)=>{%>
+                        <p id="myBtn" class="eachform"><strong><%=fir.fullname%></strong><br><br><%=fir.subject%> </p>
+                    <% }) %> 
+
+
                     <p id="" class="eachform"><strong>User02</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <p id="" class="eachform"><strong>User03</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <p id="" class="eachform"><strong>User04</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -68,7 +72,7 @@
                     <p id="" class="eachform"><strong>User13</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <p id="" class="eachform"><strong>User14</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <p id="" class="eachform"><strong>User15</strong><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </ul>
+                    
                 </div>
                 <div class="priority1" id="div2">
                     <h2> Priority 1 Forms(Need urgent action highly life threat)</h2>

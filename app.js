@@ -44,6 +44,8 @@ const firSchema = {
   date: String,
   stationame: String,
   district: String,
+  subject: String,
+  complaint: String,
 };
 
 var storage = multer.diskStorage({
@@ -185,33 +187,30 @@ app.get("/robberyform", function (req, res) {
 });
 
 app.get("/viewfir", function (req, res) {
-  res.render("viewfir");
+  Fir.find({}, function (err, foundItems) {
+    if (!err) {
+      res.render("viewfir", { firs: foundItems });
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 app.post("/viewfir", function (req, res) {
-  const fullname = req.body.fullname;
-  const fatherorhusbandname = req.body.fatherorhusbandname;
-  const address = req.body.contactaddress;
-  const contactnumber = req.body.contactnumber;
-  const email = req.body.email;
-  const date = req.body.date;
-  const stationname = req.body.stationname;
-  const district = req.body.district;
-
   const newFir = new Fir({
-    fullname: fullname,
-    fatherorhusbandname: fatherorhusbandname,
-    address: address,
-    contactnumber: contactnumber,
-    email: email,
-    date: date,
-    stationame: stationname,
-    district: district,
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.email,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
   });
 
   newFir.save();
-
-  console.log(newFir);
   res.redirect("/firpage");
 });
 
