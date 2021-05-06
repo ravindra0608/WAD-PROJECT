@@ -65,16 +65,6 @@ const Criminal = mongoose.model("Criminal", criminalSchema);
 
 const Fir = mongoose.model("Fir", firSchema);
 
-const announcement1 = new Announcement({
-  content: "Robbery near the bridge",
-});
-
-const announcement2 = new Announcement({
-  content: "Blast at the Kellogs's factory",
-});
-
-const announcements = [announcement1, announcement2];
-
 // Post announcements
 
 app.get("/", function (req, res) {
@@ -166,7 +156,6 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
 
 app.post("/deletecriminal", function (req, res) {
   const criminalId = req.body.criminalid;
-  console.log("Filename;" + req.body.filename);
 
   Criminal.findByIdAndRemove(criminalId, function (err) {
     if (!err) {
