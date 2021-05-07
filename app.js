@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
-
+const { strict } = require("assert");
+const { response } = require("express");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +13,9 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
+
+// setting uploads folder as static folder
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 mongoose.connect("mongodb://localhost:27017/announcementsDB", {
   useNewUrlParser: true,
@@ -48,6 +52,65 @@ const firSchema = {
   complaint: String,
 };
 
+const eventsSchema = {
+  name: {
+    type : String,
+    required: true
+  },
+  date: {
+    type: String  ,
+    required: true
+  },
+  tile: {
+    type : String
+  },
+  images:[
+    {
+      type: String
+    }
+  ]
+};
+
+const faqSchema = {
+  question:{
+    type: String,
+    required: true
+  },
+  answer:{
+    type: String
+  }
+}
+
+const policeDetails = {
+  area: {
+    type: String,
+    required : true
+  },
+  station: {
+    type: String,
+    required : true
+  },
+  address: {
+    type: String,
+  },
+  phoneNo: {
+    type: String,
+    required : true
+  }
+}
+
+// user data schema
+const userSchema = new mongoose.Schema ({
+  email:{
+      type: String,
+      required: true
+  },
+  password:{
+      type: String,
+      required: true
+  }
+});
+
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads");
@@ -65,11 +128,77 @@ const Criminal = mongoose.model("Criminal", criminalSchema);
 
 const Fir = mongoose.model("Fir", firSchema);
 
+const Events = mongoose.model("events", eventsSchema);
+
+const Faqs = mongoose.model('faqs', faqSchema);
+
+const PoliceDetails = mongoose.model('police details', policeDetails);
+
 // gallery page
 app.get('/gallery', function (req, res) {
-    return res.render('Gallery');
+  return res.render('Gallery');
+});
+
+// contact us page
+app.get('/contactus', function (req, res) {
+  return res.render('Contact-us');
+});
+
+// contact-us police side
+app.get('/pcontactus', function (req, res) {
+  return res.render('contactus_police');  
+});
+
+// police side gallery page
+app.get('/gallerypolice',async function (req, res) {
+    let events1 = await Events.find({});
+    app.locals.policeEvents = events1;
+    return res.render('gallery_police');  
 })
 
+
+// adding an event to the database
+app.post('/gallerypolice/add-event', upload.single("tile"),async function (req, res) {
+      // console.log(req.body);
+      // console.log(__dirname);
+      let date1 = (req.body.date + '').slice(0,15);
+      let event = await Events.findOne({name: req.body.name, date: req.body.date});
+      if(!event){
+        if(req.file){
+          Events.create({
+            name: req.body.name,
+            date: date1,
+            tile: '\\'+'uploads'+'\\'+ req.file.filename
+          });
+
+        }else{
+          Events.create({
+            name: req.body.name,
+            date: req.body.date,
+            });
+        }
+      }else{
+        console.log('you cannot created an event');
+      }
+   return res.redirect('back');
+});
+
+// deleting the event
+app.get('/gallery/event/delete/',async function (req, res) {
+  try {
+    let eventToBeDeleted = await Events.findById(req.query.imageId);
+    if(eventToBeDeleted){
+      if(eventToBeDeleted.tile){
+        fs.unlinkSync(__dirname+eventToBeDeleted.tile);
+      }
+      eventToBeDeleted.remove();
+    }
+    return res.redirect('back');  
+  } catch (error) {
+    console.log(error);
+    return res.redirect('back');  
+  }
+})
 
 
 

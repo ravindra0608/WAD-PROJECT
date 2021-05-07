@@ -239,6 +239,7 @@ body{
 .image-para{
     position: relative;
     /*width: 30%;*/
+    width: 300px;
 }
 
 .image-para .overlay{
@@ -263,8 +264,7 @@ body{
 .image-para img{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    height: 100%;
-    width: 100%;
+    height: 200px;
 }
 .overlay p{
     position: absolute;
