@@ -30,7 +30,7 @@
     <div id="overlay"></div>
 
 
-    <!-- <section class="page"> -->
+    <section class="page">
 
         <nav>
             <div class="emblem">
@@ -63,6 +63,8 @@
 
             <form action="/postannouncements" method="post">
                 <textarea name="newannouncement" id="announcement-box" cols="60" rows="10" placeholder="Type out the text here"></textarea>
+                    
+                
                 <button id="add" type="submit">
                     Add
                 </button>
@@ -82,16 +84,15 @@
             <div>
                 <ul id="list">
                     <% announcements.forEach(announcement=>{%>
-                        <form action="/delete" method="post" name="deleteForm">
-                            <li class="element">
-                                <div class="licontent">
-                                    <%= announcement.content %> 
-                                </div>
-                                <div class="editbtn">Edit</div>
-                                <input type="hidden" name="announcementtodelete" value="<%= announcement._id %>">
-                                <button class="closebtn" type="submit">&times;</button>
+                        <li class="element">
+                            <div class="licontent">
+                                <%= announcement.content %> 
+                            </div>
+                                <form action="/delete" method="post" name="deleteForm">
+                                    <input type="hidden" name="announcementtodelete" value="<%= announcement._id %>">
+                                    <button class="closebtn" type="submit">&times;</button>
+                                </form>
                             </li>
-                        </form>
                     <%}) %> 
                 </ul>
             </div>
@@ -101,7 +102,7 @@
 
 
         
-    <!-- </section> -->
+    </section>
 
     <footer id="social">
         <h3>Follow us on Social Media!</h3>
@@ -125,6 +126,6 @@
 
         </div>
     </footer>
-    <script src="javascript/firscript.js"></script>
+    <script src="javascript/jsforhomepage.js"></script>
 </body>
 </html>
