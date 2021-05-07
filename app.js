@@ -6,6 +6,8 @@ const fs = require("fs");
 const path = require("path");
 const { strict } = require("assert");
 const { response } = require("express");
+const encrypt = require("mongoose-encryption");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -122,6 +124,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+//Using a large string for encryption
+const secret = "ThisIsTheSecretKeyForPoliceWebsite.";
+userSchema.plugin(encrypt, { secret:secret, encryptedFields: ["password"] });
+
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
 const Criminal = mongoose.model("Criminal", criminalSchema);
@@ -134,10 +140,97 @@ const Faqs = mongoose.model('faqs', faqSchema);
 
 const PoliceDetails = mongoose.model('police details', policeDetails);
 
+//Creating a model of this schema
+const User = new mongoose.model("User",userSchema);
+
+var isLoggedIn = false;
+
+// routes for login and register pages
+app.get("/login",function(req,res){
+  res.render("login");
+});
+
+app.get("/register",function(req,res){
+  res.render("register");
+});
+
+//Catching the post request form register page to add data to mongoDB
+app.post("/register",function(req,res){
+  if(isLoggedIn){
+    return res.redirect('/phome');
+  }
+  const newUser = new User({
+      email: req.body.username,
+      password: req.body.password
+  });
+
+  newUser.save(function(err){
+      if(err){
+          console.log(err);
+          res.redirect("/register");
+      } else {
+        
+          res.redirect("/login");
+      }
+  });
+});
+
+//Catching the post request from Login page to check the authorisation
+app.post("/login",function(req,res){
+  const username = req.body.username;
+  const password = req.body.password;
+  if(isLoggedIn){
+    return res.redirect('/phome');
+  }
+  //For the given email, checking if the password is correct
+  User.findOne({email:username}, function(err,foundUser){
+      if(err)
+      {
+          console.log(err);
+          res.redirect("/login");
+      } 
+      
+      else 
+      {
+          if(foundUser)
+          {
+              if(foundUser.password === password)
+              {
+                isLoggedIn = true;
+                  res.redirect("/phome");
+              }
+
+              else
+              {
+                isLoggedIn = false;
+                  res.redirect("/login");
+              }
+          }
+
+          else
+          {
+              res.redirect("/login");
+          }
+      }
+  });
+});
+
+// logout route
+app.get('/logout',function (req, res) {
+  if(isLoggedIn){
+    isLoggedIn = false;
+    return res.redirect('/login');
+  }else{
+    return res.redirect('/login');
+  }
+  
+})
+
 // gallery page
 app.get('/gallery', function (req, res) {
   return res.render('Gallery');
 });
+
 
 // contact us page
 app.get('/contactus', function (req, res) {
@@ -201,9 +294,15 @@ app.get('/gallery/event/delete/',async function (req, res) {
 })
 
 
+app.get('/phome', function (req, res) {
+  if(!isLoggedIn){
+     return res.redirect('/login');
+  }
+  return res.render('home_police');
+  
+})
 
 // Post announcements
-
 app.get("/", function (req, res) {
   Announcement.find({}, function (err, existingAnnouncements) {
     // Announcement.insertMany(announcements, function (err, results) {
@@ -230,6 +329,9 @@ app.get("/index.html", function (req, res) {
   });
 });
 app.get("/postannouncements", function (req, res) {
+  if(!isLoggedIn){
+    return res.redirect('/login');
+  }
   Announcement.find({}, function (err, existingAnnouncements) {
     // Announcement.insertMany(announcements, function (err, results) {
     //   if (!err) {
