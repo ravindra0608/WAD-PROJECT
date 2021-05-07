@@ -17,7 +17,7 @@ app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
 
 // setting uploads folder as static folder
-app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 mongoose.connect("mongodb://localhost:27017/announcementsDB", {
   useNewUrlParser: true,
@@ -56,61 +56,61 @@ const firSchema = {
 
 const eventsSchema = {
   name: {
-    type : String,
-    required: true
+    type: String,
+    required: true,
   },
   date: {
-    type: String  ,
-    required: true
+    type: String,
+    required: true,
   },
   tile: {
-    type : String
+    type: String,
   },
-  images:[
+  images: [
     {
-      type: String
-    }
-  ]
+      type: String,
+    },
+  ],
 };
 
 const faqSchema = {
-  question:{
+  question: {
     type: String,
-    required: true
+    required: true,
   },
-  answer:{
-    type: String
-  }
-}
+  answer: {
+    type: String,
+  },
+};
 
 const policeDetails = {
   area: {
     type: String,
-    required : true
+    required: true,
   },
   station: {
     type: String,
-    required : true
+    required: true,
   },
   address: {
     type: String,
   },
   phoneNo: {
     type: String,
-    required : true
-  }
-}
+    required: true,
+  },
+};
 
 // user data schema
-const userSchema = new mongoose.Schema ({
-  email:{
-      type: String,
-      required: true
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
   },
-  password:{
-      type: String,
-      required: true
-  }
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 var storage = multer.diskStorage({
@@ -126,7 +126,7 @@ var upload = multer({ storage: storage });
 
 //Using a large string for encryption
 const secret = "ThisIsTheSecretKeyForPoliceWebsite.";
-userSchema.plugin(encrypt, { secret:secret, encryptedFields: ["password"] });
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ["password"] });
 
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
@@ -136,174 +136,161 @@ const Fir = mongoose.model("Fir", firSchema);
 
 const Events = mongoose.model("events", eventsSchema);
 
-const Faqs = mongoose.model('faqs', faqSchema);
+const Faqs = mongoose.model("faqs", faqSchema);
 
-const PoliceDetails = mongoose.model('police details', policeDetails);
+const PoliceDetails = mongoose.model("police details", policeDetails);
 
 //Creating a model of this schema
-const User = new mongoose.model("User",userSchema);
+const User = new mongoose.model("User", userSchema);
 
 var isLoggedIn = false;
 
 // routes for login and register pages
-app.get("/login",function(req,res){
+app.get("/login", function (req, res) {
   res.render("login");
 });
 
-app.get("/register",function(req,res){
+app.get("/register", function (req, res) {
   res.render("register");
 });
 
 //Catching the post request form register page to add data to mongoDB
-app.post("/register",function(req,res){
-  if(isLoggedIn){
-    return res.redirect('/phome');
+app.post("/register", function (req, res) {
+  if (isLoggedIn) {
+    return res.redirect("/phome");
   }
   const newUser = new User({
-      email: req.body.username,
-      password: req.body.password
+    email: req.body.username,
+    password: req.body.password,
   });
 
-  newUser.save(function(err){
-      if(err){
-          console.log(err);
-          res.redirect("/register");
-      } else {
-        
-          res.redirect("/login");
-      }
+  newUser.save(function (err) {
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      res.redirect("/login");
+    }
   });
 });
 
 //Catching the post request from Login page to check the authorisation
-app.post("/login",function(req,res){
+app.post("/login", function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
-  if(isLoggedIn){
-    return res.redirect('/phome');
+  if (isLoggedIn) {
+    return res.redirect("/phome");
   }
   //For the given email, checking if the password is correct
-  User.findOne({email:username}, function(err,foundUser){
-      if(err)
-      {
-          console.log(err);
+  User.findOne({ email: username }, function (err, foundUser) {
+    if (err) {
+      console.log(err);
+      res.redirect("/login");
+    } else {
+      if (foundUser) {
+        if (foundUser.password === password) {
+          isLoggedIn = true;
+          res.redirect("/phome");
+        } else {
+          isLoggedIn = false;
           res.redirect("/login");
-      } 
-      
-      else 
-      {
-          if(foundUser)
-          {
-              if(foundUser.password === password)
-              {
-                isLoggedIn = true;
-                  res.redirect("/phome");
-              }
-
-              else
-              {
-                isLoggedIn = false;
-                  res.redirect("/login");
-              }
-          }
-
-          else
-          {
-              res.redirect("/login");
-          }
+        }
+      } else {
+        res.redirect("/login");
       }
+    }
   });
 });
 
 // logout route
-app.get('/logout',function (req, res) {
-  if(isLoggedIn){
+app.get("/logout", function (req, res) {
+  if (isLoggedIn) {
     isLoggedIn = false;
-    return res.redirect('/login');
-  }else{
-    return res.redirect('/login');
+    return res.redirect("/login");
+  } else {
+    return res.redirect("/login");
   }
-  
-})
-
-// gallery page
-app.get('/gallery', function (req, res) {
-  return res.render('Gallery');
 });
 
+// gallery page
+app.get("/gallery", function (req, res) {
+  return res.render("Gallery");
+});
 
 // contact us page
-app.get('/contactus', function (req, res) {
-  return res.render('Contact-us');
+app.get("/contactus", function (req, res) {
+  return res.render("Contact-us");
 });
 
 // contact-us police side
-app.get('/pcontactus', function (req, res) {
-  return res.render('contactus_police');  
+app.get("/pcontactus", function (req, res) {
+  return res.render("contactus_police");
 });
 
 // police side gallery page
-app.get('/gallerypolice',async function (req, res) {
+app.get("/gallerypolice", async function (req, res) {
   let events1 = await Events.find({});
   app.locals.policeEvents = events1;
-  // if(!isLoggedIn){
-  //   return res.redirect('/login');
-  // }
-    return res.render('/gallery_police');  
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  }
+  return res.render("gallery_police");
 });
-
-
 // adding an event to the database
-app.post('/gallerypolice/add-event', upload.single("tile"),async function (req, res) {
-      // console.log(req.body);
-      // console.log(__dirname);
-      let date1 = (req.body.date + '').slice(0,15);
-      let event = await Events.findOne({name: req.body.name, date: req.body.date});
-      if(!event){
-        if(req.file){
-          Events.create({
-            name: req.body.name,
-            date: date1,
-            tile: '\\'+'uploads'+'\\'+ req.file.filename
-          });
-
-        }else{
-          Events.create({
-            name: req.body.name,
-            date: req.body.date,
-            });
-        }
-      }else{
-        console.log('you cannot created an event');
+app.post(
+  "/gallerypolice/add-event",
+  upload.single("tile"),
+  async function (req, res) {
+    // console.log(req.body);
+    // console.log(__dirname);
+    let date1 = (req.body.date + "").slice(0, 15);
+    let event = await Events.findOne({
+      name: req.body.name,
+      date: req.body.date,
+    });
+    if (!event) {
+      if (req.file) {
+        Events.create({
+          name: req.body.name,
+          date: date1,
+          tile: "\\" + "uploads" + "\\" + req.file.filename,
+        });
+      } else {
+        Events.create({
+          name: req.body.name,
+          date: req.body.date,
+        });
       }
-   return res.redirect('back');
-});
+    } else {
+      console.log("you cannot created an event");
+    }
+    return res.redirect("back");
+  }
+);
 
 // deleting the event
-app.get('/gallery/event/delete/',async function (req, res) {
+app.get("/gallery/event/delete/", async function (req, res) {
   try {
     let eventToBeDeleted = await Events.findById(req.query.imageId);
-    if(eventToBeDeleted){
-      if(eventToBeDeleted.tile){
-        fs.unlinkSync(__dirname+eventToBeDeleted.tile);
+    if (eventToBeDeleted) {
+      if (eventToBeDeleted.tile) {
+        fs.unlinkSync(__dirname + eventToBeDeleted.tile);
       }
       eventToBeDeleted.remove();
     }
-    return res.redirect('back');  
+    return res.redirect("back");
   } catch (error) {
     console.log(error);
-    return res.redirect('back');  
+    return res.redirect("back");
   }
-})
+});
 
-
-app.get('/phome', function (req, res) {
-  if(!isLoggedIn){
-     return res.redirect('/login');
+app.get("/phome", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
   }
-  return res.render('home_police');
-  
-})
+  return res.render("home_police");
+});
 
 // Post announcements
 app.get("/", function (req, res) {
@@ -319,21 +306,22 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/index.html", function (req, res) {
-  Announcement.find({}, function (err, existingAnnouncements) {
-    // Announcement.insertMany(announcements, function (err, results) {
-    //   if (!err) {
-    //     console.log(results);
-    //   } else {
-    //     console.log(err);
-    //   }
-    // });
-    res.render("index", { announcements: existingAnnouncements });
-  });
-});
+// app.get("/index.html", function (req, res) {
+//   Announcement.find({}, function (err, existingAnnouncements) {
+//     // Announcement.insertMany(announcements, function (err, results) {
+//     //   if (!err) {
+//     //     console.log(results);
+//     //   } else {
+//     //     console.log(err);
+//     //   }
+//     // });
+//     res.render("index", { announcements: existingAnnouncements });
+//   });
+// });
+
 app.get("/postannouncements", function (req, res) {
-  if(!isLoggedIn){
-    return res.redirect('/login');
+  if (!isLoggedIn) {
+    return res.redirect("/login");
   }
   Announcement.find({}, function (err, existingAnnouncements) {
     // Announcement.insertMany(announcements, function (err, results) {
@@ -412,7 +400,6 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
 
 app.post("/deletecriminal", function (req, res) {
   const criminalId = req.body.criminalid;
-  console.log("Filename;" + req.body.filename);
 
   Criminal.findByIdAndRemove(criminalId, function (err) {
     if (!err) {
@@ -460,7 +447,7 @@ app.post("/viewfir", function (req, res) {
   });
 
   newFir.save();
-  res.redirect("/firpage.html");
+  res.redirect("/firpage");
 });
 
 app.listen(3000, function () {

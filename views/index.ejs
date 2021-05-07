@@ -25,28 +25,23 @@
 
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="firpage.html">File F.I.R</a></li>
-                <li><a href="criminallist.html">Criminals List</a></li>
-                <li><a href="Gallery page/Gallery page.html">Media</a></li>
-                <li><a href="ContactUs/Contact-us.html">Contact Us</a></li>
-
-                <li><a href="loginpage.html">Login</a></li>
-                </li>    
-                    <div class="drop">
-                        <a href="#" class="more">More</a>
-
-                        <div class="dropdown">
-                            <a href="faq.html">FAQ's</a>
-                            <a href="#">Suggestions</a>
-                            <a href="#">Feedback</a>
-                        </div>
-                    </div>
-                <li>
-                <li>
-                    <a href="/phome">Police Login</a>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/firpage">File F.I.R</a></li>
+                <li><a href="/criminalslist">Criminals List</a></li>
+                <li><a href="/gallery">Media</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
+                <li><a href="/login">Login</a></li>
                 </li>
-                    
+                <div class="drop">
+                    <a href="#" class="more">More</a>
+
+                    <div class="dropdown">
+                        <a href="faq.html">FAQ's</a>
+                        <a href="#">Suggestions</a>
+                        <a href="#">Feedback</a>
+                    </div>
+                </div>
+                <li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -102,11 +97,13 @@
 
                 <div id="announcements-box">
                     <h1>Latest Updates</h1>
-                    
+
                     <ul>
                         <% announcements.forEach(post=>{%>
-                            <li><%= post.content %> </li>
-                        <%}) %> 
+                            <li>
+                                <%= post.content %>
+                            </li>
+                            <%}) %>
                     </ul>
                 </div>
                 <!-- <a class="twitter-timeline" data-theme="dark"  href="https://twitter.com/APPOLICE100?ref_src=twsrc%5Etfw">Tweets by APPOLICE100</a>
