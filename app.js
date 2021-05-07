@@ -244,10 +244,13 @@ app.get('/pcontactus', function (req, res) {
 
 // police side gallery page
 app.get('/gallerypolice',async function (req, res) {
-    let events1 = await Events.find({});
-    app.locals.policeEvents = events1;
-    return res.render('gallery_police');  
-})
+  let events1 = await Events.find({});
+  app.locals.policeEvents = events1;
+  // if(!isLoggedIn){
+  //   return res.redirect('/login');
+  // }
+    return res.render('/gallery_police');  
+});
 
 
 // adding an event to the database
@@ -375,6 +378,9 @@ app.get("/criminalslist", function (req, res) {
 });
 
 app.get("/postcriminalslist", function (req, res) {
+  if(!isLoggedIn){
+    return res.redirect('/login');
+  }
   Criminal.find({}, function (err, criminalsList) {
     res.render("postcriminalslist", { criminalsList: criminalsList });
   });
@@ -418,15 +424,18 @@ app.post("/deletecriminal", function (req, res) {
   res.redirect("/postcriminalslist");
 });
 
-app.get("/firpage.html", function (req, res) {
+app.get("/firpage", function (req, res) {
   res.render("firpage");
 });
 
-app.get("/firform.html", function (req, res) {
+app.get("/firform", function (req, res) {
   res.render("robberyform");
 });
 
-app.get("/viewfir.html", function (req, res) {
+app.get("/viewfir", function (req, res) {
+  if(!isLoggedIn){
+    return res.redirect('/login');
+  }
   Fir.find({}, function (err, foundItems) {
     if (!err) {
       res.render("viewfir", { firs: foundItems });
@@ -436,7 +445,7 @@ app.get("/viewfir.html", function (req, res) {
   });
 });
 
-app.post("/viewfir.html", function (req, res) {
+app.post("/viewfir", function (req, res) {
   const newFir = new Fir({
     fullname: req.body.fullname,
     fatherorhusbandname: req.body.fatherorhusbandname,
