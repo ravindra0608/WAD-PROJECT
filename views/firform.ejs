@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="cssforfirform.css">
+    <link rel="stylesheet" href="css/cssforfirform.css">
     <title>F.I.R form</title>
 </head>
 
@@ -15,9 +15,9 @@
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae magnam rerum vitae dolores accusantium eum, quae, magni at soluta voluptate sunt modi dolorum repellat commodi repudiandae harum incidunt. Tempora, assumenda.</p>
 
     <div class="container">
-        <a class="backbutton" href="firpage.html"><b>Back</b></a>
+        <a class="backbutton" href="/firpage"><b>Back</b></a>
         <br><br>
-        <form action="display.html">
+        <form action="/viewfir" method="POST">
             <div class="col-sub">
                 <label for="fullname">From :</label>
             </div><br><br><br>
@@ -66,25 +66,6 @@
                     <input type="date" id="date" name="date" placeholder="Current Date" required>
                 </div>
             </div>
-            <br>
-            <span>Time between :</span><br><br>
-            <div class="row time">
-                <div class="time">
-                    <input type="time" id="initialtime" name="initialtime" placeholder="" required>
-                </div>
-                <div class="col-25">
-                    <label for="time"></label>
-                </div>
-            </div>
-            <span>and</span>
-            <div class="row time">
-                <div class="time">
-                    <input type="time" id="endtime" name="endtime" placeholder="" required>
-                </div>
-                <div class="col-25">
-                    <label for="time"></label>
-                </div>
-            </div>
             <p>To Officer in charge,</p>
             <div class="row">
                 <div class="col-sub">
@@ -127,7 +108,7 @@
                     <label for="subject">Subject</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="subject" name="subject" placeholder="Ex: FIR Complaint Against a Murder that was Witnessed." required>
+                    <input type="text" id="subject" name="subject" placeholder="Ex: Loss of the Mobile phone" required>
                 </div>
             </div>
             <p><br><br>Respected sir/madam ,</p>
@@ -136,11 +117,13 @@
                     <label for="complaint"></label>
                 </div>
                 <div class="col-85">
-                    <textarea id="complaint" name="complaint" placeholder="I am a resident of 675 Rosewood Ave and I am pursuing my under graduation in Regal Institute of Technology, Kakinada.I travel to the college by road on my Scooty everyday, There is a batch on road 32, Sarpavaram which is included in crimes like bullying, eve-teasing, etc.,
-On 10th June 2019, while I was returning from my college I witness the batch involved in stabbing a person. I have so terrified and ran away. I have seen the picture of the victim the next day in the new paper.     
-I would like you to know that I am an eye witness of the murder and can recognize the killers.
+                    <textarea id="complaint" name="complaint" placeholder="I am __________, s/o <father’s name>, currently residing at <address>. On (Date), I lost my phone at the (Place) at <city>.
+The mobile is a (model) with (specifications). The IMEI number of the phone is <IMEI number> and the serial number of the device is <serial number>. The mobile number of the SIM used in the lost phone is <phone number>. Approximate value of the new device of this model is Rs(   ).
+You are requested to kindly register the complaint and give me an attested copy of this complaint so that I can submit this to the service provider to block the phone number and prevent potential abuse of my SIM.
+
                     
-                    Request you to take the immediate necessary actions to improve safety in the town.
+                    I shall be obliged if you kindly take action to trace and recover the lost device.
+                    
        
 Yours faithfully
 (Name)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="cssforfirform.css">
+    <link rel="stylesheet" href="css/cssforfirform.css">
     <title>F.I.R form</title>
 </head>
 
@@ -15,9 +15,9 @@
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae magnam rerum vitae dolores accusantium eum, quae, magni at soluta voluptate sunt modi dolorum repellat commodi repudiandae harum incidunt. Tempora, assumenda.</p>
 
     <div class="container">
-        <a class="backbutton" href="firpage.html"><b>Back</b></a>
+        <a class="backbutton" href="/firpage"><b>Back</b></a>
         <br><br>
-        <form action="display.html">
+        <form action="/viewfir" method="POST">
             <div class="col-sub">
                 <label for="fullname">From :</label>
             </div><br><br><br>
@@ -108,7 +108,7 @@
                     <label for="subject">Subject</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="subject" name="subject" placeholder="Ex: FIR complaint against Harrasment." required>
+                    <input type="text" id="subject" name="subject" placeholder="Ex: Complaint aganist a missing person" required>
                 </div>
             </div>
             <p><br><br>Respected sir/madam ,</p>
@@ -117,20 +117,36 @@
                     <label for="complaint"></label>
                 </div>
                 <div class="col-85">
-                    <textarea id="complaint" name="complaint" placeholder="I write this letter to inform you about the inappropriate groping and sexual advances I've suffered at the hands of the Name of the Harasser. I hold the position of POSITION in the company and have been employed for five years, and my work ethic has never been called into question. 
-The harassment began on <Date> when I was first transferred to this department and he said he was attracted to me. It has continued almost every day since.                    
-On <Date> he sent me an email that said I should meet up with him after work.                     
-On <Date> he sent a voicemail that said he would love to make sweet love to me in the bathroom stall.                     
-I reported to my immediate supervisor about the situation after the second incident but the Name of Harasser has not stopped. While most of the advances have been verbal, I have the recordings of two voicemails and one email from the Name of the Harasser. I also have two witnesses, Name of Witness one and Name of Witness two, who have witnessed the harassment.                     
-I want to bring to your notice that I am undergoing emotional trauma and embarrassment at work. The harassment is affecting my relationship with my Husband and is affecting my performance at work.
+                    <textarea id="complaint" name="complaint" placeholder="I  <your name>, s/o  father's name , currently residing at <your address>.                    
+Since <date of missing>, <my relation>, <Full Name> and <description of victim(see instructions below)> from last seen <place or place of missing>.
+We have also checked at relative places as well as other possible places but were unable to trace him/her.
                     
-                    I implore that you please take up the matter and take any necessary action. 
-Yours faithfully
-(Name)
-(signature)
-(City)
-(contact number)
-            " style="height:300px" required></textarea>
+I would request you to kindly register the complaint and take necessary action to found him/her As soon as possible.                                                    
+                                      
+                        
+                                    Thanking You,
+                    
+Yours faithfully,
+                    
+Name
+Fathers Name                    
+Contact Number" style="height:300px" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="motive">Motive of Kidnapping:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="motive" name="motive" placeholder="Ex: To demand money and property" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="photo">Photo of a missing person:</label>
+                </div>
+                <div class="col-85">
+                    <input type="file" id="photo" name="photo">
                 </div>
             </div>
             <div class="row">
@@ -140,6 +156,10 @@ Yours faithfully
                 <div class="col-85">
                     <input type="file" id="evidence" name="evidence">
                 </div>
+            </div>
+            <div class="instructions">
+                <strong>Instructions:</strong>
+                <p>* Describe pyshical appearance, name ,age and sex of the victim while filling the above form.</p>
             </div>
             <div class="row">
                 <input type="submit" value="Submit">

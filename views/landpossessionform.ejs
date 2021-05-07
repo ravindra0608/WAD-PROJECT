@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="cssforfirform.css">
+    <link rel="stylesheet" href="css/cssforfirform.css">
     <title>F.I.R form</title>
 </head>
 
@@ -15,9 +15,9 @@
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae magnam rerum vitae dolores accusantium eum, quae, magni at soluta voluptate sunt modi dolorum repellat commodi repudiandae harum incidunt. Tempora, assumenda.</p>
 
     <div class="container">
-        <a class="backbutton" href="firpage.html"><b>Back</b></a>
+        <a class="backbutton" href="/firpage"><b>Back</b></a>
         <br><br>
-        <form action="display.html">
+        <form action="/viewfir" method="POST">
             <div class="col-sub">
                 <label for="fullname">From :</label>
             </div><br><br><br>
@@ -108,7 +108,7 @@
                     <label for="subject">Subject</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="subject" name="subject" placeholder="Ex: FIR Complaint on Threatening against life." required>
+                    <input type="text" id="subject" name="subject" placeholder="Ex: Report on adverse possession" required>
                 </div>
             </div>
             <p><br><br>Respected sir/madam ,</p>
@@ -117,16 +117,19 @@
                     <label for="complaint"></label>
                 </div>
                 <div class="col-85">
-                    <textarea id="complaint" name="complaint" placeholder="I am a resident and Association President of Revanth Mansion Apartment.The Apartment is Registered under Karnataka Society Act and Functioning  under Bylaws of Apartment.As a association president , i received a complaint  from one of the members of Association that their flats getting slippage of water because of Planting pots by Pen house Owners in the common area of the Apartment .Association Has given a one week notice to the Penthouse owners for removing  the Pots in the common area . After one Week the pent house owners are not acted on the Notice and they even refused to take the notice.On the half Association , when i gone to the pent house owners , One of the Pent House owner has busted on me for giving such notice by therating against my life and human rights. He also warned me that No body should enter in the premises of the terrace, which is infact  common area of the Apartment. 
-I fear that he may do some criminal activity for discharging my duties as association president and because of that fear i could able to do my duty as a president of apartment. 
-Can I lodge a police complaint against him for giving necessary protection.I have a witness of two members of Association during the Incident.
-                    
-       
-Yours faithfully
-(Name)
-(signature)
-(City)
-(contact number)
+                    <textarea id="complaint" name="complaint" placeholder="I am writing to file a report with your department on someone illegally occupying my property which may lead to adverse possession if not dealt with by the police immediatly.I had bought a peice of uncultivalted land in a remote rural area located at <place at which land located> about [number] years ago. One year after I bought the land ,I had immigrated to [Name of the country]. The land was left unattended since I left [Name of the resident]. I have recently returned to [name of city of resident]  and was shocked to discover that someone has been illegally accupying the land without my conset. Based on my observation, the land has been illegally possessed for quite a while.
+[There is currently a wooden hut built at one corner of the land while the remaining part of the land is being used for vegetable farming.]
+
+[Please provide others details based on your own situation]			
+                
+I am lodging this police report as my formal complaint on illegal possession of my property. I hereby request the police for immediate action to evict the existing occupier
+to avoid possible adverse possession claim in due course.I have enclosed as evidence, proof of ownership of the land, video clips and the photos showing the illegal possession of the land for your review.I am most happy to make myself available to provide further details to the Police in support of my complaint. 
+                                    Thanking You
+Yours Sincerely,
+Your name…
+Address…
+Contact no.
+                
             " style="height:300px" required></textarea>
                 </div>
             </div>
@@ -137,6 +140,10 @@ Yours faithfully
                 <div class="col-85">
                     <input type="file" id="evidence" name="evidence">
                 </div>
+            </div>
+            <div class="instructions">
+                <strong>Instructions:</strong>
+                <p>* Please submit the land documents of the above land.</p>
             </div>
             <div class="row">
                 <input type="submit" value="Submit">
