@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/cssforfirform.css">
+    <title>F.I.R form</title>
+</head>
+
+<body>
+
+    <h1 class="heading">FILE YOUR F.I.R</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae magnam rerum vitae dolores accusantium eum, quae, magni at soluta voluptate sunt modi dolorum repellat commodi repudiandae harum incidunt. Tempora, assumenda.</p>
+
+    <div class="container">
+        <a class="backbutton" href="/firpage"><b>Back</b></a>
+        <br><br>
+        <form action="/viewfir" method="POST">
+            <div class="col-sub">
+                <label for="fullname">From :</label>
+            </div><br><br><br>
+            <div class="row">
+                <div class="fromdetails">
+                    <input type="text" id="fullname" name="fullname" placeholder="Applicant's Name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="fromdetails">
+                    <input type="text" id="fatherorhusbandname" name="fatherorhusbandname" placeholder="Father's/Husband's Name" required>
+                </div>
+                <div class="col-25">
+                    <label for="fatherorhusbandname"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="fromdetails">
+                    <input type="text" id="contactaddress" name="contactaddress" placeholder="Applicant’s contact address" required>
+                </div>
+                <div class="col-25">
+                    <label for="contactaddress"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="fromdetails">
+                    <input type="text" id="contactnumber" name="contactnumber" placeholder="Applicant’s contact number/phone number" required>
+                </div>
+                <div class="col-25">
+                    <label for="contactnumber"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="fromdetails">
+                    <input type="text" id="emailid" name="emailid" placeholder="Applicant’s e-mail id (if any)" required>
+                </div>
+                <div class="col-25">
+                    <label for="emailid"></label>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="date">Date :</label>
+                </div>
+                <div class="date">
+                    <input type="date" id="date" name="date" placeholder="Current Date" required>
+                </div>
+            </div>
+            <p>To Officer in charge,</p>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="stationname">Police Station :</label>
+                </div>
+                <div class="stationdetails">
+                    <select id="stationname" name="stationname">
+                      <option value="">Select Police Station</option>
+                      <option value="Tada">Tada Police Station</option>
+                      <option value="Varadaiahpalem">Varadaiahpalem Police Station</option>
+                      <option value="Satyavedu">Satyavedu Police Station</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="district">District :</label>
+                </div>
+                <div class="stationdetails">
+                    <select id="district" name="district">
+                      <option value="">Select District</option>
+                      <option value="Chittoor">Chittoor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="stationname">State :</label>
+                </div>
+                <div class="stationdetails">
+                    <select id="state" name="state">
+                      <option value="">Select State</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sub">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="subject" name="subject" placeholder="Ex: FIR Complaint on Threatening against life." required>
+                </div>
+            </div>
+            <p><br><br>Respected sir/madam ,</p>
+            <div class="row">
+                <div class="col-25">
+                    <label for="complaint"></label>
+                </div>
+                <div class="col-85">
+                    <textarea id="complaint" name="complaint" placeholder="I am a resident and Association President of Revanth Mansion Apartment.The Apartment is Registered under Karnataka Society Act and Functioning  under Bylaws of Apartment.As a association president , i received a complaint  from one of the members of Association that their flats getting slippage of water because of Planting pots by Pen house Owners in the common area of the Apartment .Association Has given a one week notice to the Penthouse owners for removing  the Pots in the common area . After one Week the pent house owners are not acted on the Notice and they even refused to take the notice.On the half Association , when i gone to the pent house owners , One of the Pent House owner has busted on me for giving such notice by therating against my life and human rights. He also warned me that No body should enter in the premises of the terrace, which is infact  common area of the Apartment. 
+I fear that he may do some criminal activity for discharging my duties as association president and because of that fear i could able to do my duty as a president of apartment. 
+Can I lodge a police complaint against him for giving necessary protection.I have a witness of two members of Association during the Incident.
+                    
+       
+Yours faithfully
+(Name)
+(signature)
+(City)
+(contact number)
+            " style="height:300px" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="evidence">Evidence if any:</label>
+                </div>
+                <div class="col-85">
+                    <input type="file" id="evidence" name="evidence">
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
