@@ -54,61 +54,59 @@
                 <div class="default" id="div1">
                     <h2> Priority 3 Forms(No life threat)</h2>
                     <% firs.forEach((fir)=>{%>
-                        <p id="myBtn" class="eachform"><strong><%=fir.fullname%></strong><br><br>
-                            <%=fir.subject%>
-                        </p>
-                        <div id="myModal" class="modal">
+                        <% var count=1%>
+                            <p id='<%=count%>' class="eachform"><strong><%=fir.fullname%></strong><br><br>
+                                <%=fir.subject%>
+                            </p>
+                            <div id="myModal" class="modal">
 
-                            <!-- Modal content -->
-                            <div class="modal-content" id="fir">
-                                <span class="close">&times;</span>
-                                <div class="formandevidence">
-                                    <strong> F.I.R Form</strong>
-                                    <strong id="evidence"> Evidence</strong>
-                                </div>
-                                <p>
-                                    <pre class="complaint">
+                                <!-- Modal content -->
+                                <div class="modal-content" id="fir">
+                                    <span class="close">&times;</span>
+                                    <div class="formandevidence">
+                                        <strong> F.I.R Form</strong>
+                                        <strong id="evidence"> Evidence</strong>
+                                    </div>
+                                    <p>
+                                        <pre class="complaint">
 
 
-
-
-                                    From,
-
-                                    Applicant Name: <%=fir.fullname %>,
-                                    Guardian Name: <%=fir.fatherorhusbandname %>,
-                                    Contact Address: <%=fir.address %>,
-                                    Contact Number: <%=fir.contactnumder %>,
-                                    email: <%=fir.email %>,
+                                        
+                            From,
+                            Applicant Name: <%=fir.fullname %>,
+                            Guardian Name: <%=fir.fatherorhusbandname %>,
+                            Contact Address: <%=fir.address %>,
+                            Contact Number: <%=fir.contactnumber %>,
+                            email: <%=fir.emailid %>,
                                     
+                            Date: <%=fir.date %>.
                                     
-                                    Date: <%=fir.date %>.
-                                    
-                                    To,
-                                    Station Name:<%= fir.stationname%>,
-                                    District :<%= fir.district%>,
-                                    State :<%= fir.state%>.
+                            To,
+                            Station Name:<%= fir.stationname%>,
+                            District :<%= fir.district%>,
+                            State :<%= fir.state%>.
                 
-                                    Subject: <%=fir.subject %>,
+                            Subject: <%=fir.subject %>,
                                     
-                                    Respected sir,
-
-                                            <%=fir.complaint %>,
-                                </pre>
-                                </p>
-                            </div>
-                            <div class="modal-content" id="evid">
-                                <span class="close">&times;</span>
-                                <div class="formandevidence">
-                                    <strong id="firform"> F.I.R Form</strong>
-                                    <strong> Evidence</strong>
+                            Respected sir,
+                                <%=fir.complaint %>,
+                            </pre>
+                                    </p>
                                 </div>
-                                <object width="100%" height="100%" data="./accident_evidence.mp4">
+                                <div class="modal-content" id="evid">
+                                    <span class="close">&times;</span>
+                                    <div class="formandevidence">
+                                        <strong id="firform"> F.I.R Form</strong>
+                                        <strong> Evidence</strong>
+                                    </div>
+                                    <object width="100%" height="100%" data="./accident_evidence.mp4">
                                 <p>Oops! Your browser doesn't support this!</p>
                                 <p></p>
                                 </object>
+                                </div>
                             </div>
-                        </div>
-                        <% }) %>
+                            <% count=count+1%>
+                                <% }) %>
                 </div>
             </div>
         </div>
@@ -117,8 +115,8 @@
             var modal = document.getElementById("myModal");
 
             // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-
+            let id = '<%=count%>'
+            var btn = document.getElementById('id');
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
 

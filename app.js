@@ -42,15 +42,15 @@ const criminalSchema = {
     },
 };
 // user fir schema
-const firSchema = {
+const firSchema = new mongoose.Schema({
     fullname: String,
     fatherorhusbandname: String,
     address: String,
     contactnumber: Number,
     emailid: String,
-    date: Date,
+    date: String,
     time: String,
-    stationame: String,
+    stationname: String,
     district: String,
     state: String,
     subject: String,
@@ -59,7 +59,7 @@ const firSchema = {
         data: Buffer,
         contentType: String,
     },
-};
+}, { timestamps: true });
 
 const eventsSchema = {
     name: {
@@ -482,7 +482,7 @@ app.get("/viewfir", function(req, res) {
     } else {
         Fir1.find({}, function(err, foundItems) {
             if (!err) {
-                res.render("viewfir", { firs: foundItems });
+                res.render("viewfir", { firs: foundItems.reverse() });
             } else {
                 console.log(err);
             }
@@ -496,7 +496,7 @@ app.get("/viewfirp2", function(req, res) {
     } else {
         Fir2.find({}, function(err, foundItems) {
             if (!err) {
-                res.render("viewfirp2", { firs: foundItems });
+                res.render("viewfirp2", { firs: foundItems.reverse() });
             } else {
                 console.log(err);
             }
@@ -509,7 +509,7 @@ app.get("/viewfirp3", function(req, res) {
     } else {
         Fir3.find({}, function(err, foundItems) {
             if (!err) {
-                res.render("viewfirp3", { firs: foundItems });
+                res.render("viewfirp3", { firs: foundItems.reverse() });
             } else {
                 console.log(err);
             }
@@ -523,14 +523,14 @@ app.post("/viewfir/priority1", function(req, res) {
         fatherorhusbandname: req.body.fatherorhusbandname,
         address: req.body.contactaddress,
         contactnumber: req.body.contactnumber,
-        email: req.body.emailid,
+        emailid: req.body.emailid,
         date: req.body.date,
-        stationame: req.body.stationname,
+        stationname: req.body.stationname,
         district: req.body.district,
+        state: req.body.state,
         subject: req.body.subject,
         complaint: req.body.complaint
     });
-
 
     newFir1.save();
     res.redirect('../display');
@@ -541,10 +541,11 @@ app.post("/viewfir/priority2", function(req, res) {
         fatherorhusbandname: req.body.fatherorhusbandname,
         address: req.body.contactaddress,
         contactnumber: req.body.contactnumber,
-        email: req.body.emailid,
+        emailid: req.body.emailid,
         date: req.body.date,
-        stationame: req.body.stationname,
+        stationname: req.body.stationname,
         district: req.body.district,
+        state: req.body.state,
         subject: req.body.subject,
         complaint: req.body.complaint
     });
@@ -559,10 +560,11 @@ app.post("/viewfir/priority3", function(req, res) {
         fatherorhusbandname: req.body.fatherorhusbandname,
         address: req.body.contactaddress,
         contactnumber: req.body.contactnumber,
-        email: req.body.emailid,
+        emailid: req.body.emailid,
         date: req.body.date,
-        stationame: req.body.stationname,
+        stationname: req.body.stationname,
         district: req.body.district,
+        state: req.body.state,
         subject: req.body.subject,
         complaint: req.body.complaint
     });

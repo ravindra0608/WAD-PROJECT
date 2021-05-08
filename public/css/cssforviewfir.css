@@ -377,6 +377,10 @@ button {
     font-size: 18px;
 }
 
+#IDs {
+    display: none;
+}
+
 .priority1 {
     display: none;
 }
