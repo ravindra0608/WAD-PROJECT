@@ -52,7 +52,7 @@
         <div class="show">
             <div class="content">
                 <div class="default" id="div1">
-                    <h2> Priority 1 Forms(Need urgent action highly life threat)</h2>
+                    <h2> Priority 3 Forms(No life threat)</h2>
                     <% firs.forEach((fir)=>{%>
                         <p id="myBtn" class="eachform"><strong><%=fir.fullname%></strong><br><br>
                             <%=fir.subject%>
@@ -71,13 +71,15 @@
 
 
 
-                                        
+
                                     From,
+
                                     Applicant Name: <%=fir.fullname %>,
                                     Guardian Name: <%=fir.fatherorhusbandname %>,
                                     Contact Address: <%=fir.address %>,
                                     Contact Number: <%=fir.contactnumder %>,
                                     email: <%=fir.email %>,
+                                    
                                     
                                     Date: <%=fir.date %>.
                                     
@@ -89,6 +91,7 @@
                                     Subject: <%=fir.subject %>,
                                     
                                     Respected sir,
+
                                             <%=fir.complaint %>,
                                 </pre>
                                 </p>
