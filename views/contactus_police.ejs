@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="css/contactus-style.css">
+    <link rel="stylesheet" href="css/contactus_police.css">
     
 </head>
 <body>
@@ -43,10 +43,55 @@
     			<img src="../images/socials.jfif">
     		</div>
     	</aside>
-
-
-        <h1>Welcome to contact us page</h1>
-        <form action="/contactus" method="post"></form>
+        <section id="email-section">
+            <h2>add contact us details here</h2>
+            <form action="/contactus/add" name="contactus-add" id="contactus-form" method="POST">
+                <table style="border: none;" id="query-table" >
+                    <tr>
+                        <td colspan="2" style="padding-left: 1rem;"> Fill the details form</td>
+                    </tr>
+                    <tr>
+                        <td><label for="police-area">Area:</label></td>
+                        <td><input type="text" name="area" id="police-area"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="police-station">Station:</label></td>
+                        <td><input type="text" name="station" id="police-station"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="police-address">Address:</label></td>
+                        <td><textarea type="text" name="address" id="police-address" cols="30" rows="8"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="police-phoneno">Phone No:</label></td>
+                        <td><input type="text" name="phone" id="police-phoneno"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button   id="send-button">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+            <table border>
+                <tr>
+                    <th>Area</th>
+                    <th>station</th>
+                    <th>address</th>
+                    <th>Phone number</th>
+                    <th>delete row</th>
+                </tr>
+                <% for(station of policedet){%>
+                <tr>
+                    <td><%= station.area %></td>
+                    <td><%= station.station %></td>
+                    <td><%= station.address %></td>
+                    <td><%= station.phone %></td>
+                    <td><a href="/contactus/delete/<%= station._id %>">x</a></td>
+                </tr>    
+                <%} %>
+            </table>
+        </section>
+    
+        </form>
 
 
     </section>

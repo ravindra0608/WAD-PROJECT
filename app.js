@@ -43,24 +43,27 @@ const criminalSchema = {
   },
 };
 // user fir schema
-const firSchema = {
-  fullname: String,
-  fatherorhusbandname: String,
-  address: String,
-  contactnumber: Number,
-  emailid: String,
-  date: Date,
-  time: String,
-  stationame: String,
-  district: String,
-  state: String,
-  subject: String,
-  complaint: String,
-  img: {
-    data: Buffer,
-    contentType: String,
+const firSchema = new mongoose.Schema(
+  {
+    fullname: String,
+    fatherorhusbandname: String,
+    address: String,
+    contactnumber: Number,
+    emailid: String,
+    date: String,
+    time: String,
+    stationname: String,
+    district: String,
+    state: String,
+    subject: String,
+    complaint: String,
+    img: {
+      data: Buffer,
+      contentType: String,
+    },
   },
-};
+  { timestamps: true }
+);
 
 const eventsSchema = {
   name: {
@@ -233,19 +236,44 @@ app.get("/logout", function (req, res) {
   }
 });
 
+// faq page routes
+app.get("/faq", function (req, res) {
+  return res.render("faq");
+});
+
 // gallery page
-app.get("/gallery", function (req, res) {
+app.get("/gallery", async function (req, res) {
+  let events1 = await Events.find({});
+  app.locals.policeEvents = events1;
   return res.render("Gallery");
 });
 
 // contact us page
-app.get("/contactus", function (req, res) {
-  return res.render("Contact-us");
+app.get("/contactus", async function (req, res) {
+  let policeDetails1 = await PoliceDetails.find({});
+  return res.render("Contact-us", {
+    policedet: policeDetails1,
+  });
 });
 
 // contact-us police side
-app.get("/pcontactus", function (req, res) {
-  return res.render("contactus_police");
+app.get("/pcontactus", async function (req, res) {
+  let policeDetails1 = await PoliceDetails.find({});
+  return res.render("contactus_police", {
+    policedet: policeDetails1,
+  });
+});
+
+// contactus adding
+app.post("/contactus/add", function (req, res) {
+  PoliceDetails.create(req.body);
+  return res.redirect("back");
+});
+
+app.get("/contactus/delete/:stationId", async function (req, res) {
+  let station = await PoliceDetails.findById(req.params.stationId);
+  station.remove();
+  return res.redirect("back");
 });
 
 // police side gallery page
@@ -257,7 +285,6 @@ app.get("/gallerypolice", async function (req, res) {
   }
   return res.render("gallery_police");
 });
-
 // adding an event to the database
 app.post(
   "/gallerypolice/add-event",
@@ -381,6 +408,7 @@ app.post("/delete", function (req, res) {
 });
 
 //Criminals list
+
 app.get("/criminalslist", function (req, res) {
   Criminal.find({}, function (err, criminalsList) {
     res.render("criminalslist", { criminalsList: criminalsList });
@@ -411,19 +439,9 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
       fname: "\\" + "uploads" + "\\" + req.file.filename,
     },
   };
-
-  Criminal.create(newCriminal, (err, item) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect("/postcriminalslist");
-    }
-  });
 });
 
 app.post("/deletecriminal", function (req, res) {
-  const criminalId = req.body.criminalid;
-
   Criminal.findByIdAndRemove(criminalId, function (err, foundCriminal) {
     if (!err) {
       fs.unlinkSync(__dirname + foundCriminal.img.fname);
@@ -494,7 +512,7 @@ app.get("/viewfir", function (req, res) {
   } else {
     Fir1.find({}, function (err, foundItems) {
       if (!err) {
-        res.render("viewfir", { firs: foundItems });
+        res.render("viewfir", { firs: foundItems.reverse() });
       } else {
         console.log(err);
       }
@@ -508,7 +526,7 @@ app.get("/viewfirp2", function (req, res) {
   } else {
     Fir2.find({}, function (err, foundItems) {
       if (!err) {
-        res.render("viewfirp2", { firs: foundItems });
+        res.render("viewfirp2", { firs: foundItems.reverse() });
       } else {
         console.log(err);
       }
@@ -521,7 +539,7 @@ app.get("/viewfirp3", function (req, res) {
   } else {
     Fir3.find({}, function (err, foundItems) {
       if (!err) {
-        res.render("viewfirp3", { firs: foundItems });
+        res.render("viewfirp3", { firs: foundItems.reverse() });
       } else {
         console.log(err);
       }
@@ -535,10 +553,11 @@ app.post("/viewfir/priority1", function (req, res) {
     fatherorhusbandname: req.body.fatherorhusbandname,
     address: req.body.contactaddress,
     contactnumber: req.body.contactnumber,
-    email: req.body.emailid,
+    emailid: req.body.emailid,
     date: req.body.date,
-    stationame: req.body.stationname,
+    stationname: req.body.stationname,
     district: req.body.district,
+    state: req.body.state,
     subject: req.body.subject,
     complaint: req.body.complaint,
   });
@@ -552,48 +571,30 @@ app.post("/viewfir/priority2", function (req, res) {
     fatherorhusbandname: req.body.fatherorhusbandname,
     address: req.body.contactaddress,
     contactnumber: req.body.contactnumber,
-    email: req.body.emailid,
+    emailid: req.body.emailid,
     date: req.body.date,
-    stationame: req.body.stationname,
+    stationname: req.body.stationname,
     district: req.body.district,
+    state: req.body.state,
     subject: req.body.subject,
     complaint: req.body.complaint,
-  });
-});
-
-app.post("/viewfir", function (req, res) {
-  const newFir = new Fir({
-    fullname: req.body.fullname,
-    fatherorhusbandname: req.body.fatherorhusbandname,
-    address: req.body.contactaddress,
-    contactnumber: req.body.contactnumber,
-    email: req.body.email,
-    date: req.body.date,
-    stationame: req.body.stationname,
-    district: req.body.district,
-    subject: req.body.subject,
-    complaint: req.body.complaint,
-    evidence: {
-      data: fs.readFileSync(
-        path.join(__dirname + "/uploads/" + req.file.filename)
-      ),
-      contentType: "image/png",
-    },
   });
 
   newFir2.save();
   res.redirect("../display");
 });
+
 app.post("/viewfir/priority3", function (req, res) {
   const newFir3 = new Fir3({
     fullname: req.body.fullname,
     fatherorhusbandname: req.body.fatherorhusbandname,
     address: req.body.contactaddress,
     contactnumber: req.body.contactnumber,
-    email: req.body.emailid,
+    emailid: req.body.emailid,
     date: req.body.date,
-    stationame: req.body.stationname,
+    stationname: req.body.stationname,
     district: req.body.district,
+    state: req.body.state,
     subject: req.body.subject,
     complaint: req.body.complaint,
   });

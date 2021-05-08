@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="cssforfaq.css">
+    <link rel="stylesheet" href="css/cssforfaq.css">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
                     <a href="#" class="more">More</a>
 
                     <div class="dropdown">
-                        <a href="faq.html">FAQ's</a>
+                        <a href="/faq">FAQ's</a>
                         <a href="#">Suggestions</a>
                         <a href="#">Feedback</a>
                     </div>
@@ -85,6 +85,32 @@
             </details>
         </div>
     </div>
+    <section id="email-section">
+        <h2>Send Your Queries Here</h2>
+        <form action="/faq/add" name="queries-form" id="query-form">
+            <table style="border: none;" id="query-table" >
+                <tr>
+                    <td colspan="2" style="padding-left: 1rem;"> Feel Free to Contact US</td>
+                </tr>
+                <tr>
+                    <td><label for="query-sender-name"> Name:</label></td>
+                    <td><input type="text" placeholder="Naveen Kumar" id="query-sender-name" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="query-sender-email"> Email:</label></td>
+                    <td><input type="email" required placeholder="abc@gmail.com" id="query-sender-email" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="query"> Query:</label></td>
+                    <td><textarea name="query" id="query" cols="30" rows="5" required id="query" name="question"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button  name="Send" id="send-button">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </section>
+
 
     <footer id="social">
         <h3>Follow us on Social Media!</h3>

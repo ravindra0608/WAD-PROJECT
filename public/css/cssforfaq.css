@@ -298,3 +298,40 @@ a:hover img[class="hidden"] {
 a:hover img[class="initial"] {
     display: inline;
 }
+
+
+/* email section */
+
+table{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+    border: 2px solid black;
+    font-size: large;
+}
+td{
+    padding: 1rem;
+}
+
+#email-section{
+    padding: 3rem 3rem 3rem 3rem;
+    background-color: #e8ebe9;
+}
+#send-button{
+    padding: 0.5rem;
+    margin-left: 10rem;
+    width: 50%;
+    background-color: black;
+    color: white;
+}
+h2{
+    background-color: #d7dbd8;
+    padding: 1rem;
+}
+#send-button:hover{
+    background-color: #2857a4;
+    cursor:pointer;
+}
+#query-table td{
+    padding: 0.7rem;
+}

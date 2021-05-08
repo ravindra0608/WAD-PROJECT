@@ -31,7 +31,7 @@
                     <a href="#" class="more">More</a>
 
                     <div class="dropdown">
-                        <a href="faq.html">FAQ's</a>
+                        <a href="/faq">FAQ's</a>
                         <a href="#">Suggestions</a>
                         <a href="#">Feedback</a>
                     </div>
@@ -61,105 +61,17 @@
                     <th>address</th>
                     <th>Phone number</th>
                 </tr>
+                <% for(station of policedet){%>
                 <tr>
-                    <td>Visakhapatnam</td>
-                    <td>5th Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>2 Town police station</td>
-                    <td>Police Station, 30-7-6 Bhanu Street Opposite<br> Two Town Police StationRoad, Near By II Town,<br> Daba Gardens, Allipuram, Visakhapatnam, Andhra Pradesh 530020</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>3 Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>Gajuwaka police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>5th Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>2 Town police station</td>
-                    <td>Police Station, 30-7-6 Bhanu Street Opposite<br> Two Town Police StationRoad, Near By II Town,<br> Daba Gardens, Allipuram, Visakhapatnam, Andhra Pradesh 530020</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>3 Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>Gajuwaka police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>5th Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>2 Town police station</td>
-                    <td>Police Station, 30-7-6 Bhanu Street Opposite<br> Two Town Police StationRoad, Near By II Town,<br> Daba Gardens, Allipuram, Visakhapatnam, Andhra Pradesh 530020</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>3 Town police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
-                <tr>
-                    <td>Visakhapatnam</td>
-                    <td>Gajuwaka police station</td>
-                    <td>Industrial Estate, Gavara Kanchara Palem,<br> Kancharapalem, Visakhapatnam, Andhra Pradesh 530007</td>
-                    <td>089125 20812</td>
-                </tr>
+                    <td><%= station.area %></td>
+                    <td><%= station.station %></td>
+                    <td><%= station.address %></td>
+                    <td><%= station.phone %></td>
+                </tr>    
+                <%} %>
             </table>
-            <section id="email-section">
-                <h2>Send Your Queries Here</h2>
-                <form name="queries-form" id="query-form">
-                    <table style="border: none;" id="query-table" >
-                        <tr>
-                           <td colspan="2" style="padding-left: 1rem;"> Feel Free to Contact US</td>
-                        </tr>
-                        <tr>
-                            <td><label for="query-sender-name"> Name:</label></td>
-                            <td><input type="text" placeholder="Naveen Kumar" id="query-sender-name"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="query-sender-email"> Email:</label></td>
-                            <td><input type="email" required placeholder="abc@gmail.com" id="query-sender-email"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="query"> Query:</label></td>
-                            <td><textarea name="query" id="query" cols="30" rows="5" required id="query"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><button  name="Send" id="send-button">Submit</button></td>
-                        </tr>
-                    </table>
-                </form>
-            </section>
         </section>
+        
     </section>
 
 

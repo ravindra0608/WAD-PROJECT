@@ -30,7 +30,7 @@
                     <a href="#" class="more">More</a>
 
                     <div class="dropdown">
-                        <a href="faq.html">FAQ's</a>
+                        <a href="/faq">FAQ's</a>
                         <a href="#">Suggestions</a>
                         <a href="#">Feedback</a>
                     </div>
@@ -64,17 +64,17 @@
                         <div class="image-para">
                             <% if(event.tile){%>
                                 <img src="<%= event.tile %>">
-                                <%}else{%>
-                                    <img src="images\event.jpg" alt="">
-                                    <% } %>
-                                        <div class="overlay">
-                                            <p>
-                                                <%= event.date %><br>
-                                                    <%= event.name %>
-                                            </p>
-                                        </div>
+                            <%}else{%>
+                                <img src="images\event.jpg" alt="">
+                            <% } %>
+                            <div class="overlay">
+                                <p>
+                                    <%= event.date %><br>
+                                        <%= event.name %>
+                                </p>
+                            </div>
                         </div>
-                        <%} %>
+                    <%} %>
                 </div>
             </div>
         </div>
