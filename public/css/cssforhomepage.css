@@ -343,7 +343,7 @@ nav {
     width: 40%;
     padding: 30px;
     overflow-y: scroll;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/announce.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/announce.jpg');
     color: antiquewhite;
     scroll-behavior: auto;
     margin: 10px auto;
@@ -370,7 +370,7 @@ nav {
     height: 600px;
     width: 40%;
     background-color: #195190FF;
-    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/howtouse.jpg');
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/howtouse.jpg');
     /* background-position: center; */
     background-size: cover;
     margin: 10px auto;

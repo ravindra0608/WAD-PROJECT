@@ -7,12 +7,13 @@ const path = require("path");
 const { strict } = require("assert");
 const { response } = require("express");
 const encrypt = require("mongoose-encryption");
+const { time } = require("console");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
 
@@ -40,19 +41,25 @@ const criminalSchema = {
     contentType: String,
   },
 };
-
-const firSchema = {
-  fullname: String,
-  fatherorhusbandname: String,
-  address: String,
-  contactnumber: String,
-  email: String,
-  date: String,
-  stationame: String,
-  district: String,
-  subject: String,
-  complaint: String,
-};
+// user fir schema
+const firSchema = new mongoose.Schema({
+    fullname: String,
+    fatherorhusbandname: String,
+    address: String,
+    contactnumber: Number,
+    emailid: String,
+    date: String,
+    time: String,
+    stationname: String,
+    district: String,
+    state: String,
+    subject: String,
+    complaint: String,
+    img: {
+        data: Buffer,
+        contentType: String,
+    },
+}, { timestamps: true });
 
 const eventsSchema = {
   name: {
@@ -134,12 +141,25 @@ const Criminal = mongoose.model("Criminal", criminalSchema);
 
 const Fir = mongoose.model("Fir", firSchema);
 
+const Fir1 = mongoose.model("Fir1", firSchema);
+const Fir2 = mongoose.model("Fir2", firSchema);
+const Fir3 = mongoose.model("Fir3", firSchema);
+
 const Events = mongoose.model("events", eventsSchema);
 
 const Faqs = mongoose.model("faqs", faqSchema);
 
 const PoliceDetails = mongoose.model("police details", policeDetails);
 
+const forms = new Fir({
+  firs: [
+    {
+      firs1: Fir1,
+      firs2: Fir2,
+      firs3: Fir3,
+    },
+  ],
+});
 //Creating a model of this schema
 const User = new mongoose.model("User", userSchema);
 
@@ -262,10 +282,7 @@ app.get("/gallerypolice", async function (req, res) {
   return res.render("gallery_police");
 });
 // adding an event to the database
-app.post(
-  "/gallerypolice/add-event",
-  upload.single("tile"),
-  async function (req, res) {
+app.post("/gallerypolice/add-event",upload.single("tile"),async function (req, res) {
     // console.log(req.body);
     // console.log(__dirname);
     let date1 = (req.body.date + "").slice(0, 15);
@@ -391,9 +408,10 @@ app.get("/criminalslist", function (req, res) {
 });
 
 app.get("/postcriminalslist", function (req, res) {
-  if(!isLoggedIn){
-    return res.redirect('/login');
-  }
+
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+   }
   Criminal.find({}, function (err, criminalsList) {
     res.render("postcriminalslist", { criminalsList: criminalsList });
   });
@@ -408,7 +426,7 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
     status: req.body.status,
     img: {
       data: fs.readFileSync(
-        path.join(__dirname + "/uploads/" + req.file.filename)
+        path.join(__dirname + "/uploads/" + req.file.evidence)
       ),
       contentType: "image/png",
     },
@@ -439,31 +457,105 @@ app.post("/deletecriminal", function (req, res) {
 app.get("/firpage", function (req, res) {
   res.render("firpage");
 });
+// fir form for Accident
 
-app.get("/firform", function (req, res) {
+app.get("/accidentform", function (req, res) {
+  res.render("accidentform");
+});
+
+// fir form for Kidnap
+
+app.get("/kidnapform", function (req, res) {
+  res.render("kidnapform");
+});
+
+// fir form for Land Possession
+
+app.get("/landpossessionform", function (req, res) {
+  res.render("landpossessionform");
+});
+
+// fir form for Murder
+
+app.get("/murderform", function (req, res) {
+  res.render("murderform");
+});
+
+// fir form for Robbery
+
+app.get("/robberyform", function (req, res) {
   res.render("robberyform");
 });
 
-app.get("/viewfir", function (req, res) {
-  if(!isLoggedIn){
-    return res.redirect('/login');
-  }
-  Fir.find({}, function (err, foundItems) {
-    if (!err) {
-      res.render("viewfir", { firs: foundItems });
-    } else {
-      console.log(err);
-    }
-  });
+
+// fir form for Accident
+
+app.get("/sexualviolenceform", function (req, res) {
+  res.render("sexualviolenceform");
 });
 
-app.post("/viewfir", function (req, res) {
-  const newFir = new Fir({
+// fir form for Accident
+
+app.get("/threateningform", function (req, res) {
+  res.render("threateningform");
+});
+
+// fir form for Others category
+app.get("/firform", function (req, res) {
+  res.render("firform");
+});
+app.get("/display", function (req, res) {
+  res.render("display");
+});
+// view fir
+app.get("/viewfir", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir1.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfir", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
+
+app.get("/viewfirp2", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir2.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfirp2", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
+app.get("/viewfirp3", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir3.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfirp3", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
+
+app.post("/viewfir/priority1", function (req, res) {
+  const newFir1 = new Fir1({
     fullname: req.body.fullname,
     fatherorhusbandname: req.body.fatherorhusbandname,
     address: req.body.contactaddress,
     contactnumber: req.body.contactnumber,
-    email: req.body.email,
+    email: req.body.emailid,
     date: req.body.date,
     stationame: req.body.stationname,
     district: req.body.district,
@@ -471,10 +563,44 @@ app.post("/viewfir", function (req, res) {
     complaint: req.body.complaint,
   });
 
-  newFir.save();
-  res.redirect("/firpage");
+  newFir1.save();
+  res.redirect("../display");
+});
+app.post("/viewfir/priority2", function (req, res) {
+  const newFir2 = new Fir2({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.emailid,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+  });
+  newFir2.save();
+  res.redirect("../display");
+});
+app.post("/viewfir/priority3", function (req, res) {
+  const newFir3 = new Fir3({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.emailid,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+  });
+
+  newFir3.save();
+  res.redirect("../display");
 });
 
-app.listen(3000, function () {
-  console.log("Server has started at port 3000");
-});
+
+app.listen(3000, function (req, res) {
+  console.log('listening at port 3000');  
+})

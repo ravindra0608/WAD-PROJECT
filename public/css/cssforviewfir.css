@@ -369,6 +369,18 @@ button {
     display: block;
 }
 
+.default>h2 {
+    text-align: center;
+}
+
+.complaint {
+    font-size: 18px;
+}
+
+#IDs {
+    display: none;
+}
+
 .priority1 {
     display: none;
 }

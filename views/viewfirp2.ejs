@@ -51,108 +51,108 @@
         <br>
         <div class="show">
             <div class="content">
-                <h2> Priority 1 Forms(Need urgent action highly life threat)</h2>
                 <div class="default" id="div1">
-
+                    <h2> Priority 2 Forms(Includes life threat)</h2>
                     <% firs.forEach((fir)=>{%>
-                        <% var count=1%>
-                            <p id='fir-<%=fir._id %>' class="eachform"><strong><%=fir.fullname%></strong><br><br>
-                                <%=fir.subject%>
-                            </p>
-                            <div id="myModal" class="modal">
+                        <p id='myBtn' class="eachform"><strong><%=fir.fullname%></strong><br><br>
+                            <%=fir.subject%>
+                        </p>
+                        <div id="myModal" class="modal">
 
-                                <!-- Modal content -->
-                                <div class="modal-content" id="fir">
-                                    <span class="close">&times;</span>
-                                    <div class="formandevidence">
-                                        <strong> F.I.R Form</strong>
-                                        <strong id="evidence"> Evidence</strong>
-                                    </div>
-                                    <p>
-                                        <pre class="complaint">
-
-
-                                        
-                            From,
-                            Applicant Name: <%=fir.fullname %>,
-                            Guardian Name: <%=fir.fatherorhusbandname %>,
-                            Contact Address: <%=fir.address %>,
-                            Contact Number: <%=fir.contactnumber %>,
-                            email: <%=fir.emailid %>,
-                                    
-                            Date: <%=fir.date %>.
-                                    
-                            To,
-                            Station Name:<%= fir.stationname%>,
-                            District :<%= fir.district%>,
-                            State :<%= fir.state%>.
-                
-                            Subject: <%=fir.subject %>,
-                                    
-                            Respected sir,
-                                <%=fir.complaint %>,
-                            </pre>
-                                    </p>
+                            <!-- Modal content -->
+                            <div class="modal-content" id="fir">
+                                <span class="close">&times;</span>
+                                <div class="formandevidence">
+                                    <strong> F.I.R Form</strong>
+                                    <strong id="evidence"> Evidence</strong>
                                 </div>
-                                <div class="modal-content" id="evid">
+                                <p>
+                                    <pre class="complaint">
+                                    From,
+
+                                    Applicant Name: <%=fir.fullname %>,
+                                    Guardian Name: <%=fir.fatherorhusbandname %>,
+                                    Contact Address: <%=fir.address %>,
+                                    Contact Number: <%=fir.contactnumber %>,
+                                    email: <%=fir.emailid %>,
+                                    
+                                    
+                                    Date: <%=fir.date %>.
+                                    
+                                    To,
+                                    Station Name:<%= fir.stationname%>,
+                                    District :<%= fir.district%>,
+                                    State :<%= fir.state%>.
+                
+                                    Subject: <%=fir.subject %>,
+                                    
+                                    Respected sir,
+
+                                            <%=fir.complaint %>,
+                                </pre>
+                                </p>
+                            </div>
+                            <div class="modal-content" id="evid">
+                                <div class="formandevidence">
                                     <span class="close">&times;</span>
-                                    <div class="formandevidence">
-                                        <strong id="firform"> F.I.R Form</strong>
-                                        <strong> Evidence</strong>
-                                    </div>
-                                    <object width="100%" height="100%" data="./accident_evidence.mp4">
-                                <p>Oops! Your browser doesn' t support this!</p>
+                                    <strong id="firform"> F.I.R Form</strong>
+                                    <strong> Evidence</strong>
+                                </div>
+                                <object width="100%" height="100%" data="./accident_evidence.mp4">
+                                <p>Oops! Your browser doesn't support this!</p>
                                 <p></p>
                                 </object>
-                                </div>
                             </div>
-                            <p id='IDs'>
-                                <%= count %>
-                            </p>
-                            <% count=count+1%>
-                                <% }) %>
+                        </div>
+                        <% }) %>
                 </div>
-
             </div>
         </div>
         <script>
-            l
+            // Get the modal
+            var modal = document.getElementsByClassName('modal');
 
-            $(document).ready(function() {
-                // Get the modal
-                var modal = document.getElementById("myModal");
+            // // Get the button that opens the modal
+            // var IDs = document.getElementById();
+            var btn = document.getElementsByClassName('eachform');
 
-                // Get the button that opens the modal
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close");
 
-                // When the user clicks the button, open the modal 
-                btn.onclick = function() {
-                    modal.style.display = "block";
-                }
-
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
+            // When the user clicks the button, open the modal 
+            let k = 0;
+            for (let i = 0; i < btn.length; i++) {
+                btn[i].onclick = function() {
+                        modal[i].style.display = "block";
                     }
+                    // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal[i].style.display = "none";
+                        }
+                    }
+                    // When the user clicks on <span> (x), close the modal
+                span[k++].onclick = function() {
+                        modal[i].style.display = "none";
+                    }
+                    // When the user clicks on <span> (x), close the modal
+                span[k++].onclick = function() {
+                    modal[i].style.display = "none";
                 }
-                var x = document.getElementById('firform');
-                x.onclick = function() {
-                    fir.style.display = 'block';
-                    evid.style.display = 'none';
-                }
-                var y = document.getElementById('evidence');
-                y.onclick = function() {
-                    fir.style.display = 'none';
-                    evid.style.display = 'block';
-                }
-            });
+            }
+
+
+
+            var x = document.getElementById('firform');
+            x.onclick = function() {
+                fir.style.display = 'block';
+                evid.style.display = 'none';
+            }
+            var y = document.getElementById('evidence');
+            y.onclick = function() {
+                fir.style.display = 'none';
+                evid.style.display = 'block';
+            }
         </script><br>
         <footer>
             <br>

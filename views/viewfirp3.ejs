@@ -51,12 +51,11 @@
         <br>
         <div class="show">
             <div class="content">
-                <h2> Priority 1 Forms(Need urgent action highly life threat)</h2>
                 <div class="default" id="div1">
-
+                    <h2> Priority 3 Forms(No life threat)</h2>
                     <% firs.forEach((fir)=>{%>
                         <% var count=1%>
-                            <p id='fir-<%=fir._id %>' class="eachform"><strong><%=fir.fullname%></strong><br><br>
+                            <p id='<%=count%>' class="eachform"><strong><%=fir.fullname%></strong><br><br>
                                 <%=fir.subject%>
                             </p>
                             <div id="myModal" class="modal">
@@ -101,58 +100,52 @@
                                         <strong> Evidence</strong>
                                     </div>
                                     <object width="100%" height="100%" data="./accident_evidence.mp4">
-                                <p>Oops! Your browser doesn' t support this!</p>
+                                <p>Oops! Your browser doesn't support this!</p>
                                 <p></p>
                                 </object>
                                 </div>
                             </div>
-                            <p id='IDs'>
-                                <%= count %>
-                            </p>
                             <% count=count+1%>
                                 <% }) %>
                 </div>
-
             </div>
         </div>
         <script>
-            l
+            // Get the modal
+            var modal = document.getElementById("myModal");
 
-            $(document).ready(function() {
-                // Get the modal
-                var modal = document.getElementById("myModal");
+            // Get the button that opens the modal
+            let id = '<%=count%>'
+            var btn = document.getElementById('id');
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
 
-                // Get the button that opens the modal
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
 
-                // When the user clicks the button, open the modal 
-                btn.onclick = function() {
-                    modal.style.display = "block";
-                }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
 
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
                     modal.style.display = "none";
                 }
-
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
-                var x = document.getElementById('firform');
-                x.onclick = function() {
-                    fir.style.display = 'block';
-                    evid.style.display = 'none';
-                }
-                var y = document.getElementById('evidence');
-                y.onclick = function() {
-                    fir.style.display = 'none';
-                    evid.style.display = 'block';
-                }
-            });
+            }
+            var x = document.getElementById('firform');
+            x.onclick = function() {
+                fir.style.display = 'block';
+                evid.style.display = 'none';
+            }
+            var y = document.getElementById('evidence');
+            y.onclick = function() {
+                fir.style.display = 'none';
+                evid.style.display = 'block';
+            }
         </script><br>
         <footer>
             <br>

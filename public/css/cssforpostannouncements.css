@@ -7,6 +7,11 @@
 
 body{
     font-family: 'Montserrat', sans-serif;
+    /* background-image: url("../images/announce.jpg"); */
+    background: linear-gradient(rgba(0, 0, 0, 0.178), rgba(0, 0, 0, 0.205)), url('../images/announce.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: 0;
 }
 
 header {
@@ -34,6 +39,9 @@ header {
     position: relative;
     overflow-x: hidden;
     width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.178), rgba(0, 0, 0, 0.205)), url('../images/announce.jpg');
+    background-size:contain;
+    background-position-y:unset;
 }
 
 
@@ -96,7 +104,7 @@ nav {
         position: absolute;
         right: 0px;
         height: 92vh;
-        top: 23vh;
+        top: 8vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -219,10 +227,15 @@ nav {
     padding: 30px;
 }
 
+textarea:focus{
+    outline: none;
+}
+
 #announcement-box{
     padding: 10px;
     display: block;
     margin: 30px auto;
+    border-radius: 20px;
 }
 
 #add{
@@ -255,6 +268,7 @@ nav {
     margin: 20px auto;
     align-items: center;
     animation: slide-up 1s 1;
+    background-color: aliceblue;
 }
 
 @media screen and (max-width: 1055px){
