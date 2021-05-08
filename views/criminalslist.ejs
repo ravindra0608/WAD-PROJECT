@@ -35,7 +35,7 @@
                 <a href="#" class="more">More</a>
 
                 <div class="dropdown">
-                    <a href="faq.html">FAQ's</a>
+                    <a href="/faq">FAQ's</a>
                     <a href="#">Suggestions</a>
                     <a href="#">Feedback</a>
                 </div>
@@ -66,41 +66,40 @@
         <h1>Criminals List</h1>
     </div>
     <% let wanted=[]; %>
-        <% let arrested=[]; %>
-            <% let ontrail=[]; %>
+    <% let arrested=[]; %>
+    <% let ontrail=[]; %>
 
-                <% criminalsList.forEach((criminal)=>{%>
-                    <%if(criminal.status==="Wanted"){%>
-                        <% wanted.push(criminal) %>
-                            <%}%>
-                                <%if(criminal.status==="Arrested"){%>
-                                    <% arrested.push(criminal) %>
-                                        <%}%>
-                                            <%if(criminal.status==="Ontrail"){%>
-                                                <% ontrail.push(criminal) %>
-                                                    <%}%>
-                                                        <%= console.log(wanted) %>
-                                                            <% }); %>
+    <% criminalsList.forEach((criminal)=>{%>
+        <%if(criminal.status==="Wanted"){%>
+            <% wanted.push(criminal) %>
+        <%}%>
+        <%if(criminal.status==="Arrested"){%>
+            <% arrested.push(criminal) %>
+        <%}%>
+        <%if(criminal.status==="Ontrail"){%>
+            <% ontrail.push(criminal) %>
+        <%}%>
+    <% }); %>
 
-                                                                <div id="wanted"><img src="images/wanted.png" alt=""></div>
-                                                                <div class="criminals">
-                                                                    <% wanted.forEach((criminal)=>{%>
-                                                                        <div class="criminal <%=criminal.dangerlevel%> c1">
-                                                                            <img src="data:image/<%=criminal.img.contentType%>;base64,
-                 <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
-                                                                            <div class="details">
-                                                                                <h3>Name:
-                                                                                    <%=criminal.name%>
-                                                                                </h3>
-                                                                                <p>Crime committed:
-                                                                                    <%=criminal.crimename%>
-                                                                                </p>
-                                                                                <p>Last seen:
-                                                                                    <%=criminal.lastseen%>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <% }); %>
+    <div id="wanted"><img src="images/wanted.png" alt=""></div>
+    <div class="criminals">
+        <% wanted.forEach((criminal)=>{%>
+            <div class="criminal <%=criminal.dangerlevel%> c1">
+                <img src="data:image/<%=criminal.img.contentType%>;base64,
+                <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
+                <div class="details">
+                    <h3>Name:
+                        <%=criminal.name%>
+                    </h3>
+                    <p>Crime committed:
+                        <%=criminal.crimename%>
+                    </p>
+                    <p>Last seen:
+                        <%=criminal.lastseen%>
+                    </p>
+            </div>
+    </div>
+            <% }); %>
 
 
 

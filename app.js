@@ -95,7 +95,7 @@ const policeDetails = {
   address: {
     type: String,
   },
-  phoneNo: {
+  phone: {
     type: String,
     required: true,
   },
@@ -212,20 +212,45 @@ app.get("/logout", function (req, res) {
   }
 });
 
+// faq page routes
+app.get('/faq', function(req, res){
+  return res.render('faq');
+});
+
 // gallery page
-app.get("/gallery", function (req, res) {
+app.get("/gallery",async function (req, res) {
+  let events1 = await Events.find({});
+  app.locals.policeEvents = events1;
   return res.render("Gallery");
 });
 
 // contact us page
-app.get("/contactus", function (req, res) {
-  return res.render("Contact-us");
+app.get("/contactus",async function (req, res) {
+  let policeDetails1 = await PoliceDetails.find({});
+  return res.render("Contact-us",{
+    policedet: policeDetails1
+  });
 });
 
 // contact-us police side
-app.get("/pcontactus", function (req, res) {
-  return res.render("contactus_police");
+app.get("/pcontactus",async function (req, res) {
+  let policeDetails1 = await PoliceDetails.find({});
+  return res.render("contactus_police",{
+    policedet: policeDetails1
+  });
 });
+
+// contactus adding
+app.post('/contactus/add',function (req, res) {
+  PoliceDetails.create(req.body);
+  return res.redirect('back');
+});
+
+app.get('/contactus/delete/:stationId',async function (req, res) {
+  let station = await PoliceDetails.findById(req.params.stationId);
+  station.remove();
+  return res.redirect('back');
+})
 
 // police side gallery page
 app.get("/gallerypolice", async function (req, res) {
