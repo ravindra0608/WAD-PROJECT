@@ -20,8 +20,8 @@ const cancel = document.getElementById("cancel");
 const close = document.getElementById("close");
 const popupContent = document.getElementById("popup-content");
 
-addAnnouncement();
-removeAnnouncement();
+// addAnnouncement();
+// removeAnnouncement();
 editAnnouncement();
 
 function addAnnouncement() {
@@ -106,6 +106,7 @@ function editAnnouncement() {
 
       add.addEventListener("click", function () {
         // if (document.getElementById("announcement-box").value != "") {
+        console.log(element.target);
         element.target.parentNode.remove();
         // }
         document.querySelector(".post-announcement h1").innerHTML =
