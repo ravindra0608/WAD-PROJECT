@@ -21,109 +21,111 @@ app.use(express.static("public"));
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 mongoose.connect("mongodb://localhost:27017/announcementsDB", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const announcementSchema = {
-    content: String,
+  content: String,
 };
 
 const criminalSchema = {
-    name: String,
-    crimename: String,
-    lastseen: String,
-    dangerlevel: String,
-    status: String,
-    img: {
-        data: Buffer,
-        contentType: String,
-    },
+  name: String,
+  crimename: String,
+  lastseen: String,
+  dangerlevel: String,
+  status: String,
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
 };
 // user fir schema
 const firSchema = {
-    fullname: String,
-    fatherorhusbandname: String,
-    address: String,
-    contactnumber: String,
-    email: String,
-    date: Date,
-    stationame: String,
-    district: String,
-    state: String,
-    subject: String,
-    complaint: String,
-    img: {
-        data: Buffer,
-        contentType: String,
-    },
+  fullname: String,
+  fatherorhusbandname: String,
+  address: String,
+  contactnumber: String,
+  email: String,
+  date: Date,
+  stationame: String,
+  district: String,
+  state: String,
+  subject: String,
+  complaint: String,
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
 };
 
 const eventsSchema = {
-    name: {
-        type: String,
-        required: true,
+  name: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  tile: {
+    type: String,
+  },
+  images: [
+    {
+      type: String,
     },
-    date: {
-        type: String,
-        required: true,
-    },
-    tile: {
-        type: String,
-    },
-    images: [{
-        type: String,
-    }, ],
+  ],
 };
 
 const faqSchema = {
-    question: {
-        type: String,
-        required: true,
-    },
-    answer: {
-        type: String,
-    },
+  question: {
+    type: String,
+    required: true,
+  },
+  answer: {
+    type: String,
+  },
 };
 
 const policeDetails = {
-    area: {
-        type: String,
-        required: true,
-    },
-    station: {
-        type: String,
-        required: true,
-    },
-    address: {
-        type: String,
-    },
-    phoneNo: {
-        type: String,
-        required: true,
-    },
+  area: {
+    type: String,
+    required: true,
+  },
+  station: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+  },
+  phoneNo: {
+    type: String,
+    required: true,
+  },
 };
 
 // user data schema
 const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads");
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + "-" + Date.now());
-    },
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
 });
 
 var upload = multer({ storage: storage });
@@ -150,165 +152,165 @@ const User = new mongoose.model("User", userSchema);
 var isLoggedIn = false;
 
 // routes for login and register pages
-app.get("/login", function(req, res) {
-    res.render("login");
+app.get("/login", function (req, res) {
+  res.render("login");
 });
 
-app.get("/register", function(req, res) {
-    res.render("register");
+app.get("/register", function (req, res) {
+  res.render("register");
 });
 
 //Catching the post request form register page to add data to mongoDB
-app.post("/register", function(req, res) {
-    if (isLoggedIn) {
-        return res.redirect("/phome");
-    }
-    const newUser = new User({
-        email: req.body.username,
-        password: req.body.password,
-    });
+app.post("/register", function (req, res) {
+  if (isLoggedIn) {
+    return res.redirect("/phome");
+  }
+  const newUser = new User({
+    email: req.body.username,
+    password: req.body.password,
+  });
 
-    newUser.save(function(err) {
-        if (err) {
-            console.log(err);
-            res.redirect("/register");
-        } else {
-            res.redirect("/login");
-        }
-    });
+  newUser.save(function (err) {
+    if (err) {
+      console.log(err);
+      res.redirect("/register");
+    } else {
+      res.redirect("/login");
+    }
+  });
 });
 
 //Catching the post request from Login page to check the authorisation
-app.post("/login", function(req, res) {
-    const username = req.body.username;
-    const password = req.body.password;
-    if (isLoggedIn) {
-        return res.redirect("/phome");
-    }
-    //For the given email, checking if the password is correct
-    User.findOne({ email: username }, function(err, foundUser) {
-        if (err) {
-            console.log(err);
-            res.redirect("/login");
+app.post("/login", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
+  if (isLoggedIn) {
+    return res.redirect("/phome");
+  }
+  //For the given email, checking if the password is correct
+  User.findOne({ email: username }, function (err, foundUser) {
+    if (err) {
+      console.log(err);
+      res.redirect("/login");
+    } else {
+      if (foundUser) {
+        if (foundUser.password === password) {
+          isLoggedIn = true;
+          res.redirect("/phome");
         } else {
-            if (foundUser) {
-                if (foundUser.password === password) {
-                    isLoggedIn = true;
-                    res.redirect("/phome");
-                } else {
-                    isLoggedIn = false;
-                    res.redirect("/login");
-                }
-            } else {
-                res.redirect("/login");
-            }
+          isLoggedIn = false;
+          res.redirect("/login");
         }
-    });
+      } else {
+        res.redirect("/login");
+      }
+    }
+  });
 });
 
 // logout route
-app.get("/logout", function(req, res) {
-    if (isLoggedIn) {
-        isLoggedIn = false;
-        return res.redirect("/login");
-    } else {
-        return res.redirect("/login");
-    }
+app.get("/logout", function (req, res) {
+  if (isLoggedIn) {
+    isLoggedIn = false;
+    return res.redirect("/login");
+  } else {
+    return res.redirect("/login");
+  }
 });
 
 // gallery page
-app.get("/gallery", function(req, res) {
-    return res.render("Gallery");
+app.get("/gallery", function (req, res) {
+  return res.render("Gallery");
 });
 
 // contact us page
-app.get("/contactus", function(req, res) {
-    return res.render("Contact-us");
+app.get("/contactus", function (req, res) {
+  return res.render("Contact-us");
 });
 
 // contact-us police side
-app.get("/pcontactus", function(req, res) {
-    return res.render("contactus_police");
+app.get("/pcontactus", function (req, res) {
+  return res.render("contactus_police");
 });
 
 // police side gallery page
-app.get("/gallerypolice", async function(req, res) {
-    let events1 = await Events.find({});
-    app.locals.policeEvents = events1;
-    if (!isLoggedIn) {
-        return res.redirect("/login");
-    }
-    return res.render("gallery_police");
+app.get("/gallerypolice", async function (req, res) {
+  let events1 = await Events.find({});
+  app.locals.policeEvents = events1;
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  }
+  return res.render("gallery_police");
 });
 
 // adding an event to the database
 app.post(
-    "/gallerypolice/add-event",
-    upload.single("tile"),
-    async function(req, res) {
-        // console.log(req.body);
-        // console.log(__dirname);
-        let date1 = (req.body.date + "").slice(0, 15);
-        let event = await Events.findOne({
-            name: req.body.name,
-            date: req.body.date,
+  "/gallerypolice/add-event",
+  upload.single("tile"),
+  async function (req, res) {
+    // console.log(req.body);
+    // console.log(__dirname);
+    let date1 = (req.body.date + "").slice(0, 15);
+    let event = await Events.findOne({
+      name: req.body.name,
+      date: req.body.date,
+    });
+    if (!event) {
+      if (req.file) {
+        Events.create({
+          name: req.body.name,
+          date: date1,
+          tile: "\\" + "uploads" + "\\" + req.file.filename,
         });
-        if (!event) {
-            if (req.file) {
-                Events.create({
-                    name: req.body.name,
-                    date: date1,
-                    tile: "\\" + "uploads" + "\\" + req.file.filename,
-                });
-            } else {
-                Events.create({
-                    name: req.body.name,
-                    date: req.body.date,
-                });
-            }
-        } else {
-            console.log("you cannot created an event");
-        }
-        return res.redirect("back");
+      } else {
+        Events.create({
+          name: req.body.name,
+          date: req.body.date,
+        });
+      }
+    } else {
+      console.log("you cannot created an event");
     }
+    return res.redirect("back");
+  }
 );
 
 // deleting the event
-app.get("/gallery/event/delete/", async function(req, res) {
-    try {
-        let eventToBeDeleted = await Events.findById(req.query.imageId);
-        if (eventToBeDeleted) {
-            if (eventToBeDeleted.tile) {
-                fs.unlinkSync(__dirname + eventToBeDeleted.tile);
-            }
-            eventToBeDeleted.remove();
-        }
-        return res.redirect("back");
-    } catch (error) {
-        console.log(error);
-        return res.redirect("back");
+app.get("/gallery/event/delete/", async function (req, res) {
+  try {
+    let eventToBeDeleted = await Events.findById(req.query.imageId);
+    if (eventToBeDeleted) {
+      if (eventToBeDeleted.tile) {
+        fs.unlinkSync(__dirname + eventToBeDeleted.tile);
+      }
+      eventToBeDeleted.remove();
     }
+    return res.redirect("back");
+  } catch (error) {
+    console.log(error);
+    return res.redirect("back");
+  }
 });
 
-app.get("/phome", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
-    }
-    return res.render("home_police");
+app.get("/phome", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  }
+  return res.render("home_police");
 });
 
 // Post announcements
-app.get("/", function(req, res) {
-    Announcement.find({}, function(err, existingAnnouncements) {
-        // Announcement.insertMany(announcements, function (err, results) {
-        //   if (!err) {
-        //     console.log(results);
-        //   } else {
-        //     console.log(err);
-        //   }
-        // });
-        res.render("index", { announcements: existingAnnouncements });
-    });
+app.get("/", function (req, res) {
+  Announcement.find({}, function (err, existingAnnouncements) {
+    // Announcement.insertMany(announcements, function (err, results) {
+    //   if (!err) {
+    //     console.log(results);
+    //   } else {
+    //     console.log(err);
+    //   }
+    // });
+    res.render("index", { announcements: existingAnnouncements });
+  });
 });
 
 // app.get("/index.html", function (req, res) {
@@ -324,185 +326,186 @@ app.get("/", function(req, res) {
 //   });
 // });
 
-app.get("/postannouncements", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
-    }
-    Announcement.find({}, function(err, existingAnnouncements) {
-        // Announcement.insertMany(announcements, function (err, results) {
-        //   if (!err) {
-        //     console.log(results);
-        //   } else {
-        //     console.log(err);
-        //   }
-        // });
-        res.render("postannouncements", { announcements: existingAnnouncements });
-    });
+app.get("/postannouncements", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  }
+  Announcement.find({}, function (err, existingAnnouncements) {
+    // Announcement.insertMany(announcements, function (err, results) {
+    //   if (!err) {
+    //     console.log(results);
+    //   } else {
+    //     console.log(err);
+    //   }
+    // });
+    res.render("postannouncements", { announcements: existingAnnouncements });
+  });
 });
 
-app.post("/postannouncements", function(req, res) {
-    const announcement = req.body.newannouncement;
+app.post("/postannouncements", function (req, res) {
+  const announcement = req.body.newannouncement;
 
-    const newAnnouncement = new Announcement({
-        content: announcement,
-    });
+  const newAnnouncement = new Announcement({
+    content: announcement,
+  });
 
-    newAnnouncement.save(function() {
-        res.redirect("/postannouncements");
-    });
-});
-
-app.post("/delete", function(req, res) {
-    const announcementId = req.body.announcementtodelete;
-
-    Announcement.findByIdAndRemove(announcementId, function(err) {
-        if (!err) {
-            console.log("Successfully deleted");
-        }
-    });
+  newAnnouncement.save(function () {
     res.redirect("/postannouncements");
+  });
+});
+
+app.post("/delete", function (req, res) {
+  const announcementId = req.body.announcementtodelete;
+
+  Announcement.findByIdAndRemove(announcementId, function (err) {
+    if (!err) {
+      console.log("Successfully deleted");
+    }
+  });
+  res.redirect("/postannouncements");
 });
 
 //Criminals list
-app.get("/criminalslist", function(req, res) {
-    Criminal.find({}, function(err, criminalsList) {
-        res.render("criminalslist", { criminalsList: criminalsList });
-    });
+app.get("/criminalslist", function (req, res) {
+  Criminal.find({}, function (err, criminalsList) {
+    res.render("criminalslist", { criminalsList: criminalsList });
+  });
 });
 
-app.get("/postcriminalslist", function(req, res) {
-    Criminal.find({}, function(err, criminalsList) {
-        res.render("postcriminalslist", { criminalsList: criminalsList });
-    });
+app.get("/postcriminalslist", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  }
+  Criminal.find({}, function (err, criminalsList) {
+    res.render("postcriminalslist", { criminalsList: criminalsList });
+  });
 });
 
-app.post("/postcriminalslist", upload.single("image"), function(req, res) {
-    const newCriminal = {
-        name: req.body.name,
-        crimename: req.body.crimename,
-        lastseen: req.body.lastseen,
-        dangerlevel: req.body.dangerlevel,
-        status: req.body.status,
-        img: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.evidence)
-            ),
-            contentType: "image/png",
-        },
-    };
+app.post("/postcriminalslist", upload.single("image"), function (req, res) {
+  const newCriminal = {
+    name: req.body.name,
+    crimename: req.body.crimename,
+    lastseen: req.body.lastseen,
+    dangerlevel: req.body.dangerlevel,
+    status: req.body.status,
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname + "/uploads/" + req.file.evidence)
+      ),
+      contentType: "image/png",
+    },
+  };
 
-    Criminal.create(newCriminal, (err, item) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect("/postcriminalslist");
-        }
-    });
+  Criminal.create(newCriminal, (err, item) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/postcriminalslist");
+    }
+  });
 });
 
-app.post("/deletecriminal", function(req, res) {
-    const criminalId = req.body.criminalid;
+app.post("/deletecriminal", function (req, res) {
+  const criminalId = req.body.criminalid;
 
-    Criminal.findByIdAndRemove(criminalId, function(err) {
-        if (!err) {
-            console.log("Successfully Deleted the criminal from the list");
-        } else {
-            console.log(err);
-        }
-    });
-    res.redirect("/postcriminalslist");
+  Criminal.findByIdAndRemove(criminalId, function (err) {
+    if (!err) {
+      console.log("Successfully Deleted the criminal from the list");
+    } else {
+      console.log(err);
+    }
+  });
+  res.redirect("/postcriminalslist");
 });
 
-app.get("/firpage", function(req, res) {
-    res.render("firpage");
+app.get("/firpage", function (req, res) {
+  res.render("firpage");
 });
 // fir form for Accident
 
-app.get("/accidentform", function(req, res) {
-    res.render("accidentform");
+app.get("/accidentform", function (req, res) {
+  res.render("accidentform");
 });
 
 // fir form for Kidnap
 
-app.get("/kidnapform", function(req, res) {
-    res.render("kidnapform");
+app.get("/kidnapform", function (req, res) {
+  res.render("kidnapform");
 });
 
 // fir form for Land Possession
 
-app.get("/landpossessionform", function(req, res) {
-    res.render("landpossessionform");
+app.get("/landpossessionform", function (req, res) {
+  res.render("landpossessionform");
 });
 
 // fir form for Murder
 
-app.get("/murderform", function(req, res) {
-    res.render("murderform");
+app.get("/murderform", function (req, res) {
+  res.render("murderform");
 });
 
 // fir form for Robbery
 
-app.get("/robberyform", function(req, res) {
-    res.render("robberyform");
+app.get("/robberyform", function (req, res) {
+  res.render("robberyform");
 });
 
 // fir form for Accident
 
-app.get("/sexualviolenceform", function(req, res) {
-    res.render("sexualviolenceform");
+app.get("/sexualviolenceform", function (req, res) {
+  res.render("sexualviolenceform");
 });
 
 // fir form for Accident
 
-app.get("/threateningform", function(req, res) {
-    res.render("threateningform");
+app.get("/threateningform", function (req, res) {
+  res.render("threateningform");
 });
 
 // fir form for Others category
-app.get("/firform", function(req, res) {
-    res.render("firform");
+app.get("/firform", function (req, res) {
+  res.render("firform");
 });
 
-app.get("/viewfir", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
-    } else {
-        Fir.find({}, function(err, foundItems) {
-            if (!err) {
-                res.render("viewfir", { firs: foundItems });
-            } else {
-                console.log(err);
-            }
-        });
-    }
-});
-
-app.post("/viewfir", function(req, res) {
-    const newFir = new Fir({
-        fullname: req.body.fullname,
-        fatherorhusbandname: req.body.fatherorhusbandname,
-        address: req.body.contactaddress,
-        contactnumber: req.body.contactnumber,
-        email: req.body.email,
-        date: req.body.date,
-        stationame: req.body.stationname,
-        district: req.body.district,
-        subject: req.body.subject,
-        complaint: req.body.complaint,
-        evidence: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-        },
+app.get("/viewfir", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfir", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
     });
-
-    newFir.save();
-    res.redirect("/firpage");
+  }
 });
-app.post("/display", function(req, res) {
 
+app.post("/viewfir", function (req, res) {
+  const newFir = new Fir({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.email,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+    evidence: {
+      data: fs.readFileSync(
+        path.join(__dirname + "/uploads/" + req.file.filename)
+      ),
+      contentType: "image/png",
+    },
+  });
+
+  newFir.save();
+  res.redirect("/firpage");
 });
-app.listen(3000, function() {
-    console.log("Server has started at port 3000");
+app.post("/display", function (req, res) {});
+app.listen(3000, function () {
+  console.log("Server has started at port 3000");
 });
