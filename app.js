@@ -39,6 +39,7 @@ const criminalSchema = {
   img: {
     data: Buffer,
     contentType: String,
+    fname: String,
   },
 };
 // user fir schema
@@ -404,9 +405,10 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
     status: req.body.status,
     img: {
       data: fs.readFileSync(
-        path.join(__dirname + "/uploads/" + req.file.evidence)
+        path.join(__dirname + "/uploads/" + req.file.filename)
       ),
       contentType: "image/png",
+      fname: "\\" + "uploads" + "\\" + req.file.filename,
     },
   };
 
@@ -422,8 +424,9 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
 app.post("/deletecriminal", function (req, res) {
   const criminalId = req.body.criminalid;
 
-  Criminal.findByIdAndRemove(criminalId, function (err) {
+  Criminal.findByIdAndRemove(criminalId, function (err, foundCriminal) {
     if (!err) {
+      fs.unlinkSync(__dirname + foundCriminal.img.fname);
       console.log("Successfully Deleted the criminal from the list");
     } else {
       console.log(err);
@@ -597,4 +600,8 @@ app.post("/viewfir/priority3", function (req, res) {
 
   newFir3.save();
   res.redirect("../display");
+});
+
+app.listen(3000, function () {
+  console.log("Server is running on port 3000");
 });
