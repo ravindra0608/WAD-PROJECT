@@ -9,6 +9,7 @@ const { response } = require("express");
 const encrypt = require("mongoose-encryption");
 const { time } = require("console");
 const bodyParser = require("body-parser");
+const expressLayouts = require("express-ejs-layouts");
 
 const app = express();
 app.use(express.json());
@@ -425,7 +426,7 @@ app.get("/postcriminalslist", function (req, res) {
 });
 
 app.post("/postcriminalslist", upload.single("image"), function (req, res) {
-  const newCriminal = {
+  const newCriminal = new Criminal({
     name: req.body.name,
     crimename: req.body.crimename,
     lastseen: req.body.lastseen,
@@ -438,10 +439,16 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
       contentType: "image/png",
       fname: "\\" + "uploads" + "\\" + req.file.filename,
     },
-  };
+  });
+
+  newCriminal.save(function () {
+    res.redirect("/postannouncements");
+  });
 });
 
 app.post("/deletecriminal", function (req, res) {
+  const criminalId = req.body.criminalid;
+
   Criminal.findByIdAndRemove(criminalId, function (err, foundCriminal) {
     if (!err) {
       fs.unlinkSync(__dirname + foundCriminal.img.fname);
