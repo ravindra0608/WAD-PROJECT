@@ -369,6 +369,14 @@ button {
     display: block;
 }
 
+.default>h2 {
+    text-align: center;
+}
+
+.complaint {
+    font-size: 18px;
+}
+
 .priority1 {
     display: none;
 }

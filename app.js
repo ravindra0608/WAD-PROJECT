@@ -8,12 +8,12 @@ const { strict } = require("assert");
 const { response } = require("express");
 const encrypt = require("mongoose-encryption");
 const { time } = require("console");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
 
@@ -46,9 +46,10 @@ const firSchema = {
   fullname: String,
   fatherorhusbandname: String,
   address: String,
-  contactnumber: String,
-  email: String,
+  contactnumber: Number,
+  emailid: String,
   date: Date,
+  time: String,
   stationame: String,
   district: String,
   state: String,
@@ -140,12 +141,25 @@ const Criminal = mongoose.model("Criminal", criminalSchema);
 
 const Fir = mongoose.model("Fir", firSchema);
 
+const Fir1 = mongoose.model("Fir1", firSchema);
+const Fir2 = mongoose.model("Fir2", firSchema);
+const Fir3 = mongoose.model("Fir3", firSchema);
+
 const Events = mongoose.model("events", eventsSchema);
 
 const Faqs = mongoose.model("faqs", faqSchema);
 
 const PoliceDetails = mongoose.model("police details", policeDetails);
 
+const forms = new Fir({
+  firs: [
+    {
+      firs1: Fir1,
+      firs2: Fir2,
+      firs3: Fir3,
+    },
+  ],
+});
 //Creating a model of this schema
 const User = new mongoose.model("User", userSchema);
 
@@ -467,12 +481,15 @@ app.get("/threateningform", function (req, res) {
 app.get("/firform", function (req, res) {
   res.render("firform");
 });
-
+app.get("/display", function (req, res) {
+  res.render("display");
+});
+// view fir
 app.get("/viewfir", function (req, res) {
   if (!isLoggedIn) {
     return res.redirect("/login");
   } else {
-    Fir.find({}, function (err, foundItems) {
+    Fir1.find({}, function (err, foundItems) {
       if (!err) {
         res.render("viewfir", { firs: foundItems });
       } else {
@@ -480,6 +497,65 @@ app.get("/viewfir", function (req, res) {
       }
     });
   }
+});
+
+app.get("/viewfirp2", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir2.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfirp2", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
+app.get("/viewfirp3", function (req, res) {
+  if (!isLoggedIn) {
+    return res.redirect("/login");
+  } else {
+    Fir3.find({}, function (err, foundItems) {
+      if (!err) {
+        res.render("viewfirp3", { firs: foundItems });
+      } else {
+        console.log(err);
+      }
+    });
+  }
+});
+
+app.post("/viewfir/priority1", function (req, res) {
+  const newFir1 = new Fir1({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.emailid,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+  });
+
+  newFir1.save();
+  res.redirect("../display");
+});
+app.post("/viewfir/priority2", function (req, res) {
+  const newFir2 = new Fir2({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.emailid,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+  });
 });
 
 app.post("/viewfir", function (req, res) {
@@ -502,10 +578,23 @@ app.post("/viewfir", function (req, res) {
     },
   });
 
-  newFir.save();
-  res.redirect("/firpage");
+  newFir2.save();
+  res.redirect("../display");
 });
-app.post("/display", function (req, res) {});
-app.listen(3000, function () {
-  console.log("Server has started at port 3000");
+app.post("/viewfir/priority3", function (req, res) {
+  const newFir3 = new Fir3({
+    fullname: req.body.fullname,
+    fatherorhusbandname: req.body.fatherorhusbandname,
+    address: req.body.contactaddress,
+    contactnumber: req.body.contactnumber,
+    email: req.body.emailid,
+    date: req.body.date,
+    stationame: req.body.stationname,
+    district: req.body.district,
+    subject: req.body.subject,
+    complaint: req.body.complaint,
+  });
+
+  newFir3.save();
+  res.redirect("../display");
 });
