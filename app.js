@@ -539,7 +539,7 @@ app.get("/viewfirp3", function(req, res) {
 });
 
 app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
-    var temp = req.file;
+
     const newFir1 = new Fir1({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -561,14 +561,9 @@ app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
             fname: "\\" + "uploads" + "\\" + req.file.filename,
         },
     });
-    console.log(req.file.filename);
-    Fir1.create(newFir1, (err, item) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect("../display");
-        }
-    });
+    console.log(newFir1.image.data);
+    newFir1.save();
+    res.redirect('../display');
 });
 app.post("/viewfir/priority2", upload.single("image"), function(req, res) {
     const newFir2 = new Fir2({
