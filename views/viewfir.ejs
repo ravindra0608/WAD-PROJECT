@@ -59,13 +59,13 @@
                     <div id="myModal" class="modal">
 
                         <!-- Modal content -->
-                        <div class="modal-content" id="fir">
+                        <div class="modal-content fir">
                             <span class="close">&times;</span>
                             <div class="formandevidence">
-                                <strong> F.I.R Form</strong>
-                                <strong id="evidence"> Evidence</strong>
+                                <strong class="evidence"> Evidence</strong>
                             </div>
                             <p>
+                                <img id="logo_pdf" src="images/ap-police-emblem.jfif">
                                 <pre class="complaint">
                                 From,
 
@@ -73,33 +73,32 @@
                                 Guardian Name: <%=fir.fatherorhusbandname %>,
                                 Contact Address: <%=fir.address %>,
                                 Contact Number: <%=fir.contactnumber %>,
-                                email: <%=fir.emailid %>,
+                                email: <%=fir.emailid %>.
                                 
-                                
-                                Date: <%=fir.date %>.
+                                Date of the Incident: <%=fir.date %>.
+                                Time of the Incident: <%= fir.time %>. 
                                 
                                 To,
                                 Station Name:<%= fir.stationname%>,
                                 District :<%= fir.district%>,
                                 State :<%= fir.state%>.
             
-                                Subject: <%=fir.subject %>,
+                                Subject: <%=fir.subject %>
                                 
-                                Respected sir,
+                                Respected sir/madam,
 
-                                        <%=fir.complaint %>,
+                                        <%=fir.complaint %>
                             </pre>
                             </p>
                         </div>
-                        <div class="modal-content" id="evid">
+                        <div class="modal-content evid">
                             <div class="formandevidence">
                                 <span class="close">&times;</span>
-                                <strong id="firform"> F.I.R Form</strong>
-                                <strong> Evidence</strong>
+                                <strong class="firform"> F.I.R Form</strong>
                             </div>
-                            <object width="100%" height="100%" data="./accident_evidence.mp4">
-                            <p>Oops! Your browser doesn't support this!</p>
-                            <p></p>
+                            <p>
+                                <img id="proof" src="<%= fir.image.fname %> ">
+                            </p>
                             </object>
                         </div>
                     </div>
@@ -117,6 +116,10 @@
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close");
+        var a = document.getElementsByClassName('firform');
+        var b = document.getElementsByClassName('evidence');
+        var c = document.getElementsByClassName('fir');
+        var d = document.getElementsByClassName('evid');
 
         // When the user clicks the button, open the modal 
         let k = 0;
@@ -126,7 +129,7 @@
                 }
                 // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-                    if (event.target == modal) {
+                    if (event.target == modal[i]) {
                         modal[i].style.display = "none";
                     }
                 }
@@ -138,19 +141,14 @@
             span[k++].onclick = function() {
                 modal[i].style.display = "none";
             }
-        }
-
-
-
-        var x = document.getElementById('firform');
-        x.onclick = function() {
-            fir.style.display = 'block';
-            evid.style.display = 'none';
-        }
-        var y = document.getElementById('evidence');
-        y.onclick = function() {
-            fir.style.display = 'none';
-            evid.style.display = 'block';
+            a[i].onclick = function() {
+                c[i].style.display = 'block';
+                d[i].style.display = 'none';
+            }
+            b[i].onclick = function() {
+                c[i].style.display = 'none';
+                d[i].style.display = 'block';
+            }
         }
     </script><br>
     <footer>
