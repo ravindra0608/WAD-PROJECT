@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="css/contactus-style.css">
+    <title>Contact Us</title> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/contactus_police.css">
     
 </head>
 <body>
@@ -44,7 +45,7 @@
     		</div>
     	</aside>
         <section id="main">
-            <form action="gallerypolice/add-event" method="post" enctype="multipart/form-data">
+            <form class="form" action="gallerypolice/add-event" method="post" enctype="multipart/form-data">
                 <table>
                     <h1>
                         Add Images
@@ -75,13 +76,13 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button type="submit">Add Event</button>
+                            <button type="submit" class="btn btn-primary">Add Event</button>
                         </td>
                     </tr>
                 </table>
                 
             </form>
-            <table border>
+            <table class="table table-striped">
                 <h1>Event Images</h1>
                 <% if(!policeEvents.length){ %>
                     <h2>No recent Images</h2>
