@@ -55,9 +55,10 @@ const firSchema = new mongoose.Schema({
     state: String,
     subject: String,
     complaint: String,
-    img: {
+    image: {
         data: Buffer,
         contentType: String,
+        fname: String,
     },
 }, { timestamps: true });
 
@@ -137,8 +138,6 @@ const Announcement = mongoose.model("Announcement", announcementSchema);
 
 const Criminal = mongoose.model("Criminal", criminalSchema);
 
-const Fir = mongoose.model("Fir", firSchema);
-
 const Fir1 = mongoose.model("Fir1", firSchema);
 const Fir2 = mongoose.model("Fir2", firSchema);
 const Fir3 = mongoose.model("Fir3", firSchema);
@@ -149,13 +148,7 @@ const Faqs = mongoose.model("faqs", faqSchema);
 
 const PoliceDetails = mongoose.model("police details", policeDetails);
 
-const forms = new Fir({
-    firs: [{
-        firs1: Fir1,
-        firs2: Fir2,
-        firs3: Fir3,
-    }, ],
-});
+
 //Creating a model of this schema
 const User = new mongoose.model("User", userSchema);
 
@@ -545,7 +538,8 @@ app.get("/viewfirp3", function(req, res) {
     }
 });
 
-app.post("/viewfir/priority1", function(req, res) {
+app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
+    var temp = req.file;
     const newFir1 = new Fir1({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -553,17 +547,30 @@ app.post("/viewfir/priority1", function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
+        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint
+        complaint: req.body.complaint,
+        image: {
+            data: fs.readFileSync(
+                path.join(__dirname + "/uploads/" + req.file.filename)
+            ),
+            contentType: "image/png",
+            fname: "\\" + "uploads" + "\\" + req.file.filename,
+        },
     });
-
-    newFir1.save();
-    res.redirect('../display');
+    console.log(req.file.filename);
+    Fir1.create(newFir1, (err, item) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("../display");
+        }
+    });
 });
-app.post("/viewfir/priority2", function(req, res) {
+app.post("/viewfir/priority2", upload.single("image"), function(req, res) {
     const newFir2 = new Fir2({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -571,18 +578,26 @@ app.post("/viewfir/priority2", function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
+        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint
+        complaint: req.body.complaint,
+        image: {
+            data: fs.readFileSync(
+                path.join(__dirname + "/uploads/" + req.file.filename)
+            ),
+            contentType: "image/png",
+            fname: "\\" + "uploads" + "\\" + req.file.filename,
+        },
     });
 
 
     newFir2.save();
     res.redirect('../display');
 });
-app.post("/viewfir/priority3", function(req, res) {
+app.post("/viewfir/priority3", upload.single("image"), function(req, res) {
     const newFir3 = new Fir3({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -590,11 +605,19 @@ app.post("/viewfir/priority3", function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
+        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint
+        complaint: req.body.complaint,
+        image: {
+            data: fs.readFileSync(
+                path.join(__dirname + "/uploads/" + req.file.filename)
+            ),
+            contentType: "image/png",
+            fname: "\\" + "uploads" + "\\" + req.file.filename,
+        },
     });
 
     newFir3.save();

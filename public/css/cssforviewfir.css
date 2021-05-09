@@ -513,7 +513,7 @@ a:hover img[class="initial"] {
     border: 1px solid #888;
     width: 90%;
     height: 700px;
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: fixed;
     top: 7%;
     left: 5%;
@@ -532,12 +532,35 @@ a:hover img[class="initial"] {
     text-shadow: black;
 }
 
-#fir {
+.fir {
     display: block;
 }
 
-#evid {
+.evid {
     display: none;
+}
+
+#proof {
+    height: 600px;
+    width: 600px;
+    position: relative;
+    left: 8cm;
+    top: 1cm;
+}
+
+#logo_pdf {
+    position: relative;
+    left: 8cm;
+    width: 500px;
+    height: 200px;
+}
+
+.firform:hover {
+    cursor: pointer;
+}
+
+.evidence {
+    cursor: pointer;
 }
 
 
