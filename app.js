@@ -442,7 +442,7 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
   });
 
   newCriminal.save(function () {
-    res.redirect("/postannouncements");
+    res.redirect("/postcriminalslist");
   });
 });
 
