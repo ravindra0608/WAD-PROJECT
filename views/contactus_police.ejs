@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="css/contactus_police.css">
     
 </head>
@@ -52,11 +53,11 @@
                     </tr>
                     <tr>
                         <td><label for="police-area">Area:</label></td>
-                        <td><input type="text" name="area" id="police-area"></td>
+                        <td><input type="text" name="area" id="police-area" required></td>
                     </tr>
                     <tr>
                         <td><label for="police-station">Station:</label></td>
-                        <td><input type="text" name="station" id="police-station"></td>
+                        <td><input type="text" name="station" id="police-station" required></td>
                     </tr>
                     <tr>
                         <td><label for="police-address">Address:</label></td>
@@ -64,14 +65,14 @@
                     </tr>
                     <tr>
                         <td><label for="police-phoneno">Phone No:</label></td>
-                        <td><input type="text" name="phone" id="police-phoneno"></td>
+                        <td><input type="text" name="phone" id="police-phoneno" required></td>
                     </tr>
                     <tr>
                         <td colspan="2"><button   id="send-button">Submit</button></td>
                     </tr>
                 </table>
             </form>
-            <table border>
+            <table  class="table table-striped">
                 <tr>
                     <th>Area</th>
                     <th>station</th>
@@ -93,11 +94,32 @@
     
         </form>
 
-
+        
     </section>
 
     
+    <footer id="social">
+        <h3>Follow us on Social Media!</h3>
+        <div class="socicons">
+            <a href="https://www.facebook.com/ANDHRAPRADESHSTATEPOLICE/" target="_blank">
+                <img src="images/facebook black.svg" alt="" class="initial">
+                <img src="images/facebook.svg" alt="" class="hidden">
+            </a>
+            <a href="https://twitter.com/APPOLICE100/" target="_blank">
+                <img src="images/twitter-sign.svg" alt="" class="initial">
+                <img src="images/twitter.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.instagram.com/appolice.100/?igshid=ocwaariy0bvd&hl=en" target="_blank">
+                <img src="images/instagram black.svg" alt="" class="initial">
+                <img src="images/instagram.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.youtube.com/channel/UC7Iu-yyZ0Yyi3-JJ4RfzOYw/featured" target="_blank">
+                <img src="images/youtube black.svg" alt="" class="initial">
+                <img src="images/youtube.svg" alt="" class="hidden">
+            </a>
 
+        </div>
+    </footer>
     <script src="javascript/firscript.js"></script>
 </body>
 </html>

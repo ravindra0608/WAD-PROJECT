@@ -100,7 +100,7 @@ const policeDetails = {
     address: {
         type: String,
     },
-    phoneNo: {
+    phone: {
         type: String,
         required: true,
     },
@@ -424,7 +424,7 @@ app.post("/postcriminalslist", upload.single("image"), function(req, res) {
         status: req.body.status,
         img: {
             data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.evidence)
+                path.join(__dirname + "/uploads/" + req.file.filename)
             ),
             contentType: "image/png",
         },

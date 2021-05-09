@@ -236,7 +236,7 @@ nav {
 
 #contact-us{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
 }
 
 /* email section */
@@ -255,8 +255,8 @@ td{
 #email-section{
     padding: 3rem 3rem 3rem 3rem;
     background-color: #e8ebe9;
-    width: 50vw;
-    height: 75vh;
+    width: 70vw;
+    /* height: 75vh; */
 }
 #send-button{
     padding: 0.5rem;
@@ -276,8 +276,67 @@ h2{
 #query-table td{
     padding: 0.7rem;
 }
-input{
+/* input{
     width:120%;
+} */
+
+
+/* footer */
+
+footer {
+    clear: both;
+    background-color: #00203FFF;
+    color: antiquewhite;
+    padding: 50px 30px 30px;
+    text-align: center;
+}
+
+.socicons {
+    display: inline;
+}
+
+.socicons img {
+    height: 35px;
+    width: 35px;
+    margin: 15px;
+}
+
+.initial {
+    display: none;
+}
+
+a:hover img[class="hidden"] {
+    display: none;
+}
+
+a:hover img[class="initial"] {
+    display: inline;
 }
 
 
+/* @media screen and (max-width: ) {
+    #aside{
+        width: 0%;
+        display: none;
+    }
+} */
+
+@media screen and (max-width: 900px) {
+    #aside{
+        width: 0%;
+        display: none;
+    }
+    #email-section
+    {
+        width: 100vw;
+        padding-left: 2rem;
+    }
+    #main{
+        padding-left: 2rem;
+    }
+}
+@media screen and (min-width: 900px) {
+    #aside{
+        display: block;
+    }
+}
