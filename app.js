@@ -107,7 +107,7 @@ const policeDetails = {
   address: {
     type: String,
   },
-  phoneNo: {
+  phone: {
     type: String,
     required: true,
   },
@@ -412,7 +412,10 @@ app.post("/delete", function (req, res) {
 
 app.get("/criminalslist", function (req, res) {
   Criminal.find({}, function (err, criminalsList) {
-    res.render("criminalslist", { criminalsList: criminalsList });
+    res.render("criminalslist", {
+      criminalsList: criminalsList,
+      side: "police",
+    });
   });
 });
 
