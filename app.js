@@ -55,10 +55,10 @@ const firSchema = new mongoose.Schema({
     state: String,
     subject: String,
     complaint: String,
-    image: {
+    img: {
         data: Buffer,
         contentType: String,
-        fname: String,
+        fname: String
     },
 }, { timestamps: true });
 
@@ -138,6 +138,8 @@ const Announcement = mongoose.model("Announcement", announcementSchema);
 
 const Criminal = mongoose.model("Criminal", criminalSchema);
 
+const Fir = mongoose.model("Fir", firSchema);
+
 const Fir1 = mongoose.model("Fir1", firSchema);
 const Fir2 = mongoose.model("Fir2", firSchema);
 const Fir3 = mongoose.model("Fir3", firSchema);
@@ -148,7 +150,13 @@ const Faqs = mongoose.model("faqs", faqSchema);
 
 const PoliceDetails = mongoose.model("police details", policeDetails);
 
-
+const forms = new Fir({
+    firs: [{
+        firs1: Fir1,
+        firs2: Fir2,
+        firs3: Fir3,
+    }, ],
+});
 //Creating a model of this schema
 const User = new mongoose.model("User", userSchema);
 
@@ -539,7 +547,6 @@ app.get("/viewfirp3", function(req, res) {
 });
 
 app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
-
     const newFir1 = new Fir1({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -547,25 +554,15 @@ app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
-        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
     });
-    console.log(newFir1.image.data);
     newFir1.save();
     res.redirect('../display');
 });
-app.post("/viewfir/priority2", upload.single("image"), function(req, res) {
+app.post("/viewfir/priority2", function(req, res) {
     const newFir2 = new Fir2({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -573,26 +570,16 @@ app.post("/viewfir/priority2", upload.single("image"), function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
-        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
+        complaint: req.body.complaint
     });
-
-
     newFir2.save();
     res.redirect('../display');
 });
-app.post("/viewfir/priority3", upload.single("image"), function(req, res) {
+app.post("/viewfir/priority3", function(req, res) {
     const newFir3 = new Fir3({
         fullname: req.body.fullname,
         fatherorhusbandname: req.body.fatherorhusbandname,
@@ -600,21 +587,12 @@ app.post("/viewfir/priority3", upload.single("image"), function(req, res) {
         contactnumber: req.body.contactnumber,
         emailid: req.body.emailid,
         date: req.body.date,
-        time: req.body.time,
         stationname: req.body.stationname,
         district: req.body.district,
         state: req.body.state,
         subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
+        complaint: req.body.complaint
     });
-
     newFir3.save();
     res.redirect("../display");
 });

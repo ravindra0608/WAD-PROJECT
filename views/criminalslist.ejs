@@ -66,46 +66,46 @@
         <h1>Criminals List</h1>
     </div>
     <% let wanted=[]; %>
-        <% let arrested=[]; %>
-            <% let ontrail=[]; %>
+    <% let arrested=[]; %>
+    <% let ontrail=[]; %>
 
-                <% criminalsList.forEach((criminal)=>{%>
-                    <%if(criminal.status==="Wanted"){%>
-                        <% wanted.push(criminal) %>
-                            <%}%>
-                                <%if(criminal.status==="Arrested"){%>
-                                    <% arrested.push(criminal) %>
-                                        <%}%>
-                                            <%if(criminal.status==="Ontrail"){%>
-                                                <% ontrail.push(criminal) %>
-                                                    <%}%>
-                                                        <% }); %>
+    <% criminalsList.forEach((criminal)=>{%>
+        <%if(criminal.status==="Wanted"){%>
+            <% wanted.push(criminal) %>
+        <%}%>
+        <%if(criminal.status==="Arrested"){%>
+            <% arrested.push(criminal) %>
+        <%}%>
+        <%if(criminal.status==="Ontrail"){%>
+            <% ontrail.push(criminal) %>
+        <%}%>
+    <% }); %>
 
-                                                            <div id="wanted"><img src="images/wanted.png" alt=""></div>
-                                                            <div class="criminals">
-                                                                <% wanted.forEach((criminal)=>{%>
-                                                                    <div class="criminal <%=criminal.dangerlevel%> c1">
-                                                                        <img src="data:image/<%=criminal.img.contentType%>;base64,
+    <div id="wanted"><img src="images/wanted.png" alt=""></div>
+    <div class="criminals">
+        <% wanted.forEach((criminal)=>{%>
+            <div class="criminal <%=criminal.dangerlevel%> c1">
+                <img src="data:image/<%=criminal.img.contentType%>;base64,
                 <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
-                                                                        <div class="details">
-                                                                            <h3>Name:
-                                                                                <%=criminal.name%>
-                                                                            </h3>
-                                                                            <p>Crime committed:
-                                                                                <%=criminal.crimename%>
-                                                                            </p>
-                                                                            <p>Last seen:
-                                                                                <%=criminal.lastseen%>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <% }); %>
+                <div class="details">
+                    <h3>Name:
+                        <%=criminal.name%>
+                    </h3>
+                    <p>Crime committed:
+                        <%=criminal.crimename%>
+                    </p>
+                    <p>Last seen:
+                        <%=criminal.lastseen%>
+                    </p>
+            </div>
+    </div>
+            <% }); %>
 
 
 
 
 
-                                                                        <!-- <div class="criminal red">
+                                                                            <!-- <div class="criminal red">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
                 <h3>Name:Walter White</h3>
@@ -142,34 +142,34 @@
 
         </div>-->
 
-                                                            </div>
+                                                                </div>
 
-                                                            <div id="arrested">
-                                                                <img src="images/arrested.png" alt="">
-                                                                <h1>Arrested</h1>
-                                                            </div>
-                                                            <div class="criminals">
+                                                                <div id="arrested">
+                                                                    <img src="images/arrested.png" alt="">
+                                                                    <h1>Arrested</h1>
+                                                                </div>
+                                                                <div class="criminals">
 
-                                                                <% arrested.forEach((criminal)=>{%>
-                                                                    <div class="criminal <%=criminal.dangerlevel%> c1">
-                                                                        <img src="data:image/<%=criminal.img.contentType%>;base64,
+                                                                    <% arrested.forEach((criminal)=>{%>
+                                                                        <div class="criminal <%=criminal.dangerlevel%> c1">
+                                                                            <img src="data:image/<%=criminal.img.contentType%>;base64,
                 <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
-                                                                        <div class="details">
-                                                                            <h3>Name:
-                                                                                <%=criminal.name%>
-                                                                            </h3>
-                                                                            <p>Crime committed:
-                                                                                <%=criminal.crimename%>
-                                                                            </p>
-                                                                            <p>Last seen:
-                                                                                <%=criminal.lastseen%>
-                                                                            </p>
+                                                                            <div class="details">
+                                                                                <h3>Name:
+                                                                                    <%=criminal.name%>
+                                                                                </h3>
+                                                                                <p>Crime committed:
+                                                                                    <%=criminal.crimename%>
+                                                                                </p>
+                                                                                <p>Last seen:
+                                                                                    <%=criminal.lastseen%>
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <% }); %>
+                                                                        <% }); %>
 
 
-                                                                        <!-- <div class="criminal c1">
+                                                                            <!-- <div class="criminal c1">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
                 <h3>Name:Walter White</h3>
@@ -206,34 +206,34 @@
 
         </div>-->
 
-                                                            </div>
+                                                                </div>
 
-                                                            <div id="ontrial">
-                                                                <img src="images/ontrail.png" alt="">
-                                                                <h1>On Trail</h1>
-                                                            </div>
-                                                            <div class="criminals">
+                                                                <div id="ontrial">
+                                                                    <img src="images/ontrail.png" alt="">
+                                                                    <h1>On Trail</h1>
+                                                                </div>
+                                                                <div class="criminals">
 
 
 
-                                                                <% ontrail.forEach((criminal)=>{%>
-                                                                    <div class="criminal <%=criminal.dangerlevel%> c1">
-                                                                        <img src="data:image/<%=criminal.img.contentType%>;base64,
+                                                                    <% ontrail.forEach((criminal)=>{%>
+                                                                        <div class="criminal <%=criminal.dangerlevel%> c1">
+                                                                            <img src="data:image/<%=criminal.img.contentType%>;base64,
                 <%=criminal.img.data.toString('base64')%>" alt="" class="pic">
-                                                                        <div class="details">
-                                                                            <h3>Name:
-                                                                                <%=criminal.name%>
-                                                                            </h3>
-                                                                            <p>Crime committed:
-                                                                                <%=criminal.crimename%>
-                                                                            </p>
-                                                                            <p>Last seen:
-                                                                                <%=criminal.lastseen%>
-                                                                            </p>
+                                                                            <div class="details">
+                                                                                <h3>Name:
+                                                                                    <%=criminal.name%>
+                                                                                </h3>
+                                                                                <p>Crime committed:
+                                                                                    <%=criminal.crimename%>
+                                                                                </p>
+                                                                                <p>Last seen:
+                                                                                    <%=criminal.lastseen%>
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <% }); %>
-                                                                        <!--        
+                                                                        <% }); %>
+                                                                            <!--        
         <div class="criminal c1">
             <img src="images/walter-white.jpg" alt="" class="pic">
             <div class="details">
@@ -271,32 +271,32 @@
 
         </div> -->
 
-                                                            </div>
-
-                                                            <footer id="social">
-                                                                <h3>Follow us on Social Media!</h3>
-                                                                <div class="socicons">
-                                                                    <a href="https://www.facebook.com/ANDHRAPRADESHSTATEPOLICE/" target="_blank">
-                                                                        <img src="images/facebook black.svg" alt="" class="initial">
-                                                                        <img src="images/facebook.svg" alt="" class="hidden">
-                                                                    </a>
-                                                                    <a href="https://twitter.com/APPOLICE100/" target="_blank">
-                                                                        <img src="images/twitter-sign.svg" alt="" class="initial">
-                                                                        <img src="images/twitter.svg" alt="" class="hidden">
-                                                                    </a>
-                                                                    <a href="https://www.instagram.com/appolice.100/?igshid=ocwaariy0bvd&hl=en" target="_blank">
-                                                                        <img src="images/instagram black.svg" alt="" class="initial">
-                                                                        <img src="images/instagram.svg" alt="" class="hidden">
-                                                                    </a>
-                                                                    <a href="https://www.youtube.com/channel/UC7Iu-yyZ0Yyi3-JJ4RfzOYw/featured" target="_blank">
-                                                                        <img src="images/youtube black.svg" alt="" class="initial">
-                                                                        <img src="images/youtube.svg" alt="" class="hidden">
-                                                                    </a>
-
                                                                 </div>
-                                                            </footer>
 
-                                                            <script src="javascript/jsforcriminalslist.js"></script>
+                                                                <footer id="social">
+                                                                    <h3>Follow us on Social Media!</h3>
+                                                                    <div class="socicons">
+                                                                        <a href="https://www.facebook.com/ANDHRAPRADESHSTATEPOLICE/" target="_blank">
+                                                                            <img src="images/facebook black.svg" alt="" class="initial">
+                                                                            <img src="images/facebook.svg" alt="" class="hidden">
+                                                                        </a>
+                                                                        <a href="https://twitter.com/APPOLICE100/" target="_blank">
+                                                                            <img src="images/twitter-sign.svg" alt="" class="initial">
+                                                                            <img src="images/twitter.svg" alt="" class="hidden">
+                                                                        </a>
+                                                                        <a href="https://www.instagram.com/appolice.100/?igshid=ocwaariy0bvd&hl=en" target="_blank">
+                                                                            <img src="images/instagram black.svg" alt="" class="initial">
+                                                                            <img src="images/instagram.svg" alt="" class="hidden">
+                                                                        </a>
+                                                                        <a href="https://www.youtube.com/channel/UC7Iu-yyZ0Yyi3-JJ4RfzOYw/featured" target="_blank">
+                                                                            <img src="images/youtube black.svg" alt="" class="initial">
+                                                                            <img src="images/youtube.svg" alt="" class="hidden">
+                                                                        </a>
+
+                                                                    </div>
+                                                                </footer>
+
+                                                                <script src="javascript/jsforcriminalslist.js"></script>
 </body>
 
 </html>

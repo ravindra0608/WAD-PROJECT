@@ -17,7 +17,7 @@
     <div class="container">
         <a class="backbutton" href="/firpage"><b>Back</b></a>
         <br><br>
-        <form action="/viewfir/priority1" method="POST" enctype="multipart/form-data">
+        <form action="/viewfir/priority1" method="POST">
             <div class="col-sub">
                 <label for="fullname">From :</label>
             </div><br><br><br>
@@ -60,19 +60,10 @@
             </div><br>
             <div class="row">
                 <div class="col-sub">
-                    <label for="date">Date of the Incident :</label>
+                    <label for="date">Date :</label>
                 </div>
                 <div class="date">
                     <input type="date" id="date" name="date" placeholder="Current Date" required>
-                </div>
-            </div>
-            <span>Time:</span>
-            <div class="row time">
-                <div class="time">
-                    <input type="time" id="time" name="time" placeholder="" required>
-                </div>
-                <div class="col-25">
-                    <label for="time"></label>
                 </div>
             </div>
             <p>To Officer in charge,</p>
@@ -143,11 +134,27 @@ Contact Number" style="height:300px" required></textarea>
                 </div>
             </div>
             <div class="row">
+                <div class="col-sub">
+                    <label for="motive">Motive of Kidnapping:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="motive" name="motive" placeholder="Ex: To demand money and property" required>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-25">
-                    <label for="image">Evidence if any:</label>
+                    <label for="photo">Photo of a missing person:</label>
                 </div>
                 <div class="col-85">
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="photo" name="photo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="evidence">Evidence if any:</label>
+                </div>
+                <div class="col-85">
+                    <input type="file" id="evidence" name="evidence">
                 </div>
             </div>
             <div class="instructions">
