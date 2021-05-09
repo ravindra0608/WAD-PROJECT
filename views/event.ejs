@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event | images</title>
+    <style>
+        .image-para{
+            position: relative;
+            width: 23% ;
+            height: 30vh;
+        }
+        .image-para img{
+            padding: 1.5rem;
+            height: 80%;
+        }
+        #images-container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-content: space-between;
+        }
+        #heading{
+            background-color: #dcdcdc;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading">
+        <h1><%= event.name  %> </h1>
+    </div>
+    <div id="images-container">
+
+        <% for(i of event.images){ %>
+        <div class="image-para">
+                <img src="<%= i %>" alt="event image">    
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -7,9 +7,10 @@ const path = require("path");
 const { strict } = require("assert");
 const { response } = require("express");
 const encrypt = require("mongoose-encryption");
-const { time } = require("console");
+const { time, log } = require("console");
 const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
+const { RSA_NO_PADDING } = require("constants");
 
 const app = express();
 app.use(express.json());
@@ -279,44 +280,111 @@ app.get("/contactus/delete/:stationId", async function (req, res) {
 
 // police side gallery page
 app.get("/gallerypolice", async function (req, res) {
-  let events1 = await Events.find({});
-  app.locals.policeEvents = events1;
-  if (!isLoggedIn) {
-    return res.redirect("/login");
+  try {
+    let events1 = await Events.find({});
+    app.locals.policeEvents = events1;
+    if (!isLoggedIn) {
+      return res.redirect("/login");
+    }
+    return res.render("gallery_police");
+  } catch (error) {
+    
   }
-  return res.render("gallery_police");
 });
 // adding an event to the database
-app.post(
-  "/gallerypolice/add-event",
-  upload.single("tile"),
-  async function (req, res) {
-    // console.log(req.body);
-    // console.log(__dirname);
-    let date1 = (req.body.date + "").slice(0, 15);
-    let event = await Events.findOne({
-      name: req.body.name,
-      date: req.body.date,
-    });
-    if (!event) {
-      if (req.file) {
-        Events.create({
-          name: req.body.name,
-          date: date1,
-          tile: "\\" + "uploads" + "\\" + req.file.filename,
-        });
+app.post("/gallerypolice/add-event",upload.single("tile"),async function (req, res) {
+    try {
+      let event = await Events.findOne({
+        name: req.body.name,
+        date: req.body.date,
+      });
+      if (!event) {
+        if (req.file) {
+          Events.create({
+            name: req.body.name,
+            date: req.body.date,
+            tile: "\\" + "uploads" + "\\" + req.file.filename,
+          });
+        } else {
+          Events.create({
+            name: req.body.name,
+            date: req.body.date,
+          });
+        }
       } else {
-        Events.create({
-          name: req.body.name,
-          date: req.body.date,
-        });
+        console.log("you cannot created an event");
       }
-    } else {
-      console.log("you cannot created an event");
+      return res.redirect("back");
+    } catch (error) {
+      console.log("Error:",error);
     }
-    return res.redirect("back");
+});
+
+// event specefic images
+app.get('/gallery/event/images/:eventid', async function (req, res) {
+  try {
+    let event1 = await Events.findById(req.params.eventid);
+    return res.render('event',{
+      event : event1
+    }); 
+  } catch (error) {
+    console.log("error:",error);
+  } 
+});
+
+// police side to event specefic images 
+app.get('/gallery/pevent/images/:eventid', async function (req, res) {
+  try {
+    let event1 = await Events.findById(req.params.eventid);
+    return res.render('events_police',{
+      event : event1
+    }); 
+  } catch (error) {
+    console.log("error:",error);
+  } 
+});
+// add images to a specefic event
+app.post('/gallery/pevent/images/add/:eventid', upload.single('image'),async function (req, res) {
+  try {
+    let event1 = await Events.findByIdAndUpdate(req.params.eventid);
+    let imagepath = '\\' + 'uploads' + '\\' + req.file.filename
+    console.log(imagepath);
+    if (event1) {
+      // console.log('found event');
+      event1.images.push(imagepath);
+      event1.save();
+    } else {
+      // console.log('could not find an event');
+    }    
+    return res.redirect('back'); 
+  } catch (error) {
+    console.log("error:",error);
+  } 
+});
+
+
+// deleting images of specefic events
+app.get('/images/delete/' , async function(req, res){
+  try {
+    // console.log(req.query.imagepath);
+    // console.log(req.query.eventid);
+    let imageEvent = await Events.findByIdAndUpdate(req.query.eventid);
+    if(imageEvent){
+      // console.log('found event');
+      imageEvent.images.remove(req.query.imagepath);
+      fs.unlinkSync(__dirname + req.query.imagepath);
+      imageEvent.save();
+      res.redirect('back');
+    }
+    else{
+      console.log('couldnot find event');
+      res.redirect('back');
+    }
+
+  } catch (error) {
+    console.log('error:', error);
   }
-);
+});
 
 // deleting the event
 app.get("/gallery/event/delete/", async function (req, res) {
@@ -451,7 +519,7 @@ app.post("/deletecriminal", function (req, res) {
 
   Criminal.findByIdAndRemove(criminalId, function (err, foundCriminal) {
     if (!err) {
-      fs.unlinkSync(__dirname + foundCriminal.img.fname);
+      fs.unlinkSync(__dirname + '\\' +foundCriminal.img.fname);
       console.log("Successfully Deleted the criminal from the list");
     } else {
       console.log(err);

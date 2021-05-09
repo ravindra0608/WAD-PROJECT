@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title> 
+    <title>Police | Gallery Us</title> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="css/contactus_police.css">
     
@@ -92,10 +92,18 @@
                     <td><div><%= event.name %></div></td> 
                     <% if(event.tile){%>
                         <td><div><%= event.date %></div></td>
-                        <td><img src="<%= event.tile %>" alt="" width="100"></td>
+                        <td>
+                            <a href="/gallery/pevent/images/<%= event._id %>" target="_blank">
+                                <img src="<%= event.tile %>" alt="" width="100">
+                            </a>
+                        </td>
                     <%}else{%>
                         <td><div><%= event.date %></div></td>    
-                        <td><img src="images\event.jpg" alt="" width="100"></td>
+                        <td>
+                            <a href="/gallery/pevent/images/<%= event._id %>" target="_blank">
+                                <img src="images\event.jpg" alt="" width="100">
+                            </a>
+                        </td>
                     <%} %>   
                     <td>
 						<a href="gallery/event/delete/?imageId=<%= event._id %>">x</a>

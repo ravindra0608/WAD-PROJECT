@@ -236,7 +236,7 @@ nav {
 
 #contact-us{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
 }
 table{
     margin-top: 2rem;
