@@ -8,15 +8,80 @@
     <title>AP STATE POLICE</title>
     <style>
         .message {
-            text-align: center;
+            text-align: left;
+        }
+        
+        #proof {
+            height: 200px;
+            width: 200px;
+        }
+        
+        .complaint {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .complaint>p {
+            text-align: left;
+        }
+        
+        .fonts {
+            font-size: pt;
+            font-family: 'San serif';
         }
     </style>
 </head>
 
 <body>
     <div class="message">
-        <h1>Thank you for filing an online F.I.R.</h1>
+        <div class="firpdf">
+            <img src="/images/Logo.png">
+            <p class="complaint">
+                <p><b>From</b>,</p>
+                <p><b>Applicant Name:</b>
+                    <%=firs.fullname %>,</p>
+                <p><b>Guardian Name:</b>
+                    <%=firs.fatherorhusbandname %>,</p>
+                <p><b>Contact Address:</b>
+                    <%=firs.address %>,</p>
+                <p><b>Contact Number:</b>
+                    <%=firs.contactnumber %>,</p>
+                <p><b>email:</b>
+                    <%=firs.emailid %>.</p>
+
+
+                <p><b>Date of the Incident:</b>
+                    <%=firs.date %>.</p>
+                <p><b>Time of the Incident:</b>
+                    <%= firs.time %>.</p>
+
+                <p><b>To</b>,</p>
+                <p><b>Station Name:</b>
+                    <%= firs.stationname%>,</p>
+                <p><b>District :</b>
+                    <%= firs.district%>,</p>
+                <p><b>State :</b>
+                    <%= firs.state%>.</p>
+                <p><b>Subject:</b>
+                    <%=firs.subject %>
+                </p>
+                <p></p><b>Respected sir/madam</b>,</p>
+            <pre class="fonts"> &nbsp;&nbsp;&nbsp;
+                <%=firs.complaint %>
+            </pre>
+
+
+            <p><b>Evidence:</b></p>
+
+            <img id="proof" src="<%=firs.image.fname%>">
+            </p>
+        </div>
     </div>
+    <script>
+        window.onload = function() {
+            window.print();
+        }
+    </script>
 
 </body>
 

@@ -496,8 +496,6 @@ app.get("/threateningform", function(req, res) {
 app.get("/firform", function(req, res) {
     res.render("firform");
 });
-app.get("/display", function(req, res) { res.render('display') });
-// view fir 
 app.get("/viewfir", function(req, res) {
     if (!isLoggedIn) {
         return res.redirect("/login");
@@ -539,80 +537,134 @@ app.get("/viewfirp3", function(req, res) {
     }
 });
 
-app.post("/viewfir/priority1", upload.single("image"), function(req, res) {
-    const newFir1 = new Fir1({
-        fullname: req.body.fullname,
-        fatherorhusbandname: req.body.fatherorhusbandname,
-        address: req.body.contactaddress,
-        contactnumber: req.body.contactnumber,
-        emailid: req.body.emailid,
-        date: req.body.date,
-        time: req.body.time,
-        stationname: req.body.stationname,
-        district: req.body.district,
-        state: req.body.state,
-        subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
-    });
-    newFir1.save();
-    res.redirect('../display');
+app.post("/viewfir/priority1", upload.single("image"), async function(req, res) {
+    let newFir1;
+    if (!req.file) {
+        newFir1 = await Fir1.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+
+        });
+    } else {
+        newFir1 = await Fir1.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+            image: {
+                data: fs.readFileSync(
+                    path.join(__dirname + "/uploads/" + req.file.filename)
+                ),
+                contentType: "image/png",
+                fname: "\\" + "uploads" + "\\" + req.file.filename,
+            },
+        });
+    }
+    return res.render('display', { firs: newFir1 });
 });
-app.post("/viewfir/priority2", upload.single("image"), function(req, res) {
-    const newFir2 = new Fir2({
-        fullname: req.body.fullname,
-        fatherorhusbandname: req.body.fatherorhusbandname,
-        address: req.body.contactaddress,
-        contactnumber: req.body.contactnumber,
-        emailid: req.body.emailid,
-        date: req.body.date,
-        time: req.body.time,
-        stationname: req.body.stationname,
-        district: req.body.district,
-        state: req.body.state,
-        subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
-    });
-    newFir2.save();
-    res.redirect('../display');
+app.post("/viewfir/priority2", upload.single("image"), async function(req, res) {
+    let newir2;
+    if (!req.file) {
+        newFir2 = await Fir2.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+
+        });
+    } else {
+        newFir2 = await Fir2.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+            image: {
+                data: fs.readFileSync(
+                    path.join(__dirname + "/uploads/" + req.file.filename)
+                ),
+                contentType: "image/png",
+                fname: "\\" + "uploads" + "\\" + req.file.filename,
+            },
+        });
+    }
+    return res.render('display', { firs: newFir2 });
 });
-app.post("/viewfir/priority3", upload.single("image"), function(req, res) {
-    const newFir3 = new Fir3({
-        fullname: req.body.fullname,
-        fatherorhusbandname: req.body.fatherorhusbandname,
-        address: req.body.contactaddress,
-        contactnumber: req.body.contactnumber,
-        emailid: req.body.emailid,
-        date: req.body.date,
-        time: req.body.time,
-        stationname: req.body.stationname,
-        district: req.body.district,
-        state: req.body.state,
-        subject: req.body.subject,
-        complaint: req.body.complaint,
-        image: {
-            data: fs.readFileSync(
-                path.join(__dirname + "/uploads/" + req.file.filename)
-            ),
-            contentType: "image/png",
-            fname: "\\" + "uploads" + "\\" + req.file.filename,
-        },
-    });
-    newFir3.save();
-    res.redirect('../display');
+app.post("/viewfir/priority3", upload.single("image"), async function(req, res) {
+    let newFir3;
+    if (!req.file) {
+        newFir3 = await Fir3.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+
+        });
+    } else {
+        newFir3 = await Fir3.create({
+            fullname: req.body.fullname,
+            fatherorhusbandname: req.body.fatherorhusbandname,
+            address: req.body.contactaddress,
+            contactnumber: req.body.contactnumber,
+            emailid: req.body.emailid,
+            date: req.body.date,
+            time: req.body.time,
+            stationname: req.body.stationname,
+            district: req.body.district,
+            state: req.body.state,
+            subject: req.body.subject,
+            complaint: req.body.complaint,
+            image: {
+                data: fs.readFileSync(
+                    path.join(__dirname + "/uploads/" + req.file.filename)
+                ),
+                contentType: "image/png",
+                fname: "\\" + "uploads" + "\\" + req.file.filename,
+            },
+        });
+    }
+    return res.render('display', { firs: newFir3 });
 });
 app.listen(3000, function(req, res) {
     console.log("Listening at port http://localhost:3000");

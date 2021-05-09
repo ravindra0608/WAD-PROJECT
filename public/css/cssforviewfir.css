@@ -417,6 +417,24 @@ button {
     color: black;
 }
 
+.message {
+    text-align: left;
+}
+
+.complaint {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.complaint>p {
+    text-align: left;
+}
+
+.fonts {
+    font-size: pt;
+    font-family: 'San serif';
+}
+
 
 /*CSS for footer*/
 
@@ -551,8 +569,12 @@ a:hover img[class="initial"] {
     position: relative;
     top: 1cm;
     left: 3cm;
-    height: 80%;
-    width: 90%;
+    height: 50%;
+    width: 50%;
+}
+
+.firpdf {
+    text-align: left;
 }
 
 

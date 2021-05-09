@@ -65,32 +65,44 @@
                                 <div class="formandevidence">
                                     <strong class="evidence"> Evidence</strong>
                                 </div>
-                                <p>
-                                    <img id="logo_pdf" src="images/ap-police-emblem.jfif">
-                                    <pre class="complaint">
-                                    From,
-    
-                                    Applicant Name: <%=fir.fullname %>,
-                                    Guardian Name: <%=fir.fatherorhusbandname %>,
-                                    Contact Address: <%=fir.address %>,
-                                    Contact Number: <%=fir.contactnumber %>,
-                                    email: <%=fir.emailid %>.
-                                    
-                                    Date of the Incident: <%=fir.date %>.
-                                    Time of the Incident: <%= fir.time %>. 
-                                    
-                                    To,
-                                    Station Name:<%= fir.stationname%>,
-                                    District :<%= fir.district%>,
-                                    State :<%= fir.state%>.
-                
-                                    Subject: <%=fir.subject %>
-                                    
-                                    Respected sir/madam,
-    
+                                <div class="message">
+                                    <div class="firpdf">
+                                        <img src="/images/Logo.png">
+                                        <p class="complaint"><br><br>
+                                            <p><b>From</b>,</p>
+                                            <p><b>Applicant Name:</b>
+                                                <%=fir.fullname %>,</p>
+                                            <p><b>Guardian Name:</b>
+                                                <%=fir.fatherorhusbandname %>,</p>
+                                            <p><b>Contact Address:</b>
+                                                <%=fir.address %>,</p>
+                                            <p><b>Contact Number:</b>
+                                                <%=fir.contactnumber %>,</p>
+                                            <p><b>email:</b>
+                                                <%=fir.emailid %>.</p><br>
+                                            <br>
+                                            <p><b>Date of the Incident:</b>
+                                                <%=fir.date %>.</p><br>
+                                            <p><b>Time of the Incident:</b>
+                                                <%= fir.time %>.</p><br>
+
+                                            <p><b>To</b>,</p><br>
+                                            <p><b>Station Name:</b>
+                                                <%= fir.stationname%>,</p>
+                                            <p><b>District :</b>
+                                                <%= fir.district%>,</p>
+                                            <p><b>State :</b>
+                                                <%= fir.state%>.</p><br>
+                                            <p><b>Subject:</b>
+                                                <%=fir.subject %>
+                                            </p><br><br>
+                                            <p></p><b>Respected sir/madam</b>,</p>
+                                        <pre class="fonts"> &nbsp;&nbsp;&nbsp;
                                             <%=fir.complaint %>
-                                </pre>
-                                </p>
+                                        </pre>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-content evid">
                                 <div class="formandevidence">
@@ -98,11 +110,17 @@
                                     <strong class="firform"> F.I.R Form</strong>
                                 </div>
                                 <p>
-                                    <img id="proof" src="<%= fir.image.fname %> ">
+                                    <% if(fir.image){%>
+                                        <img id="proof" src="<%= fir.image.fname %> ">
+                                        <%}else{%>
+                                            <h1>NO EVIDENCE PROVIDED</h1>
+                                            <%}%>
+
                                 </p>
                                 </object>
                             </div>
                         </div>
+
                         <% }) %>
                 </div>
             </div>
