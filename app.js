@@ -389,11 +389,18 @@ app.get("/gallery/event/delete/", async function(req, res) {
     }
 });
 
-app.get("/phome", function(req, res) {
+app.get("/phome",async function(req, res) {
+    let firs1FiledToday = await Fir1.find({"createdAt":{$gt:new Date(Date.now() - 24*60*60 * 1000)}});
+    let firs2FiledToday = await Fir2.find({"createdAt":{$gt:new Date(Date.now() - 24*60*60 * 1000)}});
+    let firs3FiledToday = await Fir.find({"createdAt":{$gt:new Date(Date.now() - 24*60*60 * 1000)}});
+    let totalFirs = firs1FiledToday.length + firs2FiledToday.length + firs3FiledToday.length ;
+    // console.log('firs:',totalFirs);
     if (!isLoggedIn) {
         return res.redirect("/login");
     }
-    return res.render("home_police");
+    return res.render("home_police",{
+        numberOfFirs : totalFirs
+    });
 });
 
 // Post announcements
