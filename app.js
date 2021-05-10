@@ -225,8 +225,56 @@ app.get("/logout", function(req, res) {
 });
 
 // faq page routes
-app.get('/faq', function(req, res) {
-    return res.render('faq');
+app.get('/faq',async function(req, res) {
+    try {
+        let questions = await Faqs.find({});
+        return res.render('faq',{
+            faqs: questions.reverse()
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post('/faq/add/',async function (req, res) {
+    try {
+        let faq = await Faqs.create({question: req.body.question});
+        if(faq){
+            console.log('****Posted Question Successfully****');
+        }else{
+            console.log('error inposting question');
+        }
+        return res.redirect('back');
+    } catch (error) {
+        console.log(error);        
+        return res.redirect('back');
+    }
+})
+
+// police side faq
+app.get('/pfaq',async function (req, res) {
+    try {
+        let questions = await Faqs.find({});
+        return res.render('faq_police',{
+            faqs: questions.reverse()
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post('/faq/answer/:faqid', async function (req, res) {
+   try {
+       let faqToAns = await Faqs.findByIdAndUpdate(req.params.faqid);
+       if(faqToAns){
+           faqToAns.answer = req.body.answer;
+           faqToAns.save();
+           return res.redirect('back');
+       }
+   } catch (error) {
+        console.log(error);
+       return res.redirect('back');
+   } 
 });
 
 // gallery page
@@ -334,7 +382,6 @@ app.post('/gallery/pevent/images/add/:eventid', upload.single('image'),async fun
   try {
     let event1 = await Events.findByIdAndUpdate(req.params.eventid);
     let imagepath = '\\' + 'uploads' + '\\' + req.file.filename
-    console.log(imagepath);
     if (event1) {
       // console.log('found event');
       event1.images.push(imagepath);

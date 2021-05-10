@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police | FAQ</title>
+    <link rel="stylesheet" href="css/faq_police.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="../images/Logo.png" alt="Ap Police">
+    </header>
+    <!-- Navigation Section -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="/phome">Home</a></li>
+            <li><a href="/viewfir">View F.I.R</a></li>
+            <li><a href="/postannouncements">Announcements</a></li>
+            <li><a href="/postcriminalslist">Criminals List</a></li>
+            <li><a href="/gallerypolice">Media</a></li>
+            <li><a href="/pcontactus">Contact Us</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <div id="body">
+
+        <h1 style="text-align: center;" >Unanswered FAQs</h1>
+        <div class="box">
+            <p class="heading">FAQs</p>
+            <div class="faqs">
+                <% for(faq of faqs){ %>
+                    <% if(!faq.answer){%>
+                        <details>
+                            <summary> <%= faq.question %>  </summary>
+                            <p class="text">
+                                <form action="/faq/answer/<%= faq._id %> " method="post" class="answerQuestion">
+                                    <textarea type="text" name="answer" id="answer"></textarea>
+                                    <button type="submit">Answer</button>
+                                </form>
+                            </p>
+                        </details>   
+                    <% } %>   
+                <% } %> 
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Footer Section  -->
+    <footer id="social">
+        <h3>Follow us on Social Media!</h3>
+        <div class="socicons">
+            <a href="https://www.facebook.com/ANDHRAPRADESHSTATEPOLICE/" target="_blank">
+                <img src="../images/facebook black.svg" alt="" class="initial">
+                <img src="../images/facebook.svg" alt="" class="hidden">
+            </a>
+            <a href="https://twitter.com/APPOLICE100/" target="_blank">
+                <img src="../images/twitter-sign.svg" alt="" class="initial">
+                <img src="../images/twitter.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.instagram.com/appolice.100/?igshid=ocwaariy0bvd&hl=en" target="_blank">
+                <img src="../images/instagram black.svg" alt="" class="initial">
+                <img src="../images/instagram.svg" alt="" class="hidden">
+            </a>
+            <a href="https://www.youtube.com/channel/UC7Iu-yyZ0Yyi3-JJ4RfzOYw/featured" target="_blank">
+                <img src="../images/youtube black.svg" alt="" class="initial">
+                <img src="../images/youtube.svg" alt="" class="hidden">
+            </a>
+
+        </div>
+    </footer>
+    <!-- Script File -->
+    <script src="javascript/firscript.js"></script>
+</body>
+</html>
