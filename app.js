@@ -6,11 +6,16 @@ const fs = require("fs");
 const path = require("path");
 const { strict } = require("assert");
 const { response } = require("express");
-const encrypt = require("mongoose-encryption");
 const { time, log } = require("console");
 const bodyParser = require("body-parser");
 const expressLayouts = require("express-ejs-layouts");
 const { RSA_NO_PADDING } = require("constants");
+const session = require("express-session");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
+const passportLocal = require("passport-local");
+
+var isPoliceLoggedIn = false; 
 
 const app = express();
 app.use(express.json());
@@ -18,6 +23,15 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
+
+app.use(session({
+    secret: "Secret for Police Website.",
+    resave: false,
+    saveUninitialized: false
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // setting uploads folder as static folder
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -27,6 +41,8 @@ mongoose.connect("mongodb://localhost:27017/announcementsDB", {
     useUnifiedTopology: true,
     useFindAndModify: false,
 });
+
+mongoose.set("useCreateIndex", true);
 
 const announcementSchema = {
     content: String,
@@ -111,14 +127,19 @@ const policeDetails = {
 
 // user data schema
 const userSchema = new mongoose.Schema({
-    email: {
+    username: String,
+    password: String
+});
+
+const policeSchema = new mongoose.Schema({
+    username : {
         type: String,
-        required: true,
+        required: true
     },
     password: {
         type: String,
-        required: true,
-    },
+        required: true
+    }
 });
 
 var storage = multer.diskStorage({
@@ -132,9 +153,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-//Using a large string for encryption
-const secret = "ThisIsTheSecretKeyForPoliceWebsite.";
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ["password"] });
+userSchema.plugin(passportLocalMongoose);
 
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
@@ -155,74 +174,61 @@ const PoliceDetails = mongoose.model("police details", policeDetails);
 //Creating a model of this schema
 const User = new mongoose.model("User", userSchema);
 
-var isLoggedIn = false;
+const Authority = new mongoose.model("Authority", policeSchema);
+ 
 
-// routes for login and register pages
-app.get("/login", function(req, res) {
-    res.render("login");
-});
+passport.use(User.createStrategy());
+ 
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-app.get("/register", function(req, res) {
-    res.render("register");
-});
 
-//Catching the post request form register page to add data to mongoDB
-app.post("/register", function(req, res) {
-    if (isLoggedIn) {
-        return res.redirect("/phome");
-    }
-    const newUser = new User({
-        email: req.body.username,
-        password: req.body.password,
-    });
-
-    newUser.save(function(err) {
-        if (err) {
-            console.log(err);
-            res.redirect("/register");
-        } else {
-            res.redirect("/login");
-        }
-    });
-});
-
-//Catching the post request from Login page to check the authorisation
-app.post("/login", function(req, res) {
-    const username = req.body.username;
-    const password = req.body.password;
-    if (isLoggedIn) {
-        return res.redirect("/phome");
-    }
-    //For the given email, checking if the password is correct
-    User.findOne({ email: username }, function(err, foundUser) {
-        if (err) {
-            console.log(err);
-            res.redirect("/login");
-        } else {
-            if (foundUser) {
-                if (foundUser.password === password) {
-                    isLoggedIn = true;
-                    res.redirect("/phome");
-                } else {
-                    isLoggedIn = false;
-                    res.redirect("/login");
-                }
-            } else {
-                res.redirect("/login");
-            }
-        }
-    });
-});
-
-// logout route
-app.get("/logout", function(req, res) {
-    if (isLoggedIn) {
-        isLoggedIn = false;
-        return res.redirect("/login");
+//Route Declaration
+//Get and Post routes for login page
+app.get("/decideLogin", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
     } else {
-        return res.redirect("/login");
+        res.render("decideLogin");
     }
 });
+ 
+app.get("/police_login", function(req, res) {
+    if(!isPoliceLoggedIn){
+        res.render("police_login");
+    } else {
+        res.redirect("/phome");
+    }
+    
+});
+ 
+app.get("/police_register", function(req, res) {
+    if(!isPoliceLoggedIn){
+        res.render("police_register");
+    } else {
+        res.redirect("/phome");
+    }
+});
+ 
+app.get("/user_login", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
+    } else {
+        res.render("user_login");
+    }
+});
+ 
+app.get("/user_register", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
+    } else {
+        res.render("user_register");
+    }
+});
+
+
+
+
 
 // faq page routes
 app.get('/faq',async function(req, res) {
@@ -255,9 +261,13 @@ app.post('/faq/add/',async function (req, res) {
 app.get('/pfaq',async function (req, res) {
     try {
         let questions = await Faqs.find({});
-        return res.render('faq_police',{
-            faqs: questions.reverse()
-        });
+        if(isPoliceLoggedIn){
+            return res.render('faq_police',{
+                faqs: questions.reverse()
+            });
+        }else{
+            return res.redirect('/police_login');
+        }
     } catch (error) {
         console.log(error);
     }
@@ -295,9 +305,14 @@ app.get("/contactus", async function(req, res) {
 // contact-us police side
 app.get("/pcontactus", async function(req, res) {
     let policeDetails1 = await PoliceDetails.find({});
-    return res.render("contactus_police", {
-        policedet: policeDetails1
-    });
+    if(isPoliceLoggedIn){
+        return res.render("contactus_police", {
+            policedet: policeDetails1
+        });
+    }else{
+        return res.redirect('/police_login');
+    }
+    
 });
 
 // contactus adding
@@ -317,8 +332,8 @@ app.get("/gallerypolice", async function (req, res) {
   try {
     let events1 = await Events.find({});
     app.locals.policeEvents = events1;
-    if (!isLoggedIn) {
-      return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+      return res.redirect("/police_login");
     }
     return res.render("gallery_police");
   } catch (error) {
@@ -442,12 +457,14 @@ app.get("/phome",async function(req, res) {
     let firs3FiledToday = await Fir.find({"createdAt":{$gt:new Date(Date.now() - 24*60*60 * 1000)}});
     let totalFirs = firs1FiledToday.length + firs2FiledToday.length + firs3FiledToday.length ;
     // console.log('firs:',totalFirs);
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (isPoliceLoggedIn){
+        return res.render("home_police",{
+            numberOfFirs : totalFirs
+        });
+    } else {
+        return res.redirect("/police_login");
     }
-    return res.render("home_police",{
-        numberOfFirs : totalFirs
-    });
+    
 });
 
 // Post announcements
@@ -478,8 +495,8 @@ app.get("/", function(req, res) {
 // });
 
 app.get("/postannouncements", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
     }
     Announcement.find({}, function(err, existingAnnouncements) {
         // Announcement.insertMany(announcements, function (err, results) {
@@ -524,8 +541,8 @@ app.get("/criminalslist", function(req, res) {
 });
 
 app.get("/postcriminalslist", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
     }
     Criminal.find({}, function(err, criminalsList) {
         res.render("postcriminalslist", { criminalsList: criminalsList });
@@ -570,7 +587,12 @@ app.post("/deletecriminal", function(req, res) {
 });
 
 app.get("/firpage", function(req, res) {
-    res.render("firpage");
+    if(req.isAuthenticated()){
+        res.render("firpage");
+    }else{
+        return res.redirect('/user_login');
+    }
+    
 });
 // fir form for Accident
 
@@ -620,8 +642,8 @@ app.get("/firform", function(req, res) {
     res.render("firform");
 });
 app.get("/viewfir", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
     } else {
         Fir1.find({}, function(err, foundItems) {
             if (!err) {
@@ -634,8 +656,8 @@ app.get("/viewfir", function(req, res) {
 });
 
 app.get("/viewfirp2", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
     } else {
         Fir2.find({}, function(err, foundItems) {
             if (!err) {
@@ -647,8 +669,8 @@ app.get("/viewfirp2", function(req, res) {
     }
 });
 app.get("/viewfirp3", function(req, res) {
-    if (!isLoggedIn) {
-        return res.redirect("/login");
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
     } else {
         Fir3.find({}, function(err, foundItems) {
             if (!err) {
@@ -789,6 +811,94 @@ app.post("/viewfir/priority3", upload.single("image"), async function(req, res) 
     }
     return res.render('display', { firs: newFir3 });
 });
+
+
+
+app.get("/logout", function(req, res){
+    req.logout();
+    isPoliceLoggedIn = false;
+    res.redirect("/");
+  });
+ 
+ 
+ 
+app.post("/police_register", function (req, res) {
+    if (isPoliceLoggedIn) {
+      return res.redirect("/phome");
+    }
+    const newUser = new Authority({
+      username: req.body.pusername,
+      password: req.body.ppassword,
+    });
+  
+    newUser.save(function (err) {
+      if (err) {
+        console.log(err);
+        isPoliceLoggedIn = false;
+        res.redirect("/police_register");
+      } else {
+          isPoliceLoggedIn = true;
+        res.redirect("/phome");
+      }
+    });
+  });
+ 
+ 
+app.post("/user_register", function(req, res) {
+        User.register({username: req.body.username}, req.body.password, function(err, user){
+            if (err) {
+              console.log('*******',err);
+              res.redirect("/user_register");
+            } else {
+              passport.authenticate("local")(req, res, function(){
+                res.redirect("/firpage");
+              });
+            }
+          });     
+});
+ 
+app.post("/user_login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/user_login"
+}), function (req, res) {
+    return;
+});
+ 
+ 
+app.post("/police_login", function (req, res) {
+    const username = req.body.pusername;
+    const password = req.body.ppassword;
+    if (isPoliceLoggedIn) {
+      return res.redirect("/phome");
+    }
+ 
+    //console.log(username + " " + password);
+    Authority.find({},function(err,authorities){
+        if(err){
+            console.log(err);
+            res.redirect("back");
+        }
+        
+        else{
+                //console.log(authorities[0].username);
+            authorities.forEach(function(user) {
+                //console.log(user.username);
+                if(user.username === username){
+                    if(user.password === password){
+                        res.redirect("/phome");
+                        isPoliceLoggedIn = true;
+                    }
+                }
+            });
+        }
+    });
+  });
+
+
+
+
+
+
 app.listen(3000, function(req, res) {
     console.log("Listening at port http://localhost:3000");
 });
