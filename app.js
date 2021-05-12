@@ -38,7 +38,7 @@ app.use(passport.session());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 //Setting up a connection with mongoDB using mongoose
-mongoose.connect("mongodb://localhost:27017/policeDB", {
+mongoose.connect("mongodb://localhost:27017/announcementsDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -288,14 +288,18 @@ app.post("/faq/answer/:faqid", async function (req, res) {
 });
 
 // gallery page
+// route for user side gallery page
 app.get("/gallery", async function (req, res) {
+  // finds all events and stores them in the res.locals
   let events1 = await Events.find({});
   app.locals.policeEvents = events1;
   return res.render("Gallery");
 });
 
 // contact us page
+// route for contact us page(user-side)
 app.get("/contactus", async function (req, res) {
+  // finds all the details from the database and passes it to the ejs file
   let policeDetails1 = await PoliceDetails.find({});
   return res.render("Contact-us", {
     policedet: policeDetails1,
@@ -304,7 +308,9 @@ app.get("/contactus", async function (req, res) {
 
 // contact-us police side
 app.get("/pcontactus", async function (req, res) {
+  // finds all the police details from the database and passes it to the ejs file
   let policeDetails1 = await PoliceDetails.find({});
+  // checks authority login for accessing the page
   if (isPoliceLoggedIn) {
     return res.render("contactus_police", {
       policedet: policeDetails1,
@@ -316,11 +322,13 @@ app.get("/pcontactus", async function (req, res) {
 
 // contactus adding
 app.post("/contactus/add", function (req, res) {
+  // creating a database document for the contact us page from the details obtained from the form
   PoliceDetails.create(req.body);
   return res.redirect("back");
 });
 
 app.get("/contactus/delete/:stationId", async function (req, res) {
+  // finds if the authority want to dlete a station details, finds them using the  and deletes them
   let station = await PoliceDetails.findById(req.params.stationId);
   station.remove();
   return res.redirect("back");
@@ -329,13 +337,17 @@ app.get("/contactus/delete/:stationId", async function (req, res) {
 // police side gallery page
 app.get("/gallerypolice", async function (req, res) {
   try {
+    // finds all the event details from the database and passes it to the ejs file
     let events1 = await Events.find({});
     app.locals.policeEvents = events1;
     if (!isPoliceLoggedIn) {
+      // checks authority login and redirects if not logged in
       return res.redirect("/police_login");
     }
     return res.render("gallery_police");
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 // adding an event to the database
 app.post(
@@ -343,11 +355,14 @@ app.post(
   upload.single("tile"),
   async function (req, res) {
     try {
+      // checking if the event is alredy present in the databse
       let event = await Events.findOne({
         name: req.body.name,
         date: req.body.date,
       });
+      //   if the event isnt present in the database then creating an event
       if (!event) {
+        //   checking if the authority had set any tile for the event if yes store the image in the databse if not using default image
         if (req.file) {
           Events.create({
             name: req.body.name,
@@ -373,6 +388,7 @@ app.post(
 // event specefic images
 app.get("/gallery/event/images/:eventid", async function (req, res) {
   try {
+    //   find the event of which the images has to be displayed and passing it to the ejs
     let event1 = await Events.findById(req.params.eventid);
     return res.render("event", {
       event: event1,
@@ -385,6 +401,7 @@ app.get("/gallery/event/images/:eventid", async function (req, res) {
 // police side to event specefic images
 app.get("/gallery/pevent/images/:eventid", async function (req, res) {
   try {
+    //   find the event of which the images has to be displayed and passing it to the ejs
     let event1 = await Events.findById(req.params.eventid);
     return res.render("events_police", {
       event: event1,
@@ -399,14 +416,14 @@ app.post(
   upload.single("image"),
   async function (req, res) {
     try {
+      // finds all the details from the database and passes it to the ejs file
       let event1 = await Events.findByIdAndUpdate(req.params.eventid);
+      // setting the path of the images which are to be uploaded
       let imagepath = "\\" + "uploads" + "\\" + req.file.filename;
       if (event1) {
-        // console.log('found event');
+        //   storing the image path in the event.images array
         event1.images.push(imagepath);
         event1.save();
-      } else {
-        // console.log('could not find an event');
       }
       return res.redirect("back");
     } catch (error) {
@@ -418,12 +435,12 @@ app.post(
 // deleting images of specefic events
 app.get("/images/delete/", async function (req, res) {
   try {
-    // console.log(req.query.imagepath);
-    // console.log(req.query.eventid);
+    // finds all the details of the event from the database
     let imageEvent = await Events.findByIdAndUpdate(req.query.eventid);
     if (imageEvent) {
-      // console.log('found event');
+      // if the event is found then delete the image from the event.image array
       imageEvent.images.remove(req.query.imagepath);
+      // deletes the uploaded file from the project folder
       fs.unlinkSync(__dirname + req.query.imagepath);
       imageEvent.save();
       res.redirect("back");
@@ -439,8 +456,10 @@ app.get("/images/delete/", async function (req, res) {
 // deleting the event
 app.get("/gallery/event/delete/", async function (req, res) {
   try {
+    // finds all the details of the event from the database
     let eventToBeDeleted = await Events.findById(req.query.imageId);
     if (eventToBeDeleted) {
+      // deleting the tile from uploads folder(if present)
       if (eventToBeDeleted.tile) {
         fs.unlinkSync(__dirname + eventToBeDeleted.tile);
       }
@@ -454,6 +473,7 @@ app.get("/gallery/event/delete/", async function (req, res) {
 });
 
 app.get("/phome", async function (req, res) {
+  // finds all the firs documents created in last 24 hours and passes it to the ejs file
   let firs1FiledToday = await Fir1.find({
     createdAt: { $gt: new Date(Date.now() - 24 * 60 * 60 * 1000) },
   });
