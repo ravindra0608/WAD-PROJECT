@@ -37,7 +37,8 @@ app.use(passport.session());
 // setting uploads folder as static folder
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-mongoose.connect("mongodb://localhost:27017/announcementsDB", {
+//Setting up a connection with mongoDB using mongoose
+mongoose.connect("mongodb://localhost:27017/policeDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -474,49 +475,24 @@ app.get("/phome", async function (req, res) {
   }
 });
 
-// Post announcements
+// Rendering announcements to the Home page
 app.get("/", function (req, res) {
   Announcement.find({}, function (err, existingAnnouncements) {
-    // Announcement.insertMany(announcements, function (err, results) {
-    //   if (!err) {
-    //     console.log(results);
-    //   } else {
-    //     console.log(err);
-    //   }
-    // });
     res.render("index", { announcements: existingAnnouncements });
   });
 });
 
-// app.get("/index.html", function (req, res) {
-//   Announcement.find({}, function (err, existingAnnouncements) {
-//     // Announcement.insertMany(announcements, function (err, results) {
-//     //   if (!err) {
-//     //     console.log(results);
-//     //   } else {
-//     //     console.log(err);
-//     //   }
-//     // });
-//     res.render("index", { announcements: existingAnnouncements });
-//   });
-// });
-
+//Viewing the postannouncements page where announcements can be added and deleted
 app.get("/postannouncements", function (req, res) {
   if (!isPoliceLoggedIn) {
     return res.redirect("/police_login");
   }
   Announcement.find({}, function (err, existingAnnouncements) {
-    // Announcement.insertMany(announcements, function (err, results) {
-    //   if (!err) {
-    //     console.log(results);
-    //   } else {
-    //     console.log(err);
-    //   }
-    // });
     res.render("postannouncements", { announcements: existingAnnouncements });
   });
 });
 
+//Taking data from the form in post announcements page and then storing it on our database
 app.post("/postannouncements", function (req, res) {
   const announcement = req.body.newannouncement;
 
@@ -529,6 +505,7 @@ app.post("/postannouncements", function (req, res) {
   });
 });
 
+//Deleting an announcement from database and eventually the webpages where it appears
 app.post("/delete", function (req, res) {
   const announcementId = req.body.announcementtodelete;
 
@@ -540,13 +517,14 @@ app.post("/delete", function (req, res) {
   res.redirect("/postannouncements");
 });
 
-//Criminals list
+//Rendering the criminals list page where data entered in the post criminals list is entered
 app.get("/criminalslist", function (req, res) {
   Criminal.find({}, function (err, criminalsList) {
     res.render("criminalslist", { criminalsList: criminalsList });
   });
 });
 
+//Renders the postcriminals list page where the data about criminals can be entered
 app.get("/postcriminalslist", function (req, res) {
   if (!isPoliceLoggedIn) {
     return res.redirect("/police_login");
@@ -556,6 +534,7 @@ app.get("/postcriminalslist", function (req, res) {
   });
 });
 
+//Data entered on postcriminals form is collected and stored into the database from where it can be shown to the police as well as the users of the website
 app.post("/postcriminalslist", upload.single("image"), function (req, res) {
   const newCriminal = {
     name: req.body.name,
@@ -580,6 +559,7 @@ app.post("/postcriminalslist", upload.single("image"), function (req, res) {
   });
 });
 
+//To delete the criminals from the criminals list once they are not required on the database and eventually on the webpages
 app.post("/deletecriminal", function (req, res) {
   const criminalId = req.body.criminalid;
 
