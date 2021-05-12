@@ -1,3 +1,4 @@
+//Acquiring Modules.
 const express = require("express");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
@@ -15,7 +16,8 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const passportLocal = require("passport-local");
 
-var isPoliceLoggedIn = false;
+//Variable to check if a police is logged in.
+var isPoliceLoggedIn = false; 
 
 const app = express();
 app.use(express.json());
@@ -24,8 +26,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 // app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  session({
+//Setting up sessions and initialising passport.
+app.use(session({
     secret: "Secret for Police Website.",
     resave: false,
     saveUninitialized: false,
@@ -46,10 +48,12 @@ mongoose.connect("mongodb://localhost:27017/announcementsDB", {
 
 mongoose.set("useCreateIndex", true);
 
+//Creating Announcement Schema
 const announcementSchema = {
   content: String,
 };
 
+//Creating Criminal Schema
 const criminalSchema = {
   name: String,
   crimename: String,
@@ -61,9 +65,9 @@ const criminalSchema = {
     contentType: String,
   },
 };
-// user fir schema
-const firSchema = new mongoose.Schema(
-  {
+
+//Creating user fir schema
+const firSchema = new mongoose.Schema({
     fullname: String,
     fatherorhusbandname: String,
     address: String,
@@ -85,6 +89,7 @@ const firSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//Creating Events to be posted Schema
 const eventsSchema = {
   name: {
     type: String,
@@ -104,6 +109,7 @@ const eventsSchema = {
   ],
 };
 
+//Creating FAQs Schema
 const faqSchema = {
   question: {
     type: String,
@@ -114,6 +120,7 @@ const faqSchema = {
   },
 };
 
+//Creating Police Schema for Contact us page
 const policeDetails = {
   area: {
     type: String,
@@ -132,12 +139,13 @@ const policeDetails = {
   },
 };
 
-// user data schema
+//Creating user data schema for users to login
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
 });
 
+//Creating Police Schema for police users to login
 const policeSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -160,42 +168,92 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+//Using passportLocalMongoose as a plugin.
 userSchema.plugin(passportLocalMongoose);
 
+//Creating Models of the Schemas.
+
+//Creating Announcements model from schema.
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
+//Creating Criminal model from schema.
 const Criminal = mongoose.model("Criminal", criminalSchema);
 
+//Creating Fir model from schema.
 const Fir = mongoose.model("Fir", firSchema);
 
+//Creating Fir models from schema for all three priorities.
 const Fir1 = mongoose.model("Fir1", firSchema);
 const Fir2 = mongoose.model("Fir2", firSchema);
 const Fir3 = mongoose.model("Fir3", firSchema);
 
+//Creating Event model from schema.
 const Events = mongoose.model("events", eventsSchema);
 
+//Creating FAQs model from schema.
 const Faqs = mongoose.model("faqs", faqSchema);
 
+//Creating PoliceDetails model from schema.
 const PoliceDetails = mongoose.model("police details", policeDetails);
 
-//Creating a model of this schema
+//Creating a User model of the schema
 const User = new mongoose.model("User", userSchema);
 
+//Creating a Authority(Police) model from the schema.
 const Authority = new mongoose.model("Authority", policeSchema);
-
+ 
+//Creating local strategy from passport
 passport.use(User.createStrategy());
-
+ 
+//Serializing and De-serializing using passport.
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //Route Declaration
-//Get and Post routes for login page
-app.get("/decideLogin", function (req, res) {
-  if (req.isAuthenticated()) {
-    res.redirect("/");
-  } else {
-    res.render("decideLogin");
-  }
+//Get and Post routes for login page(Check police or Member)
+app.get("/decideLogin", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
+    } else {
+        res.render("decideLogin");
+    }
+});
+ 
+//Get route for login of any authority
+app.get("/police_login", function(req, res) {
+    if(!isPoliceLoggedIn){
+        res.render("police_login");
+    } else {
+        res.redirect("/phome");
+    }
+    
+});
+ 
+//Get route for register page of authority
+app.get("/police_register", function(req, res) {
+    if(!isPoliceLoggedIn){
+        res.render("police_register");
+    } else {
+        res.redirect("/phome");
+    }
+});
+ 
+//Get route for User login page
+app.get("/user_login", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
+    } else {
+        res.render("user_login");
+    }
+});
+ 
+//Get route for user register page.
+app.get("/user_register", function(req, res) {
+    if(req.isAuthenticated()){
+        res.redirect("/");
+    } else {
+        res.render("user_register");
+    }
 });
 
 app.get("/police_login", function (req, res) {
@@ -230,31 +288,32 @@ app.get("/user_register", function (req, res) {
   }
 });
 
-// faq page routes
-app.get("/faq", async function (req, res) {
-  try {
-    let questions = await Faqs.find({});
-    return res.render("faq", {
-      faqs: questions.reverse(),
-    });
-  } catch (error) {
-    console.log(error);
-  }
+// faq page  get route
+app.get('/faq',async function(req, res) {
+    try {
+        let questions = await Faqs.find({});
+        return res.render('faq',{
+            faqs: questions.reverse()
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
-app.post("/faq/add/", async function (req, res) {
-  try {
-    let faq = await Faqs.create({ question: req.body.question });
-    if (faq) {
-      console.log("****Posted Question Successfully****");
-    } else {
-      console.log("error inposting question");
+//Faq page post route
+app.post('/faq/add/',async function (req, res) {
+    try {
+        let faq = await Faqs.create({question: req.body.question});
+        if(faq){
+            console.log('****Posted Question Successfully****');
+        }else{
+            console.log('error inposting question');
+        }
+        return res.redirect('back');
+    } catch (error) {
+        console.log(error);        
+        return res.redirect('back');
     }
-    return res.redirect("back");
-  } catch (error) {
-    console.log(error);
-    return res.redirect("back");
-  }
 });
 
 // police side faq
@@ -273,18 +332,19 @@ app.get("/pfaq", async function (req, res) {
   }
 });
 
-app.post("/faq/answer/:faqid", async function (req, res) {
-  try {
-    let faqToAns = await Faqs.findByIdAndUpdate(req.params.faqid);
-    if (faqToAns) {
-      faqToAns.answer = req.body.answer;
-      faqToAns.save();
-      return res.redirect("back");
-    }
-  } catch (error) {
-    console.log(error);
-    return res.redirect("back");
-  }
+//Post request to answer FAQs
+app.post('/faq/answer/:faqid', async function (req, res) {
+   try {
+       let faqToAns = await Faqs.findByIdAndUpdate(req.params.faqid);
+       if(faqToAns){
+           faqToAns.answer = req.body.answer;
+           faqToAns.save();
+           return res.redirect('back');
+       }
+   } catch (error) {
+        console.log(error);
+       return res.redirect('back');
+   } 
 });
 
 // gallery page
@@ -826,12 +886,15 @@ app.post(
   }
 );
 
-app.get("/logout", function (req, res) {
-  req.logout();
-  isPoliceLoggedIn = false;
-  res.redirect("/");
-});
-
+//Logout route get request for both police and Users
+app.get("/logout", function(req, res){
+    req.logout();
+    isPoliceLoggedIn = false;
+    res.redirect("/");
+  });
+ 
+ 
+//Post route for police register page.
 app.post("/police_register", function (req, res) {
   if (isPoliceLoggedIn) {
     return res.redirect("/phome");
@@ -908,6 +971,11 @@ app.post("/police_login", function (req, res) {
   });
 });
 
-app.listen(3000, function (req, res) {
-  console.log("Listening at port http://localhost:3000");
+
+
+
+
+//Listening to requests at port 3000
+app.listen(3000, function(req, res) {
+    console.log("Listening at port 3000");
 });
