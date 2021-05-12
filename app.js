@@ -673,54 +673,53 @@ app.get("/threateningform", function (req, res) {
 });
 
 // fir form for Others category
-app.get("/firform", function (req, res) {
-  res.render("firform");
+app.get("/firform", function(req, res) {
+    res.render("firform");
 });
-app.get("/viewfir", function (req, res) {
-  if (!isPoliceLoggedIn) {
-    return res.redirect("/police_login");
-  } else {
-    Fir1.find({}, function (err, foundItems) {
-      if (!err) {
-        res.render("viewfir", { firs: foundItems.reverse() });
-      } else {
-        console.log(err);
-      }
-    });
-  }
+// get route for viewing the fir
+app.get("/viewfir", function(req, res) {
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
+    } else {
+        Fir1.find({}, function(err, foundItems) {
+            if (!err) {
+                res.render("viewfir", { firs: foundItems.reverse() });
+            } else {
+                console.log(err);
+            }
+        });
+    }
 });
-
-app.get("/viewfirp2", function (req, res) {
-  if (!isPoliceLoggedIn) {
-    return res.redirect("/police_login");
-  } else {
-    Fir2.find({}, function (err, foundItems) {
-      if (!err) {
-        res.render("viewfirp2", { firs: foundItems.reverse() });
-      } else {
-        console.log(err);
-      }
-    });
-  }
+// add firs of priyority 3
+app.get("/viewfirp2", function(req, res) {
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
+    } else {
+        Fir2.find({}, function(err, foundItems) {
+            if (!err) {
+                res.render("viewfirp2", { firs: foundItems.reverse() });
+            } else {
+                console.log(err);
+            }
+        });
+    }
 });
-app.get("/viewfirp3", function (req, res) {
-  if (!isPoliceLoggedIn) {
-    return res.redirect("/police_login");
-  } else {
-    Fir3.find({}, function (err, foundItems) {
-      if (!err) {
-        res.render("viewfirp3", { firs: foundItems.reverse() });
-      } else {
-        console.log(err);
-      }
-    });
-  }
+// displays firs of pripority3
+app.get("/viewfirp3", function(req, res) {
+    if (!isPoliceLoggedIn) {
+        return res.redirect("/police_login");
+    } else {
+        Fir3.find({}, function(err, foundItems) {
+            if (!err) {
+                res.render("viewfirp3", { firs: foundItems.reverse() });
+            } else {
+                console.log(err);
+            }
+        });
+    }
 });
-
-app.post(
-  "/viewfir/priority1",
-  upload.single("image"),
-  async function (req, res) {
+// add firs of priyority 3
+app.post("/viewfir/priority1", upload.single("image"), async function(req, res) {
     let newFir1;
     if (!req.file) {
       newFir1 = await Fir1.create({
