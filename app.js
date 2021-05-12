@@ -660,6 +660,7 @@ app.get("/threateningform", function(req, res) {
 app.get("/firform", function(req, res) {
     res.render("firform");
 });
+// get route for viewing the fir
 app.get("/viewfir", function(req, res) {
     if (!isPoliceLoggedIn) {
         return res.redirect("/police_login");
@@ -673,7 +674,7 @@ app.get("/viewfir", function(req, res) {
         });
     }
 });
-
+// add firs of priyority 3
 app.get("/viewfirp2", function(req, res) {
     if (!isPoliceLoggedIn) {
         return res.redirect("/police_login");
@@ -687,6 +688,7 @@ app.get("/viewfirp2", function(req, res) {
         });
     }
 });
+// displays firs of pripority3
 app.get("/viewfirp3", function(req, res) {
     if (!isPoliceLoggedIn) {
         return res.redirect("/police_login");
@@ -700,7 +702,7 @@ app.get("/viewfirp3", function(req, res) {
         });
     }
 });
-
+// add firs of priyority 3
 app.post("/viewfir/priority1", upload.single("image"), async function(req, res) {
     let newFir1;
     if (!req.file) {
@@ -744,6 +746,7 @@ app.post("/viewfir/priority1", upload.single("image"), async function(req, res) 
     }
     return res.render('display', { firs: newFir1 });
 });
+// add firs of priyority 3
 app.post("/viewfir/priority2", upload.single("image"), async function(req, res) {
     let newFir2;
     if (!req.file) {
@@ -787,6 +790,7 @@ app.post("/viewfir/priority2", upload.single("image"), async function(req, res) 
     }
     return res.render('display', { firs: newFir2 });
 });
+// add firs of priyority 3
 app.post("/viewfir/priority3", upload.single("image"), async function(req, res) {
     let newFir3;
     if (!req.file) {
