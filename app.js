@@ -256,37 +256,7 @@ app.get("/user_register", function(req, res) {
     }
 });
 
-app.get("/police_login", function (req, res) {
-  if (!isPoliceLoggedIn) {
-    res.render("police_login");
-  } else {
-    res.redirect("/phome");
-  }
-});
 
-app.get("/police_register", function (req, res) {
-  if (!isPoliceLoggedIn) {
-    res.render("police_register");
-  } else {
-    res.redirect("/phome");
-  }
-});
-
-app.get("/user_login", function (req, res) {
-  if (req.isAuthenticated()) {
-    res.redirect("/");
-  } else {
-    res.render("user_login");
-  }
-});
-
-app.get("/user_register", function (req, res) {
-  if (req.isAuthenticated()) {
-    res.redirect("/");
-  } else {
-    res.render("user_register");
-  }
-});
 
 // faq page  get route
 app.get('/faq',async function(req, res) {
