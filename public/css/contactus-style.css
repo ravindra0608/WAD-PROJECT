@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   /* font-family: sans-serif;*/
+    /* font-family: sans-serif;*/
 }
+
 header {
     background-image: url('../images/policeattention.jpg');
     background-attachment: fixed;
@@ -20,6 +21,7 @@ header {
     top: 5px;
     margin: 20px;
 }
+
 
 /* navbar */
 
@@ -56,7 +58,8 @@ nav {
     letter-spacing: 2px;
     font-family: sans-serif;
 }
-.nav-links a:hover{
+
+.nav-links a:hover {
     /*border-bottom: 2px solid white;*/
     transition: all 2s ease-in-out;
 }
@@ -65,26 +68,26 @@ nav {
     display: none;
 }
 
-.dropdown{
+.dropdown {
     padding: 10px;
     position: absolute;
     display: none;
     /* min-width: 16px; */
     z-index: 1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    background-color:#195190FF;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: #195190FF;
 }
 
-.drop{
+.drop {
     position: relative;
 }
 
-.dropdown a{
+.dropdown a {
     padding: 10px;
     display: block;
 }
 
-.drop:hover .dropdown{
+.drop:hover .dropdown {
     display: block;
     text-align: center;
 }
@@ -136,7 +139,7 @@ nav {
         display: block;
         cursor: pointer;
     }
-    #announcements{
+    #announcements {
         flex-direction: column;
     }
 }
@@ -211,41 +214,47 @@ nav {
 
 /*===================> Contact Us <=====================     */
 
+
 /*Aside section*/
-#aside{
-    width:25%;
+
+#aside {
+    width: 25%;
     /*height:200vh;*/
 }
+
 #aside-image-container {
     display: flex;
     flex-flow: column nowrap;
     position: sticky;
     top: 16%;
-    left:0%;
+    left: 0%;
     padding-top: 2rem;
     padding-bottom: 5rem;
     /*width: 25%;*/
     align-items: center;
 }
-#aside-image-container img{
+
+#aside-image-container img {
     width: 80%;
 }
-#aside-image-container #comisioner-image{
+
+#aside-image-container #comisioner-image {
     width: 50%;
 }
 
-#contact-us{
+#contact-us {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
 }
-table{
+
+table {
     margin-top: 2rem;
     margin-bottom: 2rem;
     border-collapse: collapse;
     border: 2px solid black;
     font-size: large;
 }
-td{
+
+td {
     padding: 1rem;
 }
-

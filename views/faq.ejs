@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Faq</title>
     <link rel="stylesheet" href="css/cssforfaq.css">
 </head>
 <body>
@@ -27,15 +27,13 @@
                 <li><a href="/criminalslist">Criminals List</a></li>
                 <li><a href="/gallery">Media</a></li>
                 <li><a href="/contactus">Contact Us</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/decideLogin">Login</a></li>
                 </li>
                 <div class="drop">
                     <a href="#" class="more">More</a>
 
                     <div class="dropdown">
                         <a href="/faq">FAQ's</a>
-                        <a href="#">Suggestions</a>
-                        <a href="#">Feedback</a>
                     </div>
                 </div>
                 <li>
@@ -50,6 +48,14 @@
     <div class="box">
         <p class="heading">FAQs</p>
         <div class="faqs">
+            <% for(faq of  faqs){%> 
+                <% if(faq.answer) { %> 
+                    <details>
+                        <summary> <%= faq.question %>  </summary>
+                        <p class="text"><%= faq.answer %> </p>
+                    </details>  
+                <% } %> 
+            <% } %> 
             <details>
                 <summary>What does a police officer do?</summary>
                 <p class="text">A police officer is responsible for enforcing the law. Police officers are assigned to locations to patrol and watch for crime, enforce traffic violations, investigate criminal complaints and respond to emergency situations.</p>
@@ -87,7 +93,7 @@
     </div>
     <section id="email-section">
         <h2>Send Your Queries Here</h2>
-        <form action="/faq/add" name="queries-form" id="query-form">
+        <form action="/faq/add" name="queries-form" id="query-form" method="POST" >
             <table style="border: none;" id="query-table" >
                 <tr>
                     <td colspan="2" style="padding-left: 1rem;"> Feel Free to Contact US</td>
@@ -102,7 +108,7 @@
                 </tr>
                 <tr>
                     <td><label for="query"> Query:</label></td>
-                    <td><textarea name="query" id="query" cols="30" rows="5" required id="query" name="question"></textarea></td>
+                    <td><textarea name="question" id="query" cols="30" rows="5" required id="query" name="question"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button  name="Send" id="send-button">Submit</button></td>

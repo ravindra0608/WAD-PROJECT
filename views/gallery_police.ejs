@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title> 
+    <title>Police | Gallery Us</title> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="css/contactus_police.css">
     
@@ -27,7 +27,8 @@
                 <li><a href="/postcriminalslist">Criminals List</a></li>
                 <li><a href="/gallerypolice">Media</a></li>
                 <li><a href="/pcontactus">Contact Us</a></li>
-                <li><a href="#">More</a></li>
+                <li><a href="/pfaq">FAQs</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -48,7 +49,7 @@
             <form class="form" action="gallerypolice/add-event" method="post" enctype="multipart/form-data">
                 <table>
                     <h1>
-                        Add Images
+                        Add Events
                     </h1>
                     <tr>
                         <td>
@@ -92,10 +93,18 @@
                     <td><div><%= event.name %></div></td> 
                     <% if(event.tile){%>
                         <td><div><%= event.date %></div></td>
-                        <td><img src="<%= event.tile %>" alt="" width="100"></td>
+                        <td>
+                            <a href="/gallery/pevent/images/<%= event._id %>" target="_blank">
+                                <img src="<%= event.tile %>" alt="" width="100">
+                            </a>
+                        </td>
                     <%}else{%>
                         <td><div><%= event.date %></div></td>    
-                        <td><img src="images\event.jpg" alt="" width="100"></td>
+                        <td>
+                            <a href="/gallery/pevent/images/<%= event._id %>" target="_blank">
+                                <img src="images\event.jpg" alt="" width="100">
+                            </a>
+                        </td>
                     <%} %>   
                     <td>
 						<a href="gallery/event/delete/?imageId=<%= event._id %>">x</a>

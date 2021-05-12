@@ -1,16 +1,353 @@
-
-body {
-  background-color: #E8ECEF;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
-
-.centered {
-    padding-top: 200px;
-    text-align: center;
+ 
+header {
+  background-image: url("/images/header.jpeg");
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: top;
+  width: 100%;
 }
-
-.secret-text {
+ 
+.logo {
+  display: block;
+  width: 300px;
+  margin: auto;
+}
+ 
+/* page */
+ 
+.page {
+  position: relative;
+}
+ 
+.opening {
+  background-image: url("/images/background.jpg");
+  background-position-y: center;
+  color: white;
+}
+ 
+/* navbar */
+ 
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #195190ff;
+}
+ 
+.icon {
+  height: 55px;
+  margin-top: 2px;
+  position: relative;
+  right: 6em;
+}
+ 
+.nav-links {
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+ 
+.nav-links li {
+  list-style: none;
+}
+ 
+.nav-links a {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(238, 241, 253);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+ 
+/* for responsiveness */
+ 
+@media screen and (max-width: 1100px) {
+  .nav-links {
+    width: 80%;
+  }
+}
+ 
+@media screen and (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    top: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #195190ff;
+    width: 60%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+    padding: 25px;
+    z-index: 1;
+  }
+ 
+  .emblem {
+    display: block;
+  }
+}
+ 
+.nav-active {
+  transform: translateX(0%);
+}
+ 
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+ 
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+ 
+.toggle .line2 {
+  opacity: 0;
+}
+ 
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+ 
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+ 
+.nav-links li {
+  list-style: none;
+}
+ 
+.nav-links li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(238, 241, 253);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+ 
+.nav-links li:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  /* .5 seonds for changes to the width and background-color */
+  -webkit-transition: width 0.5s ease, background-color 0.5s ease;
+  /* Chrome and Safari */
+  -moz-transition: width 0.5s ease, background-color 0.5s ease;
+  /* FireFox */
+}
+ 
+/* Change the width and background on hover, aka sliding out */
+ 
+.nav-links li:hover:after {
+  width: 100%;
+  background: white;
+}
+ 
+.dropdown {
+  padding: 10px;
+  position: absolute;
+  display: none;
+  /* min-width: 16px; */
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: #195190ff;
+}
+ 
+.drop {
+  position: relative;
+}
+ 
+.dropdown a {
+  padding: 10px;
+  display: block;
+}
+ 
+.drop:hover .dropdown {
+  display: block;
   text-align: center;
-  font-size: 2rem;
-  color: #fff;
-  background-color: #000;
+}
+ 
+.side-nav {
+  position: absolute;
+  width: 0;
+  height: 80vh;
+  background-color: #195190ff;
+  z-index: 1;
+  background-color: #195190ff;
+  /* opacity: 0.9; */
+  overflow-x: hidden;
+  padding-top: 60px;
+  top: 100px;
+  right: 0;
+}
+ 
+.side-nav a {
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #ccc;
+  display: block;
+  transition: 0.3s;
+  margin: 20px;
+}
+ 
+.side-nav a:hover {
+  color: rgb(167, 164, 164);
+}
+ 
+#btn-close {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 20px;
+  font-size: 36px;
+  margin: 0;
+}
+ 
+@media screen and (max-width: 900px) {
+  .side-burger {
+    display: block;
+    position: absolute;
+    top: 12.8%;
+  }
+}
+ 
+body {
+  font-family: "Montserrat", sans-serif;
+}
+ 
+/*Mini navbar */
+ 
+.mininavbar {
+  position: absolute;
+  left: 09em;
+  top: 10em;
+  font-size: 1.2em;
+}
+ 
+/* Unvisited link*/
+ 
+/*Visited link*/
+ 
+.mininavbar > a:visited {
+  color: green;
+}
+ 
+/*Mouse over link*/
+ 
+.mininavbar > a:hover {
+  color: #ff0000;
+}
+ 
+.heading {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+}
+ 
+/*All the 8 categories are there inside "allcategories" class.*/
+ 
+.allcategories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: 1em 10em 0em 12em;
+}
+ 
+/*Styling for each category added 8 different ones because one is not working for all categories.*/
+ 
+a {
+  text-decoration: none;
+}
+ 
+.content {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  text-align: center;
+  margin: 1em 2em 0 0;
+}
+ 
+.label {
+  position: relative;
+  bottom: 1em;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+ 
+.images {
+  height: 13em;
+  border-radius: 5px;
+  width: 13em;
+}
+ 
+.content:hover {
+  opacity: 0.5;
+}
+ 
+/*CSS for footer*/
+ 
+footer {
+  font-size: 5px;
+  clear: both;
+  background-color: #00203fff;
+  color: antiquewhite;
+  text-align: center;
+}
+ 
+.socicons {
+  display: inline;
+}
+ 
+.socicons img {
+  height: 30px;
+  width: 30px;
+  margin: 15px;
+}
+ 
+.initial {
+  display: none;
+}
+ 
+a:hover img[class="hidden"] {
+  display: none;
+}
+ 
+a:hover img[class="initial"] {
+  display: inline;
+}
+ 
+.container {
+  padding-left: 300px;
+  padding-bottom: 90px;
+  padding-top: 10px;
 }

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home |AP Police</title>
-    <link rel="stylesheet" href="css/style_homepolice.css">
+    <title>Police | FAQ</title>
+    <link rel="stylesheet" href="css/faq_police.css">
 </head>
 <body>
     <header>
@@ -29,33 +29,32 @@
             <div class="line3"></div>
         </div>
     </nav>
-    <!-- Body Section  -->
 
-    <section id="body">
-        <div id="quote-image-container">
-            <img src="../images/police quotes.png" alt="quote-about-police">
+    <div id="body">
+
+        <h1 style="text-align: center;" >Unanswered FAQs</h1>
+        <div class="box">
+            <p class="heading">FAQs</p>
+            <div class="faqs">
+                <% for(faq of faqs){ %>
+                    <% if(!faq.answer){%>
+                        <details>
+                            <summary> <%= faq.question %>  </summary>
+                            <p class="text">
+                                <form action="/faq/answer/<%= faq._id %> " method="post" class="answerQuestion">
+                                    <textarea type="text" name="answer" id="answer"></textarea>
+                                    <button type="submit">Answer</button>
+                                </form>
+                            </p>
+                        </details>   
+                    <% } %>   
+                <% } %> 
+            </div>
         </div>
-        <div id="swipe-down-button">
-            <a href="#cont-3" style="text-decoration: none; color: inherit;"><button>  Go Down  </button></a>
-            <!-- <button> CLICK HERE </button> -->
-        </div>
-        <div id="cont-3">
-            <div id="fir-section">
-                <h1>No of F.I.R's Filed in Last 24 hours</h1>
-                <br>
-                <span> <%= numberOfFirs %>  </span>
-            </div >
-            <!-- <div id="login">
-                <h2>Please Login</h2>
-                <div> GO</div>
-            </div> -->
-        </div>
-    </section>
+    </div>
 
 
-
-
-    <!-- Footer Section  -->
+        <!-- Footer Section  -->
     <footer id="social">
         <h3>Follow us on Social Media!</h3>
         <div class="socicons">

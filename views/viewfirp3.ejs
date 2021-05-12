@@ -12,12 +12,12 @@
 
 <body>
     <header>
-        <a href="Police Side/home-page.html"><img class="logo" src="images/Logo-removebg-preview.png" alt="Ap Police"></a>
+        <a href="/phome"><img class="logo" src="images/Logo-removebg-preview.png" alt="Ap Police"></a>
     </header>
     <div class="page">
         <nav>
             <div class="emblem">
-                <a href="Police Side/home-page.html">
+                <a href="/phome">
                     <img src="images/emblem-removebg-preview.png" alt="National-emblem" class="icon">
                 </a>
 
@@ -29,7 +29,8 @@
                 <li><a href="/postcriminalslist">Criminals List</a></li>
                 <li><a href="/gallerypolice">Media</a></li>
                 <li><a href="/pcontactus">Contact Us</a></li>
-                <li><a href="#">More</a></li>
+                <li><a href="/pfaq">FAQs</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
 
@@ -60,47 +61,63 @@
                         <div id="myModal" class="modal">
 
                             <!-- Modal content -->
-                            <div class="modal-content" id="fir">
+                            <div class="modal-content fir">
                                 <span class="close">&times;</span>
                                 <div class="formandevidence">
-                                    <strong> F.I.R Form</strong>
-                                    <strong id="evidence"> Evidence</strong>
+                                    <strong class="evidence"> Evidence</strong>
                                 </div>
-                                <p>
-                                    <pre class="complaint">
-                                    From,
+                                <div class="message">
+                                    <div class="firpdf">
+                                        <img src="/images/Logo.png">
+                                        <p class="complaint"><br><br>
+                                            <p><b>From</b>,</p>
+                                            <p><b>Applicant Name:</b>
+                                                <%=fir.fullname %>,</p>
+                                            <p><b>Guardian Name:</b>
+                                                <%=fir.fatherorhusbandname %>,</p>
+                                            <p><b>Contact Address:</b>
+                                                <%=fir.address %>,</p>
+                                            <p><b>Contact Number:</b>
+                                                <%=fir.contactnumber %>,</p>
+                                            <p><b>email:</b>
+                                                <%=fir.emailid %>.</p><br>
+                                            <br>
+                                            <p><b>Date of the Incident:</b>
+                                                <%=fir.date %>.</p><br>
+                                            <p><b>Time of the Incident:</b>
+                                                <%= fir.time %>.</p><br>
 
-                                    Applicant Name: <%=fir.fullname %>,
-                                    Guardian Name: <%=fir.fatherorhusbandname %>,
-                                    Contact Address: <%=fir.address %>,
-                                    Contact Number: <%=fir.contactnumber %>,
-                                    email: <%=fir.emailid %>,
-                                    
-                                    
-                                    Date: <%=fir.date %>.
-                                    
-                                    To,
-                                    Station Name:<%= fir.stationname%>,
-                                    District :<%= fir.district%>,
-                                    State :<%= fir.state%>.
-                
-                                    Subject: <%=fir.subject %>,
-                                    
-                                    Respected sir,
-
-                                            <%=fir.complaint %>,
-                                </pre>
-                                </p>
+                                            <p><b>To</b>,</p><br>
+                                            <p><b>Station Name:</b>
+                                                <%= fir.stationname%>,</p>
+                                            <p><b>District :</b>
+                                                <%= fir.district%>,</p>
+                                            <p><b>State :</b>
+                                                <%= fir.state%>.</p><br>
+                                            <p><b>Subject:</b>
+                                                <%=fir.subject %>
+                                            </p><br><br>
+                                            <p></p><b>Respected sir/madam</b>,</p>
+                                        <pre class="fonts"> &nbsp;&nbsp;&nbsp;
+                                            <%=fir.complaint %>
+                                        </pre>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-content" id="evid">
+                            <div class="modal-content evid">
                                 <div class="formandevidence">
                                     <span class="close">&times;</span>
-                                    <strong id="firform"> F.I.R Form</strong>
-                                    <strong> Evidence</strong>
+                                    <strong class="firform"> F.I.R Form</strong>
                                 </div>
-                                <object width="100%" height="100%" data="./accident_evidence.mp4">
-                                <p>Oops! Your browser doesn't support this!</p>
-                                <p></p>
+                                <p>
+                                    <% if(fir.image){%>
+                                        <img id="proof" src="<%= fir.image.fname %> ">
+                                        <%}else{%>
+                                            <h1>NO EVIDENCE PROVIDED</h1>
+                                            <%}%>
+
+                                </p>
                                 </object>
                             </div>
                         </div>
@@ -118,6 +135,10 @@
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close");
+            var a = document.getElementsByClassName('firform');
+            var b = document.getElementsByClassName('evidence');
+            var c = document.getElementsByClassName('fir');
+            var d = document.getElementsByClassName('evid');
 
             // When the user clicks the button, open the modal 
             let k = 0;
@@ -127,7 +148,7 @@
                     }
                     // When the user clicks anywhere outside of the modal, close it
                 window.onclick = function(event) {
-                        if (event.target == modal) {
+                        if (event.target == modal[i]) {
                             modal[i].style.display = "none";
                         }
                     }
@@ -139,19 +160,14 @@
                 span[k++].onclick = function() {
                     modal[i].style.display = "none";
                 }
-            }
-
-
-
-            var x = document.getElementById('firform');
-            x.onclick = function() {
-                fir.style.display = 'block';
-                evid.style.display = 'none';
-            }
-            var y = document.getElementById('evidence');
-            y.onclick = function() {
-                fir.style.display = 'none';
-                evid.style.display = 'block';
+                a[i].onclick = function() {
+                    c[i].style.display = 'block';
+                    d[i].style.display = 'none';
+                }
+                b[i].onclick = function() {
+                    c[i].style.display = 'none';
+                    d[i].style.display = 'block';
+                }
             }
         </script><br>
         <footer>

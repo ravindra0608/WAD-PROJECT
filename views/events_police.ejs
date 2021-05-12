@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Event | images</title>
+    <!-- <link rel="stylesheet" href="css/style-gallerypage.css"> -->
+    <style>
+        .image-para{
+            position: relative;
+            width: 23% ;
+            height: 30vh;
+        }
+        .image-para img{
+            padding: 1.5rem;
+            height: 80%;
+        }
+        #images-container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-content: space-between;
+        }
+        #heading{
+            background-color: #dcdcdc;
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading">
+        <h2><%= event.name %> </h2>
+    </div>
+    <form action="/gallery/pevent/images/add/<%= event._id %>" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <label for="event-image">add an image?</label>
+                </td>
+                <td>
+                    <input type="file" name="image" id="event-image" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <button type="submit">Add</button>
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+    <div id="images-container">
+        <% for(i of event.images){ %>
+            <div class="image-para">
+                <img src="<%= i %>" alt="event images" width="200">
+                <a href="/images/delete/?imagepath=<%= i %>&eventid=<%=event._id%>">X</a>
+            </div>    
+        <% } %>
+    </div>
+
+</body>
+</html>
